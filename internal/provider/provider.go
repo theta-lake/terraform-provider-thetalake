@@ -24,6 +24,7 @@ var _ provider.ProviderWithEphemeralResources = &ThetalakeProvider{}
 // ThetalakeProvider defines the provider implementation
 type ThetalakeProvider struct {
 	endpoint string
+	client   *http.Client
 	token    string
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
@@ -68,12 +69,11 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 
 	p.endpoint = data.Endpoint.String()
 	p.token = data.Token.String()
-
-	client := &http.Client{
+	p.client = &http.Client{
 		Timeout: 10 * time.Second,
 	}
-	resp.DataSourceData = client
-	resp.ResourceData = client
+	resp.DataSourceData = p
+	resp.ResourceData = p
 }
 
 func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Resource {

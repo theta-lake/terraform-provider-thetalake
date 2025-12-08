@@ -12,7 +12,7 @@ import (
 )
 
 type userResource struct {
-	client *http.Client
+	provider *ThetalakeProvider
 }
 
 type userModel struct {
@@ -80,7 +80,7 @@ func (r *userResource) Configure(_ context.Context, req resource.ConfigureReques
 		// TODO: add logging
 		return
 	}
-	r.client = req.ProviderData.(*http.Client)
+	r.provider = req.ProviderData.(*ThetalakeProvider)
 }
 
 func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -113,18 +113,16 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 		return
 	}
 
-	// TODO: add token from provider
-	token := fmt.Sprintf("Bearer %s", "insert-token")
+	token := fmt.Sprintf("Bearer %s", r.provider.token)
 
-	// TODO: add endpoint from provider
-	userReq, err := http.NewRequest("POST", "insert-endpoint", bytes.NewReader(body))
+	userReq, err := http.NewRequest("POST", r.provider.endpoint, bytes.NewReader(body))
 	if err != nil {
 		return
 	}
 	userReq.Header.Set("Authorization", token)
 	userReq.Header.Set("Content-Type", "application/json")
 
-	userResp, err := r.client.Do(userReq)
+	userResp, err := r.provider.client.Do(userReq)
 	if err != nil {
 		resp.Diagnostics.AddError("API Error", fmt.Sprintf("Status: %d", userResp.StatusCode))
 		return
