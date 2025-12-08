@@ -23,6 +23,8 @@ var _ provider.ProviderWithEphemeralResources = &ThetalakeProvider{}
 
 // ThetalakeProvider defines the provider implementation
 type ThetalakeProvider struct {
+	endpoint string
+	token    string
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing
@@ -32,6 +34,7 @@ type ThetalakeProvider struct {
 // ThetalakeProviderModel describes the provider data model
 type ThetalakeProviderModel struct {
 	Endpoint types.String `tfsdk:"endpoint"`
+	Token    types.String `tfsdk:"token"`
 }
 
 func (p *ThetalakeProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -46,7 +49,7 @@ func (p *ThetalakeProvider) Schema(ctx context.Context, req provider.SchemaReque
 				MarkdownDescription: "API endpoint",
 				Optional:            false,
 			},
-			"bearer": schema.StringAttribute{
+			"token": schema.StringAttribute{
 				MarkdownDescription: "Bearer API token",
 				Optional:            true,
 			},
@@ -55,13 +58,16 @@ func (p *ThetalakeProvider) Schema(ctx context.Context, req provider.SchemaReque
 }
 
 func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-	var data ThetalakeProviderModel
+	data := &ThetalakeProviderModel{}
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
+
+	p.endpoint = data.Endpoint.String()
+	p.token = data.Token.String()
 
 	client := &http.Client{
 		Timeout: 10 * time.Second,
@@ -78,15 +84,15 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 }
 
 func (p *ThetalakeProvider) EphemeralResources(ctx context.Context) []func() ephemeral.EphemeralResource {
-	return []func() ephemeral.EphemeralResource{}
+	return nil
 }
 
 func (p *ThetalakeProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
-	return []func() datasource.DataSource{}
+	return nil
 }
 
 func (p *ThetalakeProvider) Functions(ctx context.Context) []func() function.Function {
-	return []func() function.Function{}
+	return nil
 }
 
 func New(version string) func() provider.Provider {
