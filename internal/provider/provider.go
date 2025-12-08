@@ -46,6 +46,10 @@ func (p *ThetalakeProvider) Schema(ctx context.Context, req provider.SchemaReque
 				MarkdownDescription: "API endpoint",
 				Optional:            false,
 			},
+			"bearer": schema.StringAttribute{
+				MarkdownDescription: "Bearer API token",
+				Optional:            true,
+			},
 		},
 	}
 }
