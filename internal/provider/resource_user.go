@@ -12,7 +12,7 @@ import (
 )
 
 type userResource struct {
-	provider *ThetalakeProvider
+	apiClient *apiClient
 }
 
 type userModel struct {
@@ -55,16 +55,16 @@ type securityFilter struct {
 }
 
 type createUserRequest struct {
-	Name                 string `json:"name"`
-	Email                string `json:"email"`
-	Password             string `json:"password"`
-	PasswordConfirmation string `json:"password_confirmation"`
-	RoleId               int    `json:"role_id"`
-	SearchId             int    `json:"search_id"`
+	Name                 string `tfsdk:"name"`
+	Email                string `tfsdk:"email"`
+	Password             string `tfsdk:"password"`
+	PasswordConfirmation string `tfsdk:"password_confirmation"`
+	RoleId               int    `tfsdk:"role_id"`
+	SearchId             int    `tfsdk:"search_id"`
 }
 
 type createUserResponse struct {
-	User userModel `json:"user"`
+	User userModel `tfsdk:"user"`
 }
 
 func NewUserResource() resource.Resource {
@@ -80,14 +80,32 @@ func (r *userResource) Configure(_ context.Context, req resource.ConfigureReques
 		// TODO: add logging
 		return
 	}
-	r.provider = req.ProviderData.(*ThetalakeProvider)
+	r.apiClient = req.ProviderData.(*apiClient)
 }
 
 func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			// TODO: add all model attributes
 			"name": schema.StringAttribute{
+				Required: true,
+			},
+			"email": schema.StringAttribute{
+				Required: true,
+			},
+			"password": schema.StringAttribute{
+				Required:    true,
+				Sensitive:   true,
+				Description: "Write-only: used for the create request and is not stored in the state",
+			},
+			"password_confirmation": schema.StringAttribute{
+				Required:    true,
+				Sensitive:   true,
+				Description: "Write-only: used for the create request and is not stored in the state",
+			},
+			"role_id": schema.Int64Attribute{
+				Required: true,
+			},
+			"search_id": schema.Int64Attribute{
 				Required: true,
 			},
 		},
@@ -95,9 +113,9 @@ func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 }
 
 func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	plan := &userModel{}
+	plan := &createUserRequest{}
 
-	// Read Terraform plan data into the model
+	// Read Terraform plan data
 	resp.Diagnostics.Append(req.Plan.Get(ctx, plan)...)
 	if resp.Diagnostics.HasError() {
 		// TODO: Add logging
@@ -105,7 +123,12 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 	}
 
 	// TODO: add request values
-	createUserReq := &createUserRequest{}
+	createUserReq := &createUserRequest{
+		Name:                 plan.Name,
+		Email:                plan.Email,
+		Password:             plan.Password,
+		PasswordConfirmation: plan.PasswordConfirmation,
+	}
 
 	body, err := json.Marshal(createUserReq)
 	if err != nil {
@@ -113,16 +136,16 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 		return
 	}
 
-	token := fmt.Sprintf("Bearer %s", r.provider.token)
+	token := fmt.Sprintf("Bearer %s", r.apiClient.token)
 
-	userReq, err := http.NewRequest("POST", r.provider.endpoint, bytes.NewReader(body))
+	userReq, err := http.NewRequest("POST", r.apiClient.endpoint, bytes.NewReader(body))
 	if err != nil {
 		return
 	}
 	userReq.Header.Set("Authorization", token)
 	userReq.Header.Set("Content-Type", "application/json")
 
-	userResp, err := r.provider.client.Do(userReq)
+	userResp, err := r.apiClient.client.Do(userReq)
 	if err != nil {
 		resp.Diagnostics.AddError("API Error", fmt.Sprintf("Status: %d", userResp.StatusCode))
 		return
@@ -133,10 +156,13 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 	json.NewDecoder(userResp.Body).Decode(createUserResp)
 
 	// TODO: populate plan
-	plan.Name = createUserResp.User.Name
+	user := &userModel{
+		Name:  plan.Name,
+		Email: plan.Email,
+	}
 
 	// Save data into Terraform state
-	resp.Diagnostics.Append(resp.State.Set(ctx, plan)...)
+	resp.Diagnostics.Append(resp.State.Set(ctx, user)...)
 }
 
 func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {

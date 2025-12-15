@@ -6,6 +6,7 @@ package provider
 import (
 	"context"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -23,9 +24,6 @@ var _ provider.ProviderWithEphemeralResources = &ThetalakeProvider{}
 
 // ThetalakeProvider defines the provider implementation
 type ThetalakeProvider struct {
-	endpoint string
-	client   *http.Client
-	token    string
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing
@@ -38,6 +36,20 @@ type ThetalakeProviderModel struct {
 	Token    types.String `tfsdk:"token"`
 }
 
+type apiClient struct {
+	endpoint string
+	client   *http.Client
+	token    string
+}
+
+func New(version string) func() provider.Provider {
+	return func() provider.Provider {
+		return &ThetalakeProvider{
+			version: version,
+		}
+	}
+}
+
 func (p *ThetalakeProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
 	resp.TypeName = "thetalake"
 	resp.Version = p.version
@@ -47,33 +59,43 @@ func (p *ThetalakeProvider) Schema(ctx context.Context, req provider.SchemaReque
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"endpoint": schema.StringAttribute{
+				Required:            true,
+				Description:         "API endpoint",
 				MarkdownDescription: "API endpoint",
-				Optional:            false,
 			},
 			"token": schema.StringAttribute{
+				Required:            true,
+				Sensitive:           true,
+				Description:         "Bearer API token",
 				MarkdownDescription: "Bearer API token",
-				Optional:            true,
 			},
 		},
 	}
 }
 
 func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-	data := &ThetalakeProviderModel{}
+	providerModel := &ThetalakeProviderModel{}
 
-	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
+	resp.Diagnostics.Append(req.Config.Get(ctx, &providerModel)...)
 
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	p.endpoint = data.Endpoint.String()
-	p.token = data.Token.String()
-	p.client = &http.Client{
-		Timeout: 10 * time.Second,
+	if providerModel.Token.IsUnknown() || providerModel.Token.IsNull() || strings.TrimSpace(providerModel.Endpoint.ValueString()) == "" {
+		resp.Diagnostics.AddError("Missing API token", "The provider requires an API token")
+		return
 	}
-	resp.DataSourceData = p
-	resp.ResourceData = p
+
+	client := &apiClient{
+		client: &http.Client{
+			Timeout: 10 * time.Second,
+		},
+		endpoint: providerModel.Endpoint.ValueString(),
+		token:    providerModel.Token.ValueString(),
+	}
+	resp.DataSourceData = client
+	resp.ResourceData = client
 }
 
 func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Resource {
@@ -93,12 +115,4 @@ func (p *ThetalakeProvider) DataSources(ctx context.Context) []func() datasource
 
 func (p *ThetalakeProvider) Functions(ctx context.Context) []func() function.Function {
 	return nil
-}
-
-func New(version string) func() provider.Provider {
-	return func() provider.Provider {
-		return &ThetalakeProvider{
-			version: version,
-		}
-	}
 }
