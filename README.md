@@ -23,7 +23,15 @@ provider_installation {
 }
 ```
 
-4. Create your `main.tf` file
+4. Create and cd into a test directory
+```bash
+mkdir provider-test
+
+# cd into the directory
+cd provider-test
+```
+
+5. Create your `main.tf` file and save it in the test directory
 ```txt
 terraform {
     required_providers {
@@ -49,4 +57,28 @@ resource "thetalake_user" "user_01" {
 }
 ```
 
-5. Run `terraform plan`. You cannot run `terraform init` since this is a local dev test
+6. Run Terraform plan
+```bash
+# terraform init is not used for local dev testing
+terraform plan
+```
+
+7. Run Terraform apply
+```bash
+terraform apply
+```
+
+## Generate Documentation
+1. Install the tool
+```bash
+go install github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@latest
+
+# verify the installation
+tfplugindocs --version
+```
+
+2. Generate the docs
+```bash
+# make sure to run from the root of the repo
+make generate-docs
+```
