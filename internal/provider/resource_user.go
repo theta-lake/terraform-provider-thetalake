@@ -132,90 +132,138 @@ func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"created_at": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The created timestamp using the RFC3339 date-time format",
+				MarkdownDescription: "The created timestamp using the RFC3339 date-time format",
 			},
 			"current_org_unit": schema.SingleNestedAttribute{
 				Computed: true,
 				Attributes: map[string]schema.Attribute{
 					"archive_only": schema.BoolAttribute{
-						Computed: true,
+						Computed:            true,
+						Description:         "Indicates if the org unit is archive only",
+						MarkdownDescription: "Indicates if the org unit is archive only",
 					},
 					"id": schema.Int64Attribute{
-						Computed: true,
+						Computed:            true,
+						Description:         "The ID of the current org unit",
+						MarkdownDescription: "The ID of the current org unit",
 					},
 					"name": schema.StringAttribute{
-						Computed: true,
+						Computed:            true,
+						Description:         "The name of the current org unit",
+						MarkdownDescription: "The name of the current org unit",
 					},
 				},
 			},
 			"disabled": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the user has been disabled",
+				MarkdownDescription: "Indicates if the user has been disabled",
 			},
 			"disabled_at": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "When the user was disabled timestamp using the RFC3339 date-time format",
+				MarkdownDescription: "When the user was disabled timestamp using the RFC3339 date-time format",
 			},
 			"default_user_timezone": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Timezone the user is assigned to by default",
+				MarkdownDescription: "Timezone the user is assigned to by default",
 			},
 			"email": schema.StringAttribute{
-				Required: true,
+				Required:            true,
+				Description:         "The email address associated with this user",
+				MarkdownDescription: "The email address associated with this user",
 			},
 			"force_sso": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the user has to use SSO to sign in",
+				MarkdownDescription: "Indicates if the user has to use SSO to sign in",
 			},
 			"has_datums": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the user is associated with any captured datums",
+				MarkdownDescription: "Indicates if the user is associated with any captured datums",
 			},
 			"has_multiple_workspaces": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the user is assigned to multiple workspaces",
+				MarkdownDescription: "Indicates if the user is assigned to multiple workspaces",
 			},
 			"id": schema.Int64Attribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The user ID",
+				MarkdownDescription: "The user ID",
 			},
 			"last_login": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The user's last login timestamp using the RFC3339 date-time format",
+				MarkdownDescription: "The user's last login timestamp using the RFC3339 date-time format",
 			},
 			"name": schema.StringAttribute{
-				Required: true,
+				Required:            true,
+				Description:         "The user's name",
+				MarkdownDescription: "The user's name",
 			},
 			"otp_enabled": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the use has OTP enabled",
+				MarkdownDescription: "Indicates if the use has OTP enabled",
 			},
 			"otp_enabled_at": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The timestamp of when OTP was enabled using the RFC3339 date-time format",
+				MarkdownDescription: "The timestamp of when OTP was enabled using the RFC3339 date-time format",
 			},
 			"password": schema.StringAttribute{
-				Required:  true,
-				Sensitive: true,
-				WriteOnly: true,
+				Required:            true,
+				Sensitive:           true,
+				WriteOnly:           true,
+				Description:         "The user's password",
+				MarkdownDescription: "The user's password",
 			},
 			"password_changed_at": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The timestamp of the last time the user's password was changed using the RFC3339 date-time format",
+				MarkdownDescription: "The timestamp of the last time the user's password was changed using the RFC3339 date-time format",
 			},
 			"password_confirmation": schema.StringAttribute{
-				Required:  true,
-				Sensitive: true,
-				WriteOnly: true,
+				Required:            true,
+				Sensitive:           true,
+				WriteOnly:           true,
+				Description:         "Password confirmation, must match password",
+				MarkdownDescription: "Password confirmation, must match password",
 			},
 			"queue_paused": schema.BoolAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "Indicates if the users queue has been paused",
+				MarkdownDescription: "Indicates if the users queue has been paused",
 			},
 			"role": schema.SingleNestedAttribute{
 				Computed: true,
 				Attributes: map[string]schema.Attribute{
 					"id": schema.Int64Attribute{
-						Computed: true,
+						Computed:            true,
+						Description:         "The role ID",
+						MarkdownDescription: "The role ID",
 					},
 					"name": schema.StringAttribute{
-						Computed: true,
+						Computed:            true,
+						Description:         "The role name",
+						MarkdownDescription: "The role name",
 					},
 				},
 			},
 			"role_id": schema.Int64Attribute{
-				Required: true,
+				Required:            true,
+				Description:         "The ID of the role that will be assigned to the new user",
+				MarkdownDescription: "The ID of the role that will be assigned to the new user",
 			},
 			"search_id": schema.Int64Attribute{
-				Optional: true,
+				Optional:            true,
+				Description:         "The ID of the search used for the user's security filter",
+				MarkdownDescription: "The ID of the search used for the user's security filter",
 			},
 			"security_filter": schema.SingleNestedAttribute{
 				Computed: true,
@@ -229,10 +277,14 @@ func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 				},
 			},
 			"updated_at": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The updated timestamp using the RFC3339 date-time format",
+				MarkdownDescription: "The updated timestamp using the RFC3339 date-time format",
 			},
 			"user_initials": schema.StringAttribute{
-				Computed: true,
+				Computed:            true,
+				Description:         "The user's initials",
+				MarkdownDescription: "The user's initials",
 			},
 		},
 	}
