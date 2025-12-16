@@ -402,4 +402,42 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 }
 
 func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	state := &userModel{}
+
+	// Read Terraform plan data
+	resp.Diagnostics.Append(req.State.Get(ctx, state)...)
+	if resp.Diagnostics.HasError() {
+		resp.Diagnostics.AddError("Internal Error", "Failed to read plan data")
+		return
+	}
+
+	if state.ID.IsNull() || state.ID.IsUnknown() {
+		resp.Diagnostics.AddError("Internal Error", "Failed to delete the user: the id is missing in state")
+		return
+	}
+
+	token := fmt.Sprintf("Bearer %s", r.apiClient.token)
+
+	endpoint := fmt.Sprintf("%s/%v", r.apiClient.endpoint, state.ID.ValueInt64())
+
+	userReq, err := http.NewRequest("DELETE", endpoint, nil)
+	if err != nil {
+		resp.Diagnostics.AddError("Internal Error", fmt.Sprintf("Failed to create request: %s", err.Error()))
+		return
+	}
+	userReq.Header.Set("Authorization", token)
+	userReq.Header.Set("Content-Type", "application/json")
+
+	userResp, err := r.apiClient.client.Do(userReq)
+	if err != nil {
+		resp.Diagnostics.AddError("Internal Error", fmt.Sprintf("Status: %d, Error: %s", userResp.StatusCode, err.Error()))
+		return
+	}
+
+	if userResp.StatusCode != http.StatusOK {
+		resp.Diagnostics.AddError("Internal Error", fmt.Sprintf("Status: %d", userResp.StatusCode))
+		return
+	}
+
+	resp.State.RemoveResource(ctx)
 }
