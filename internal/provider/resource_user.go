@@ -435,14 +435,6 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 		UserInitials:          types.StringValue(createUserResp.User.UserInitials),
 	}
 
-	if createUserResp.User.SecurityFilter.Name != nil {
-		//state.SecurityFilter.Name = types.StringValue(*createUserResp.User.SecurityFilter.Name)
-	}
-
-	if createUserResp.User.SecurityFilter.SearchID != nil {
-		//state.SecurityFilter.SearchID = types.Int64Value(int64(*createUserResp.User.SecurityFilter.SearchID))
-	}
-
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
