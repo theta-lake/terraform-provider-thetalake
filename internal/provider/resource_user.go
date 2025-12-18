@@ -74,12 +74,14 @@ type apiCreateUserResponse struct {
 	User apiUser `json:"user"`
 }
 
+// TODO: remove HasDatums
+// TODO: add ExternalId, SearchId
 type apiUser struct {
 	CreatedAt             string                `json:"created_at"`
 	CurrentOrgUnit        apiUserCurrentOrgUnit `json:"current_org_unit"`
+	DefaultUserTimezone   string                `json:"default_user_timezone"`
 	Disabled              bool                  `json:"disabled"`
 	DisabledAt            string                `json:"disabled_at"`
-	DefaultUserTimezone   string                `json:"default_user_timezone"`
 	Email                 string                `json:"email"`
 	ForceSso              bool                  `json:"force_sso"`
 	HasDatums             bool                  `json:"has_datums"`
@@ -157,6 +159,7 @@ func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 				},
 			},
 			"disabled": schema.BoolAttribute{
+				Optional:            true,
 				Computed:            true,
 				Description:         "Indicates if the user has been disabled",
 				MarkdownDescription: "Indicates if the user has been disabled",
@@ -319,9 +322,10 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 		return
 	}
 
+	endpoint := fmt.Sprintf("%s/users", r.apiClient.endpoint)
 	token := fmt.Sprintf("Bearer %s", r.apiClient.token)
 
-	userReq, err := http.NewRequest("POST", r.apiClient.endpoint, bytes.NewReader(body))
+	userReq, err := http.NewRequest(http.MethodPost, endpoint, bytes.NewReader(body))
 	if err != nil {
 		resp.Diagnostics.AddError("Internal Error", fmt.Sprintf("Failed to create request: %s", err.Error()))
 		return
@@ -460,11 +464,10 @@ func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, r
 		return
 	}
 
+	endpoint := fmt.Sprintf("%s/users/%v", r.apiClient.endpoint, state.ID.ValueInt64())
 	token := fmt.Sprintf("Bearer %s", r.apiClient.token)
 
-	endpoint := fmt.Sprintf("%s/%v", r.apiClient.endpoint, state.ID.ValueInt64())
-
-	userReq, err := http.NewRequest("DELETE", endpoint, nil)
+	userReq, err := http.NewRequest(http.MethodDelete, endpoint, nil)
 	if err != nil {
 		resp.Diagnostics.AddError("Internal Error", fmt.Sprintf("Failed to create request: %s", err.Error()))
 		return
