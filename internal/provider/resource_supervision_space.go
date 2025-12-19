@@ -317,10 +317,10 @@ func (r *supervisionSpaceResource) Update(ctx context.Context, req resource.Upda
 func (r *supervisionSpaceResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	state := &supervisionSpaceModel{}
 
-	// Read Terraform plan data
+	// Read Terraform state data
 	resp.Diagnostics.Append(req.State.Get(ctx, state)...)
 	if resp.Diagnostics.HasError() {
-		resp.Diagnostics.AddError("Internal Error", "Failed to read plan data")
+		resp.Diagnostics.AddError("Internal Error", "Failed to read state data")
 		return
 	}
 
