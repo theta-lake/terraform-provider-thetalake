@@ -9,7 +9,7 @@ import (
 const (
 	TestProviderConfig = `
 provider "thetalake" {
-  endpoint = "https://api.thetalake.com"
+  api_server = "https://api.thetalake.com"
   client_id = "test123"
   client_secret = "secret123"
 }

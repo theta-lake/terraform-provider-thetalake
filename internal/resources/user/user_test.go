@@ -16,18 +16,21 @@ func TestAccUserResource_basic(t *testing.T) {
 			// Create and Read testing
 			{
 				Config: acctest.TestProviderConfig + `
+data "thetalake_role" "reviewer" {
+  name = "Reviewer"
+}
+
 resource "thetalake_user" "test" {
-  name                  = "Test User"
-  email                 = "test-user@example.com"
-  password              = "example-password"
-  password_confirmation = "example-password"
-  role_id               = 1
+  name     = "Test User"
+  email    = "test-user@example.com"
+  password = "example-password"
+  role_id  = data.thetalake_role.reviewer.id
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
 					resource.TestCheckResourceAttr(resourceName, "name", "Test User"),
 					resource.TestCheckResourceAttr(resourceName, "email", "test-user@example.com"),
-					resource.TestCheckResourceAttr(resourceName, "role_id", "1"),
+					resource.TestCheckResourceAttr(resourceName, "role", "Reviewer"),
 					resource.TestCheckResourceAttrSet(resourceName, "id"),
 				),
 			},
@@ -41,12 +44,11 @@ resource "thetalake_user" "test" {
 			{
 				Config: acctest.TestProviderConfig + `
 resource "thetalake_user" "test" {
-  name                  = "Updated User"
-  email                 = "updated-user@example.com"
-  password              = "example-password"
-  password_confirmation = "example-password"
-  role_id               = 2
-  search_id             = 42
+  name      = "Updated User"
+  email     = "updated-user@example.com"
+  password  = "example-password"
+  role      = "Admin"
+  search_id = 42
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(

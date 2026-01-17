@@ -2,6 +2,8 @@ package thetalake
 
 import (
 	"context"
+	"errors"
+	"net/http"
 	"time"
 )
 
@@ -17,9 +19,18 @@ type Role struct {
 }
 
 func (s *Client) GetRoleByName(ctx context.Context, name string) (Role, error) {
-	// Placeholder for actual API call to get role by name
-	return Role{
-		Id:   1,
-		Name: name,
-	}, nil
+	var roles []Role
+
+	err := s.doRequest(http.MethodGet, "/roles", nil, "roles", &roles)
+	if err != nil {
+		return Role{}, err
+	}
+
+	for _, role := range roles {
+		if role.Name == name {
+			return role, nil
+		}
+	}
+
+	return Role{}, errors.New("role not found")
 }

@@ -5,7 +5,6 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
-	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
@@ -26,7 +25,7 @@ type ThetalakeProvider struct {
 
 // ThetalakeProviderModel describes the provider data model
 type ThetalakeProviderModel struct {
-	Endpoint     types.String `tfsdk:"endpoint"`
+	ApiServerUrl types.String `tfsdk:"api_server"`
 	ClientId     types.String `tfsdk:"client_id"`
 	ClientSecret types.String `tfsdk:"client_secret"`
 }
@@ -44,27 +43,6 @@ func (p *ThetalakeProvider) Metadata(ctx context.Context, req provider.MetadataR
 	resp.Version = p.version
 }
 
-func (p *ThetalakeProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
-	resp.Schema = schema.Schema{
-		Attributes: map[string]schema.Attribute{
-			"endpoint": schema.StringAttribute{
-				Required:            true,
-				MarkdownDescription: "Theta Lake API endpoint",
-			},
-			"client_id": schema.StringAttribute{
-				Required:            true,
-				Sensitive:           true,
-				MarkdownDescription: "Client ID for Theta Lake API authentication",
-			},
-			"client_secret": schema.StringAttribute{
-				Required:            true,
-				Sensitive:           true,
-				MarkdownDescription: "Client secret for Theta Lake API authentication",
-			},
-		},
-	}
-}
-
 func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 	providerModel := &ThetalakeProviderModel{}
 
@@ -74,7 +52,7 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 		return
 	}
 
-	if providerModel.Endpoint.IsUnknown() || providerModel.Endpoint.IsNull() {
+	if providerModel.ApiServerUrl.IsUnknown() || providerModel.ApiServerUrl.IsNull() {
 		resp.Diagnostics.AddError("Missing Theta Lake API endpoint", "The provider requires a Theta Lake API endpoint. This can be found at https://developer.thetalake.ai for your data center.")
 		return
 	}
@@ -89,7 +67,7 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 		return
 	}
 
-	client := thetalake.NewClient(providerModel.Endpoint.ValueString(), providerModel.ClientId.ValueString(), providerModel.ClientSecret.ValueString())
+	client := thetalake.NewClient(providerModel.ApiServerUrl.ValueString(), providerModel.ClientId.ValueString(), providerModel.ClientSecret.ValueString())
 
 	resp.DataSourceData = client
 	resp.ResourceData = client

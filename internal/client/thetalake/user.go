@@ -2,6 +2,8 @@ package thetalake
 
 import (
 	"context"
+	"fmt"
+	"net/http"
 	"time"
 )
 
@@ -42,35 +44,45 @@ type User struct {
 }
 
 func (s *Client) CreateUser(ctx context.Context, user User) (User, error) {
-	// Placeholder for actual API call to create user
-	user.Id = 1 // Simulate assigned ID
-	user.CreatedAt = time.Now()
-	return user, nil
+	var responseUser User
+	err := s.doRequest(http.MethodPost, "/users", user, "user", &responseUser)
+	if err != nil {
+		return User{}, err
+	}
+
+	return responseUser, nil
 }
 
 func (s *Client) GetUserById(ctx context.Context, userId int64) (User, error) {
-	// Placeholder for actual API call to get user by ID
-	return User{
-		Id:    userId,
-		Email: "",
-		Name:  "",
-		Role:  Role{Id: 1, Name: "User"},
-	}, nil
+	var responseUser User
+	endpoint := fmt.Sprintf("/users/%v", userId)
+
+	err := s.doRequest(http.MethodGet, endpoint, nil, "user", &responseUser)
+	if err != nil {
+		return User{}, err
+	}
+
+	return responseUser, nil
 }
 
 func (s *Client) UpdateUser(ctx context.Context, user User) (User, error) {
-	// Placeholder for actual API call to update user.
-	// Simulate persistence by ensuring an ID is set so Terraform state
-	// retains a stable identifier across updates.
-	if user.Id == 0 {
-		user.Id = 1
+	var responseUser User
+	endpoint := fmt.Sprintf("/users/%v", user.Id)
+
+	err := s.doRequest(http.MethodPut, endpoint, user, "user", &responseUser)
+	if err != nil {
+		return User{}, err
 	}
 
-	// user.UpdatedAt = ptrToTime(time.Now())
-	return user, nil
+	return responseUser, nil
 }
 
 func (s *Client) DeleteUser(ctx context.Context, userId int64) error {
-	// Placeholder for actual API call to delete user
+	endpoint := fmt.Sprintf("/users/%v", userId)
+	err := s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	if err != nil {
+		return err
+	}
+
 	return nil
 }

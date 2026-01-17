@@ -6,47 +6,31 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
 )
 
-type RoleModel struct {
-	Id   types.Int64  `tfsdk:"id"`
-	Name types.String `tfsdk:"name"`
+type UserPlanModel struct {
+	Email            types.String `tfsdk:"email"`
+	Name             types.String `tfsdk:"name"`
+	Password         types.String `tfsdk:"password"`
+	RoleId           types.Int64  `tfsdk:"role_id"`
+	SecurityFilterId types.Int64  `tfsdk:"security_filter_id"`
 }
 
-type CurrentWorkspaceModel struct {
-	Id   types.Int64  `tfsdk:"id"`
-	Name types.String `tfsdk:"name"`
+type UserStateModel struct {
+	CreatedAt          timetypes.RFC3339 `tfsdk:"created_at"`
+	Id                 types.Int64       `tfsdk:"id"`
+	Email              types.String      `tfsdk:"email"`
+	Name               types.String      `tfsdk:"name"`
+	Disabled           types.Bool        `tfsdk:"disabled"`
+	OtpEnabled         types.Bool        `tfsdk:"otp_enabled"`
+	Password           types.String      `tfsdk:"password"`
+	QueuePaused        types.Bool        `tfsdk:"queue_paused"`
+	Role               types.String      `tfsdk:"role"`
+	RoleId             types.Int64       `tfsdk:"role_id"`
+	SecurityFilterId   types.Int64       `tfsdk:"security_filter_id"`
+	SecurityFilterName types.String      `tfsdk:"security_filter_name"`
+	UpdatedAt          timetypes.RFC3339 `tfsdk:"updated_at"`
 }
 
-type SecurityFilterModel struct {
-	SearchId types.Int64  `tfsdk:"search_id"`
-	Name     types.String `tfsdk:"name"`
-}
-
-type UserResourceModel struct {
-	CreatedAt             timetypes.RFC3339     `tfsdk:"created_at"`
-	Id                    types.Int64           `tfsdk:"id"`
-	Email                 types.String          `tfsdk:"email"`
-	Name                  types.String          `tfsdk:"name"`
-	CurrentWorkspace      CurrentWorkspaceModel `tfsdk:"current_org_unit"`
-	Disabled              types.Bool            `tfsdk:"disabled"`
-	DisabledAt            timetypes.RFC3339     `tfsdk:"disabled_at"`
-	DefaultUserTimezone   types.String          `tfsdk:"default_user_timezone"`
-	ForceSso              types.Bool            `tfsdk:"force_sso"`
-	HasMultipleWorkspaces types.Bool            `tfsdk:"has_multiple_workspaces"`
-	LastLogin             timetypes.RFC3339     `tfsdk:"last_login"`
-	OtpEnabled            types.Bool            `tfsdk:"otp_enabled"`
-	OtpEnabledAt          timetypes.RFC3339     `tfsdk:"otp_enabled_at"`
-	Password              types.String          `tfsdk:"password"`
-	PasswordConfirmation  types.String          `tfsdk:"password_confirmation"`
-	PasswordChangedAt     timetypes.RFC3339     `tfsdk:"password_changed_at"`
-	QueuePaused           types.Bool            `tfsdk:"queue_paused"`
-	RoleId                types.Int64           `tfsdk:"role_id"`
-	SearchId              types.Int64           `tfsdk:"search_id"`
-	Role                  RoleModel             `tfsdk:"role"`
-	SecurityFilter        SecurityFilterModel   `tfsdk:"security_filter"`
-	UpdatedAt             timetypes.RFC3339     `tfsdk:"updated_at"`
-}
-
-func (userModel *UserResourceModel) ToApiModel() thetalake.User {
+func (userModel *UserPlanModel) ToApiModel() thetalake.User {
 	newUser := thetalake.User{
 		Email:                userModel.Email.ValueString(),
 		Name:                 userModel.Name.ValueString(),
@@ -55,72 +39,32 @@ func (userModel *UserResourceModel) ToApiModel() thetalake.User {
 		RoleId:               userModel.RoleId.ValueInt64(),
 	}
 
-	if userModel.SearchId.ValueInt64() != 0 {
-		newUser.SearchId = userModel.SearchId.ValueInt64()
+	if userModel.SecurityFilterId.ValueInt64() != 0 {
+		newUser.SearchId = userModel.SecurityFilterId.ValueInt64()
 	}
 
 	return newUser
 }
 
-func FromApiModel(user thetalake.User) UserResourceModel {
-	userModel := UserResourceModel{
-		CreatedAt:             timetypes.NewRFC3339TimeValue(user.CreatedAt),
-		Disabled:              types.BoolValue(user.Disabled),
-		Email:                 types.StringValue(user.Email),
-		ForceSso:              types.BoolValue(user.ForceSso),
-		HasMultipleWorkspaces: types.BoolValue(user.HasMultipleWorkspaces),
-		Id:                    types.Int64Value(user.Id),
-		Name:                  types.StringValue(user.Name),
-		OtpEnabled:            types.BoolValue(user.OtpEnabled),
-		QueuePaused:           types.BoolValue(user.QueuePaused),
-		RoleId:                types.Int64Value(user.RoleId),
+func FromApiModel(user thetalake.User) UserStateModel {
+	userModel := UserStateModel{
+		CreatedAt:   timetypes.NewRFC3339TimeValue(user.CreatedAt),
+		Disabled:    types.BoolValue(user.Disabled),
+		Email:       types.StringValue(user.Email),
+		Id:          types.Int64Value(user.Id),
+		Name:        types.StringValue(user.Name),
+		OtpEnabled:  types.BoolValue(user.OtpEnabled),
+		QueuePaused: types.BoolValue(user.QueuePaused),
+		Role:        types.StringValue(user.Role.Name),
+		RoleId:      types.Int64Value(user.Role.Id),
 	}
 
-	if user.SecurityFilter != nil {
-		userModel.SecurityFilter = SecurityFilterModel{
-			SearchId: types.Int64Value(user.SecurityFilter.SearchId),
-			Name:     types.StringValue(user.SecurityFilter.Name),
-		}
-	}
-
-	userModel.CurrentWorkspace = CurrentWorkspaceModel{
-		Id:   types.Int64Value(user.CurrentWorkspace.Id),
-		Name: types.StringValue(user.CurrentWorkspace.Name),
-	}
-
-	userModel.Role = RoleModel{
-		Id:   types.Int64Value(user.Role.Id),
-		Name: types.StringValue(user.Role.Name),
-	}
-
-	if user.DefaultUserTimezone != nil {
-		userModel.DefaultUserTimezone = types.StringValue(*user.DefaultUserTimezone)
+	if user.SecurityFilter != nil && user.SecurityFilter.SearchId != 0 {
+		userModel.SecurityFilterName = types.StringValue(user.SecurityFilter.Name)
+		userModel.SecurityFilterId = types.Int64Value(user.SecurityFilter.SearchId)
 	} else {
-		userModel.DefaultUserTimezone = types.StringNull()
-	}
-
-	if user.LastLogin == nil {
-		userModel.LastLogin = timetypes.NewRFC3339Null()
-	} else {
-		userModel.LastLogin = timetypes.NewRFC3339TimeValue(*user.LastLogin)
-	}
-
-	if user.DisabledAt == nil {
-		userModel.DisabledAt = timetypes.NewRFC3339Null()
-	} else {
-		userModel.DisabledAt = timetypes.NewRFC3339TimeValue(*user.DisabledAt)
-	}
-
-	if user.OtpEnabledAt == nil {
-		userModel.OtpEnabledAt = timetypes.NewRFC3339Null()
-	} else {
-		userModel.OtpEnabledAt = timetypes.NewRFC3339TimeValue(*user.OtpEnabledAt)
-	}
-
-	if user.PasswordChangedAt == nil {
-		userModel.PasswordChangedAt = timetypes.NewRFC3339Null()
-	} else {
-		userModel.PasswordChangedAt = timetypes.NewRFC3339TimeValue(*user.PasswordChangedAt)
+		userModel.SecurityFilterName = types.StringNull()
+		userModel.SecurityFilterId = types.Int64Null()
 	}
 
 	if user.UpdatedAt == nil {

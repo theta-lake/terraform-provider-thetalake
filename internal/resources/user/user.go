@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
 )
@@ -29,43 +30,38 @@ func (r *userResource) Configure(_ context.Context, req resource.ConfigureReques
 }
 
 func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	userModel := &UserResourceModel{}
+	userPlan := UserPlanModel{}
 
 	// Read Terraform plan data
-	resp.Diagnostics.Append(req.Plan.Get(ctx, userModel)...)
-
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("name"), &userPlan.Name)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("email"), &userPlan.Email)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("password"), &userPlan.Password)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("role_id"), &userPlan.RoleId)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("security_filter_id"), &userPlan.SecurityFilterId)...)
 	if resp.Diagnostics.HasError() {
 		resp.Diagnostics.AddError("Failed to create User", "Create failed to read User resource plan data")
 		return
 	}
 
 	// Validate required fields
-	if userModel.Email.ValueString() == "" {
+	if userPlan.Email.ValueString() == "" {
 		resp.Diagnostics.AddError("Invalid User Configuration", "Email is required to create a User")
 	}
 
-	if userModel.Name.ValueString() == "" {
+	if userPlan.Name.ValueString() == "" {
 		resp.Diagnostics.AddError("Invalid User Configuration", "Name is required to create a User")
 	}
 
-	if userModel.Password.ValueString() == "" {
-		resp.Diagnostics.AddError("Invalid User Configuration", "Password is required to create a User")
+	if userPlan.Password.ValueString() == "" {
+		resp.Diagnostics.AddError("Invalid User Configuration", fmt.Sprintf("Password is required to create a User %q", userPlan.Password.ValueString()))
 	}
 
-	if userModel.PasswordConfirmation.ValueString() == "" {
-		resp.Diagnostics.AddError("Invalid User Configuration", "Password Confirmation is required to create a User")
-	}
-
-	if userModel.Password.ValueString() != userModel.PasswordConfirmation.ValueString() {
-		resp.Diagnostics.AddError("Invalid User Configuration", "Password and Password Confirmation must match to create a User")
-	}
-
-	if userModel.RoleId.ValueInt64() == 0 {
-		resp.Diagnostics.AddError("Invalid User Configuration", "Role ID is required to create a User")
+	if userPlan.RoleId.ValueInt64() == 0 {
+		resp.Diagnostics.AddError("Invalid User Configuration", "Role name is required to create a User")
 	}
 
 	// Convert to API model
-	newUser := userModel.ToApiModel()
+	newUser := userPlan.ToApiModel()
 
 	// Call API to create user
 	createdUser, err := r.client.CreateUser(ctx, newUser)
@@ -76,13 +72,17 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 
 	// Read back created user to get all fields
 	state := FromApiModel(createdUser)
+	// The API does not return the original password, so preserve the
+	// configured value in state to keep Terraform satisfied and allow
+	// future plans to compare consistently.
+	state.Password = userPlan.Password
 
 	// Save data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, state)...)
 }
 
 func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	state := UserResourceModel{}
+	state := UserStateModel{}
 
 	// Read Terraform state data
 	diags := req.State.Get(ctx, &state)
@@ -101,20 +101,30 @@ func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp 
 	// Map API model to state model
 	updatedState := FromApiModel(user)
 
+	// The API does not return the password field, so preserve the
+	// existing sensitive value from state to avoid inconsistencies.
+	updatedState.Password = state.Password
+
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }
 
 func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var plan, state UserResourceModel
+	var plan UserPlanModel
+	var state UserStateModel
 
-	// Read Terraform plan and state data
-	resp.Diagnostics.Append(req.Plan.Get(ctx, &plan)...)
+	// Read Terraform plan data
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("name"), &plan.Name)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("email"), &plan.Email)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("password"), &plan.Password)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("role_id"), &plan.RoleId)...)
+	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("security_filter_id"), &plan.SecurityFilterId)...)
 	if resp.Diagnostics.HasError() {
-		resp.Diagnostics.AddError("Internal Error", "Failed to read plan data")
+		resp.Diagnostics.AddError("Failed to create User", "Create failed to read User resource plan data")
 		return
 	}
 
+	// Read Terraform state data
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
 		resp.Diagnostics.AddError("Internal Error", "Failed to read state data")
@@ -123,22 +133,12 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 
 	updatedUser := thetalake.User{}
 
-	// Check for changes and update fields accordingly
-	if !plan.Name.Equal(state.Name) {
-		updatedUser.Name = plan.Name.ValueString()
-	}
-
-	if !plan.Email.Equal(state.Email) {
-		updatedUser.Email = plan.Email.ValueString()
-	}
-
-	if !plan.RoleId.Equal(state.RoleId) {
-		updatedUser.RoleId = plan.RoleId.ValueInt64()
-	}
-
-	if !plan.SearchId.Equal(state.SearchId) {
-		updatedUser.SearchId = plan.SearchId.ValueInt64()
-	}
+	updatedUser.Id = state.Id.ValueInt64()
+	updatedUser.Email = plan.Email.ValueString() // Required in the update
+	updatedUser.Name = plan.Name.ValueString()
+	updatedUser.SearchId = plan.SecurityFilterId.ValueInt64()
+	updatedUser.RoleId = plan.RoleId.ValueInt64()
+	updatedUser.SearchId = plan.SecurityFilterId.ValueInt64()
 
 	updatedUser, err := r.client.UpdateUser(ctx, updatedUser)
 	if err != nil {
@@ -149,11 +149,19 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	// Map API model to state model
 	updatedState := FromApiModel(updatedUser)
 
+	// Preserve the configured password in state since the API does not
+	// echo it back. Prefer the planned value, falling back to prior state.
+	if !plan.Password.IsNull() && !plan.Password.IsUnknown() {
+		updatedState.Password = plan.Password
+	} else {
+		updatedState.Password = state.Password
+	}
+
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }
 func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var state UserResourceModel
+	var state UserStateModel
 
 	// Read Terraform state data
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)

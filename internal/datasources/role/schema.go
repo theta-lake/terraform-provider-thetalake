@@ -3,6 +3,7 @@ package role
 import (
 	"context"
 
+	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/datasource/schema"
 )
@@ -12,6 +13,7 @@ func (r *roleDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 		Attributes: map[string]schema.Attribute{
 			"created_at": schema.StringAttribute{
 				Computed:            true,
+				CustomType:          timetypes.RFC3339Type{},
 				MarkdownDescription: "Only included in custom roles. Role creation timestamp using the RFC3339 date-time format",
 			},
 			"default": schema.BoolAttribute{
@@ -40,6 +42,7 @@ func (r *roleDataSource) Schema(ctx context.Context, req datasource.SchemaReques
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:            true,
+				CustomType:          timetypes.RFC3339Type{},
 				MarkdownDescription: "Only included in custom roles. Role updated timestamp using the RFC3339 date-time format",
 			},
 		},
