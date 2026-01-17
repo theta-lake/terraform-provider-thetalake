@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -176,4 +177,23 @@ func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, r
 		resp.Diagnostics.AddError("Failed to delete User", fmt.Sprintf("Delete failed with error: %s", err.Error()))
 		return
 	}
+}
+
+// ImportState allows existing users to be brought under Terraform
+// management by specifying their ID. The ID from the import command is
+// mapped directly to the "id" attribute, after which Read will
+// populate the rest of the state.
+func (r *userResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	// Parse the string ID provided by Terraform into an int64 so it
+	// matches the Int64 "id" attribute in the schema.
+	id, err := strconv.ParseInt(req.ID, 10, 64)
+	if err != nil {
+		resp.Diagnostics.AddError(
+			"Invalid import ID",
+			fmt.Sprintf("Expected numeric user ID, got %q: %s", req.ID, err.Error()),
+		)
+		return
+	}
+
+	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), id)...)
 }
