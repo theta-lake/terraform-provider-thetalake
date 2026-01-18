@@ -9,9 +9,9 @@ import (
 const (
 	TestProviderConfig = `
 provider "thetalake" {
-  api_server = "https://api.thetalake.com"
-  client_id = "test123"
-  client_secret = "secret123"
+  api_server    = "https://api-dev1.thetalake.com"
+  client_id     = "6YET9xip3t0H2fRmVI5Mlo5kP3lBeIQG"
+  client_secret = "bluBQtLlLBjeaDE1kDxc1qYF268ibTUzRczlKjVw3L2VMcfA6lrSN6H7CpICjVQJkPNgCR8I55k3H-ieBvqgT042Hn0fA4tFXRHfLNsDFsZbsOEcyzb1zYr2s-9A-jkJ"
 }
 `
 )

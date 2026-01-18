@@ -72,6 +72,7 @@ func (c *Client) doRequest(method, endpoint string, body any, responseObjectName
 	}
 
 	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
+	req.Header.Set("User-Agent", "ThetaLake-Terraform-Provider/0.0.0-dev") // TODO make version dynamic from the build info
 
 	if body != nil {
 		req.Header.Set("Content-Type", "application/json")

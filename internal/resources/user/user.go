@@ -31,7 +31,7 @@ func (r *userResource) Configure(_ context.Context, req resource.ConfigureReques
 }
 
 func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	userPlan := UserPlanModel{}
+	userPlan := userPlanModel{}
 
 	// Read Terraform plan data
 	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("name"), &userPlan.Name)...)
@@ -62,7 +62,7 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 	}
 
 	// Convert to API model
-	newUser := userPlan.ToApiModel()
+	newUser := toApiModel(&userPlan)
 
 	// Call API to create user
 	createdUser, err := r.client.CreateUser(ctx, newUser)
@@ -72,7 +72,7 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 	}
 
 	// Read back created user to get all fields
-	state := FromApiModel(createdUser)
+	state := fromApiModel(createdUser)
 	// The API does not return the original password, so preserve the
 	// configured value in state to keep Terraform satisfied and allow
 	// future plans to compare consistently.
@@ -83,7 +83,7 @@ func (r *userResource) Create(ctx context.Context, req resource.CreateRequest, r
 }
 
 func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	state := UserStateModel{}
+	state := userStateModel{}
 
 	// Read Terraform state data
 	diags := req.State.Get(ctx, &state)
@@ -100,7 +100,7 @@ func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp 
 	}
 
 	// Map API model to state model
-	updatedState := FromApiModel(user)
+	updatedState := fromApiModel(user)
 
 	// The API does not return the password field, so preserve the
 	// existing sensitive value from state to avoid inconsistencies.
@@ -111,8 +111,8 @@ func (r *userResource) Read(ctx context.Context, req resource.ReadRequest, resp 
 }
 
 func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var plan UserPlanModel
-	var state UserStateModel
+	var plan userPlanModel
+	var state userStateModel
 
 	// Read Terraform plan data
 	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("name"), &plan.Name)...)
@@ -148,7 +148,7 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	}
 
 	// Map API model to state model
-	updatedState := FromApiModel(updatedUser)
+	updatedState := fromApiModel(updatedUser)
 
 	// Preserve the configured password in state since the API does not
 	// echo it back. Prefer the planned value, falling back to prior state.
@@ -162,7 +162,7 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }
 func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var state UserStateModel
+	var state userStateModel
 
 	// Read Terraform state data
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)

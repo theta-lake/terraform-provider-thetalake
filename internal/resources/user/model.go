@@ -6,7 +6,7 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
 )
 
-type UserPlanModel struct {
+type userPlanModel struct {
 	Email            types.String `tfsdk:"email"`
 	Name             types.String `tfsdk:"name"`
 	Password         types.String `tfsdk:"password"`
@@ -14,7 +14,7 @@ type UserPlanModel struct {
 	SecurityFilterId types.Int64  `tfsdk:"security_filter_id"`
 }
 
-type UserStateModel struct {
+type userStateModel struct {
 	CreatedAt          timetypes.RFC3339 `tfsdk:"created_at"`
 	Id                 types.Int64       `tfsdk:"id"`
 	Email              types.String      `tfsdk:"email"`
@@ -30,7 +30,7 @@ type UserStateModel struct {
 	UpdatedAt          timetypes.RFC3339 `tfsdk:"updated_at"`
 }
 
-func (userModel *UserPlanModel) ToApiModel() thetalake.User {
+func toApiModel(userModel *userPlanModel) thetalake.User {
 	newUser := thetalake.User{
 		Email:                userModel.Email.ValueString(),
 		Name:                 userModel.Name.ValueString(),
@@ -46,8 +46,8 @@ func (userModel *UserPlanModel) ToApiModel() thetalake.User {
 	return newUser
 }
 
-func FromApiModel(user thetalake.User) UserStateModel {
-	userModel := UserStateModel{
+func fromApiModel(user thetalake.User) userStateModel {
+	userModel := userStateModel{
 		CreatedAt:   timetypes.NewRFC3339TimeValue(user.CreatedAt),
 		Disabled:    types.BoolValue(user.Disabled),
 		Email:       types.StringValue(user.Email),
