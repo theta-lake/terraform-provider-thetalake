@@ -2,6 +2,7 @@ package supervisionspace
 
 import (
 	"context"
+	"strings"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -18,7 +19,7 @@ type supervisionSpacePlanModel struct {
 	HardEnforce                       types.Bool   `tfsdk:"hard_enforce"`
 	ID                                types.Int64  `tfsdk:"id"`
 	IntegrationIds                    types.List   `tfsdk:"integration_ids"`
-	MediaTypeIds                      types.List   `tfsdk:"media_type_ids"`
+	MediaTypes                        types.List   `tfsdk:"media_types"`
 	Name                              types.String `tfsdk:"name"`
 	RetentionLibraryIds               types.List   `tfsdk:"retention_library_ids"`
 	RequestedSupervisionSpacePriority types.Int64  `tfsdk:"requested_supervision_space_priority"`
@@ -40,7 +41,7 @@ type supervisionSpaceStateModel struct {
 	HardEnforce                       types.Bool        `tfsdk:"hard_enforce"`
 	Id                                types.Int64       `tfsdk:"id"`
 	IntegrationIds                    types.List        `tfsdk:"integration_ids"`
-	MediaTypeIds                      types.List        `tfsdk:"media_type_ids"`
+	MediaTypes                        types.List        `tfsdk:"media_types"`
 	Name                              types.String      `tfsdk:"name"`
 	RetentionLibraryIds               types.List        `tfsdk:"retention_library_ids"`
 	RequestedSupervisionSpacePriority types.Int64       `tfsdk:"requested_supervision_space_priority"`
@@ -88,9 +89,9 @@ func fromApiModel(space thetalake.SupervisionSpace) supervisionSpaceStateModel {
 
 	var mediaTypeIdsValues []attr.Value
 	for _, mediaType := range space.MediaTypes {
-		mediaTypeIdsValues = append(mediaTypeIdsValues, types.Int64Value(int64(mediaType.Id)))
+		mediaTypeIdsValues = append(mediaTypeIdsValues, types.StringValue(strings.ToLower(mediaType.Name)))
 	}
-	spaceModel.MediaTypeIds = types.ListValueMust(types.Int64Type, mediaTypeIdsValues)
+	spaceModel.MediaTypes = types.ListValueMust(types.StringType, mediaTypeIdsValues)
 
 	var retentionLibraryIdsValues []attr.Value
 	for _, library := range space.RetentionLibraries {
@@ -122,6 +123,11 @@ func toApiModel(spaceModel *supervisionSpacePlanModel) thetalake.SupervisionSpac
 		HardEnforce:              spaceModel.HardEnforce.ValueBool(),
 		Name:                     spaceModel.Name.ValueString(),
 		SupervisionSpacePriority: int(spaceModel.RequestedSupervisionSpacePriority.ValueInt64()),
+		IntegrationIds:           []int64{},
+		MediaTypeIds:             []int64{},
+		RetentionLibraryIds:      []int64{},
+		UserGroupIds:             []int64{},
+		UserIds:                  []int64{},
 	}
 
 	// Iterate over the DirectoryGroupIds list and populate DirectoryGroupIds field
@@ -139,11 +145,9 @@ func toApiModel(spaceModel *supervisionSpacePlanModel) thetalake.SupervisionSpac
 	}
 
 	// Iterate over the MediaTypeIds list and populate MediaTypeIds field
-	ids = []int64{}
-	spaceModel.MediaTypeIds.ElementsAs(context.Background(), &ids, false)
-	for _, id := range ids {
-		newSpace.MediaTypeIds = append(newSpace.MediaTypeIds, id)
-	}
+	mediaTypes := []string{}
+	spaceModel.MediaTypes.ElementsAs(context.Background(), &mediaTypes, false)
+	newSpace.MediaTypeIds = thetalake.MediaTypesNamesToIds(mediaTypes)
 
 	// Iterate over the RetentionLibraryIds list and populate RetentionLibraryIds field
 	ids = []int64{}
