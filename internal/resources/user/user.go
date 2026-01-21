@@ -161,6 +161,7 @@ func (r *userResource) Update(ctx context.Context, req resource.UpdateRequest, r
 	// Save updated data into Terraform state
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }
+
 func (r *userResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
 	var state userStateModel
 

@@ -6,6 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 )
 
 func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
@@ -19,6 +20,7 @@ func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			"disabled": schema.BoolAttribute{
 				Optional:            true,
 				Computed:            true,
+				Default:             booldefault.StaticBool(false),
 				MarkdownDescription: "Indicates if the user has been disabled",
 			},
 			"email": schema.StringAttribute{

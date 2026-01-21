@@ -4,8 +4,11 @@ import (
 	"context"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
+	"github.com/hashicorp/terraform-plugin-framework-validators/listvalidator"
+	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -46,10 +49,15 @@ func (r *supervisionSpaceResource) Schema(ctx context.Context, req resource.Sche
 				Required:            true,
 				MarkdownDescription: "An array of integration IDs to associate with this supervision space",
 			},
-			"media_type_ids": schema.ListAttribute{
-				ElementType:         types.Int64Type,
+			"media_types": schema.ListAttribute{
+				ElementType:         types.StringType,
 				Required:            true,
-				MarkdownDescription: "An array of media type IDs to associate with this supervision space",
+				MarkdownDescription: "An array of media types to associate with this supervision space. Allowed values are: video, audio, chat, attachment, email, image",
+				Validators: []validator.List{
+					listvalidator.ValueStringsAre(
+						stringvalidator.OneOf("video", "audio", "chat", "attachment", "email", "image"),
+					),
+				},
 			},
 			"name": schema.StringAttribute{
 				Required:            true,

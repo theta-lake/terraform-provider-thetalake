@@ -16,18 +16,18 @@ type SupervisionSpace struct {
 	CompiledUserList         []User             `json:"compiled_user_list,omitempty"`
 	CreatedAt                time.Time          `json:"created_at"`
 	Description              string             `json:"description"`
-	DirectoryGroupIds        []int64            `json:"directory_group_ids,omitempty"`
+	DirectoryGroupIds        []int64            `json:"directory_group_ids"`
 	DirectoryGroups          []DirectoryGroup   `json:"directory_groups,omitempty"`
 	Disabled                 bool               `json:"disabled"`
 	ExternalId               string             `json:"external_id"`
 	HardEnforce              bool               `json:"hard_enforce"`
 	ID                       int                `json:"id"`
-	IntegrationIds           []int64            `json:"integration_ids,omitempty"`
+	IntegrationIds           []int64            `json:"integration_ids"`
 	Integrations             []Integration      `json:"integrations,omitempty"`
-	MediaTypeIds             []int64            `json:"media_type_ids,omitempty"`
+	MediaTypeIds             []int64            `json:"media_type_ids"`
 	MediaTypes               []MediaType        `json:"media_types,omitempty"`
 	Name                     string             `json:"name"`
-	RetentionLibraryIds      []int64            `json:"retention_library_ids,omitempty"`
+	RetentionLibraryIds      []int64            `json:"retention_library_ids"`
 	RetentionLibraries       []RetentionLibrary `json:"retention_libraries,omitempty"`
 	SupervisionSpacePriority int                `json:"supervision_space_priority"`
 	UpdatedAt                time.Time          `json:"updated_at"`
@@ -43,6 +43,8 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 	if err != nil {
 		return SupervisionSpace{}, err
 	}
+
+	// TODO Add users and user groups to supervision space after creation
 
 	return responseSpace, nil
 }
