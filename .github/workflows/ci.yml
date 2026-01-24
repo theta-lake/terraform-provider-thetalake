@@ -41,6 +41,7 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
+          cache: true
 
       - name: Run acceptance tests
         run: go test ./internal/... -run 'TestAcc'
@@ -56,11 +57,12 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
+          cache: true
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
         with:
-          terraform_version: '1.13.4'
+          terraform_version: '1.14.3'
 
       - name: Generate docs
         run: go generate ./tools
