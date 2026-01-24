@@ -24,6 +24,6 @@ provider "thetalake" {
 
 ### Required
 
+- `api_server` (String) Theta Lake API server URL
 - `client_id` (String, Sensitive) Client ID for Theta Lake API authentication
 - `client_secret` (String, Sensitive) Client secret for Theta Lake API authentication
-- `endpoint` (String) Theta Lake API endpoint

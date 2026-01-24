@@ -24,11 +24,19 @@ description: |-
 - `external_id` (String) An external ID for the supervision space
 - `hard_enforce` (Boolean) Indicates if users can be assigned records from other supervision spaces
 - `integration_ids` (List of Number) An array of integration IDs to associate with this supervision space
-- `media_type_ids` (List of Number) An array of media type IDs to associate with this supervision space
+- `media_types` (List of String) An array of media types to associate with this supervision space. Allowed values are: video, audio, chat, attachment, email, image
 - `name` (String) The supervision space name
+- `requested_supervision_space_priority` (Number) The priority of assigning records to a supervision space
 - `retention_library_ids` (List of Number) An array of retention library IDs to associate with this supervision space
-- `supervision_space_priority` (Number) The priority of assigning records to a supervision space
+- `user_group_ids` (List of Number) An array of user group IDs to associate with this supervision space
+- `user_ids` (List of Number) An array of user IDs to associate with this supervision space
 
 ### Read-Only
 
+- `assigned_supervision_space_priority` (Number) The priority of assigning records to a supervision space
+- `can_delete` (Boolean) Indicates if the supervision space can be deleted
+- `can_enable_all_participants` (Boolean) Indicates if all participants can be enabled for the supervision space
+- `created_at` (String) The created timestamp using the RFC3339 date-time format
+- `disabled` (Boolean) Indicates if the supervision space has been disabled
 - `id` (Number) The supervision space ID
+- `updated_at` (String) The updated timestamp using the RFC3339 date-time format

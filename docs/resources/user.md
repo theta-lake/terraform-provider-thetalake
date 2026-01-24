@@ -17,60 +17,22 @@ description: |-
 
 ### Required
 
-> **NOTE**: [Write-only arguments](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments) are supported in Terraform 1.11 and later.
-
-- `password` (String, Sensitive, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) **Required on resource creation.** The user's password
-- `password_confirmation` (String, Sensitive, [Write-only](https://developer.hashicorp.com/terraform/language/resources/ephemeral#write-only-arguments)) **Required on resource creation.** Password confirmation, must match password
-- `role_id` (Number) **Required on resource creation.** The ID of the role that will be assigned to the new user
 - `email` (String) **Required on resource creation.** The users's email address
 - `name` (String) **Required on resource creation.** The name of the user
+- `password` (String, Sensitive) **Required on resource creation.** The user's password
+- `role_id` (Number) **Required on resource creation.**  The ID of the role assigned to the user
 
 ### Optional
 
 - `disabled` (Boolean) Indicates if the user has been disabled
-- `search_id` (Number) **Optional for resource creation.** The ID of the search used for the user's security filter
+- `security_filter_id` (Number) **Optional for resource creation.** The ID of the search used for the user's security filter
+- `security_filter_name` (String) The name of the search used for the user's security filter
 
 ### Read-Only
 
 - `created_at` (String) The created timestamp using the RFC3339 date-time format
-- `current_org_unit` (Attributes) (see [below for nested schema](#nestedatt--current_org_unit))
-- `default_user_timezone` (String) Timezone the user is assigned to by default
-- `disabled_at` (String) When the user was disabled timestamp using the RFC3339 date-time format
-- `force_sso` (Boolean) Indicates if the user has to use SSO to sign in
-- `has_multiple_workspaces` (Boolean) Indicates if the user is assigned to multiple workspaces
 - `id` (Number) The user ID
-- `last_login` (String) The user's last login timestamp using the RFC3339 date-time format
 - `otp_enabled` (Boolean) Indicates if the use has OTP enabled
-- `otp_enabled_at` (String) The timestamp of when OTP was enabled using the RFC3339 date-time format
-- `password_changed_at` (String) The timestamp of the last time the user's password was changed using the RFC3339 date-time format
 - `queue_paused` (Boolean) Indicates if the users queue has been paused
-- `role` (Attributes) (see [below for nested schema](#nestedatt--role))
-- `security_filter` (Attributes) (see [below for nested schema](#nestedatt--security_filter))
+- `role` (String) The name of the role that will be assigned to the new user
 - `updated_at` (String) The updated timestamp using the RFC3339 date-time format
-- `user_initials` (String) The user's initials
-
-<a id="nestedatt--current_org_unit"></a>
-### Nested Schema for `current_org_unit`
-
-Read-Only:
-
-- `id` (Number) The ID of the current org unit
-- `name` (String) The name of the current org unit
-
-
-<a id="nestedatt--role"></a>
-### Nested Schema for `role`
-
-Read-Only:
-
-- `id` (Number) The role ID
-- `name` (String) The role name
-
-
-<a id="nestedatt--security_filter"></a>
-### Nested Schema for `security_filter`
-
-Read-Only:
-
-- `name` (String)
-- `search_id` (Number)
