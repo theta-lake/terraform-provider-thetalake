@@ -1,0 +1,122 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "ca116f96-bbd5-11ef-9468-53af98260bba",
+  "supervision_space": {
+    "all_participants": false,
+    "all_users": false,
+    "can_delete": false,
+    "can_enable_all_participants": false,
+    "compiled_participant_list": [
+      {
+        "email": "john@smith.com",
+        "identity_id": 42,
+        "is_submitter": true,
+        "name": "John Smith",
+        "phone_number": "555-867-5309"
+      }
+    ],
+    "compiled_user_list": [
+      {
+        "current_org_unit": {
+          "archive_only": false,
+          "id": 1,
+          "name": "string"
+        },
+        "disabled": false,
+        "email": "john@smith.com",
+        "last_login": "2023-01-13T22:50:58.000Z",
+        "name": "John Smith",
+        "role": "Administrator",
+        "role_id": 3,
+        "user_id": 422
+      }
+    ],
+    "created_at": "2021-06-16T01:37:04.262Z",
+    "description": "All central time employees",
+    "directory_groups": [
+      {
+        "description": "UK IT Support",
+        "external_id": "GroupID1",
+        "id": 1996,
+        "identities": [
+          {
+            "created_at": "2021-06-16T01:37:04.262Z",
+            "email": "john@smith.com",
+            "external_id": "it-236",
+            "id": 88484,
+            "name": "John Smith",
+            "phone_number": "555-867-5309",
+            "updated_at": "2022-10-12T02:29:49.146Z"
+          }
+        ],
+        "identity_count": 231,
+        "name": "Directory group Name"
+      }
+    ],
+    "disabled": false,
+    "entry_strategies_count": 0,
+    "external_id": "THX-1138",
+    "hard_enforce": false,
+    "id": 12,
+    "integrations": [
+      {
+        "id": 24,
+        "name": "Midwest Zoom users"
+      }
+    ],
+    "media_types": [
+      {
+        "id": 1,
+        "name": "Video"
+      }
+    ],
+    "name": "Central Time",
+    "participant_count": 5,
+    "participants": [
+      {
+        "email": "john@smith.com",
+        "identity_id": 42,
+        "is_submitter": true,
+        "name": "John Smith",
+        "phone_number": "555-867-5309"
+      }
+    ],
+    "retention_libraries": [
+      {
+        "id": 1,
+        "name": "Default"
+      }
+    ],
+    "reviewer_count": 123,
+    "supervision_space_priority": 3,
+    "updated_at": "2022-10-12T02:29:49.146Z",
+    "user_groups": [
+      {
+        "created_at": "2021-06-16T01:37:04.262Z",
+        "description": "Engineering user group for testing",
+        "external_id": "THX-1138",
+        "id": 64,
+        "name": "Luke's testing group",
+        "updated_at": "2022-10-12T02:29:49.146Z",
+        "user_count": 13
+      }
+    ],
+    "users": [
+      {
+        "current_org_unit": {
+          "archive_only": false,
+          "id": 1,
+          "name": "string"
+        },
+        "disabled": false,
+        "email": "john@smith.com",
+        "last_login": "2023-01-13T22:50:58.000Z",
+        "name": "John Smith",
+        "role": "Administrator",
+        "role_id": 3,
+        "user_id": 422
+      }
+    ]
+  }
+}

@@ -1,0 +1,3291 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "35fc6c09-cfcf-4e33-a5f6-f5c3964b6ea2",
+  "user_groups": [
+    {
+      "categories": [],
+      "created_at": "2018-01-15T22:11:01.000Z",
+      "description": "This is the first group I've created....",
+      "external_id": "",
+      "id": 23,
+      "name": "Group One",
+      "updated_at": "2022-04-26T19:58:56.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "sgomez@bixlabs.com",
+          "last_login": "2026-01-23T19:26:12.000Z",
+          "name": "Santiago Gomez",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 598
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "jacob@thetalake.com",
+          "last_login": "2026-01-23T16:25:07.000Z",
+          "name": "Jacob Christensen",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 422
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": false,
+          "email": "dbarragan+dev1@bixlabs.com",
+          "last_login": "2026-01-23T16:50:35.000Z",
+          "name": "Daniela Barragan",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 802
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2018-01-22T18:39:45.000Z",
+      "description": "This is the Marketing team & adjunct users",
+      "external_id": null,
+      "id": 32,
+      "name": "Marketing",
+      "updated_at": "2018-01-22T18:39:45.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "admin@thetalake.com",
+          "last_login": "2025-06-06T22:31:00.000Z",
+          "name": "Super Admin Guy",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 1
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "rich@thetalake.com",
+          "last_login": "2026-01-21T00:21:58.000Z",
+          "name": "Rich Sutton",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 10
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "james+admin@thetalake.com",
+          "last_login": "2023-10-19T16:02:29.000Z",
+          "name": "James dev1 Anderson",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 18
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": true,
+          "email": "david@thetalake.com",
+          "last_login": "2025-10-11T05:45:59.000Z",
+          "name": "David J Pfeiffer",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 188
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.com",
+          "last_login": "2026-01-23T14:27:48.000Z",
+          "name": "Gary Pinkham",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 268
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "david+test@thetalake.com",
+          "last_login": "2021-01-28T22:13:41.000Z",
+          "name": "David Test Account",
+          "role": "David's Test Role M",
+          "role_id": 150,
+          "user_id": 202
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "carlos+bix@webisoft.com",
+          "last_login": "2026-01-23T15:53:17.000Z",
+          "name": "Carlos J. Admin",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 19
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "brandon+dev1super@thetalake.com",
+          "last_login": "2025-06-06T16:42:20.000Z",
+          "name": "Dev1 Superuser (Brandon)",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 317
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "jeff+superdev1@thetalake.com",
+          "last_login": "2026-01-22T20:37:35.000Z",
+          "name": "Jeff Dev1 Superuser",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 311
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary+review1@thetalake.com",
+          "last_login": "2025-10-14T00:32:14.000Z",
+          "name": "Gary P Reviewer",
+          "role": "test joey",
+          "role_id": 246,
+          "user_id": 269
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara+superdev1@thetalake.com",
+          "last_login": "2026-01-17T12:32:53.000Z",
+          "name": "Tara Daniel",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 460
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+dev1@thetalake.com",
+          "last_login": "2026-01-23T19:57:41.000Z",
+          "name": "Michelle Jarrett",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 462
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "htet.win@thetalake.com",
+          "last_login": "2026-01-23T18:14:34.000Z",
+          "name": "Htet Win",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 612
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+dev1@thetalake.com",
+          "last_login": "2026-01-23T12:31:00.000Z",
+          "name": "Tara Medeiros",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 476
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "htet.win+dev1@thetalake.com",
+          "last_login": "2026-01-07T00:25:52.000Z",
+          "name": "Htet Win (Reviewer)",
+          "role": "Reviewer With Saved Search",
+          "role_id": 209,
+          "user_id": 663
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1143,
+            "name": "Testing Parallel Review"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+fin1@thetalake.com",
+          "last_login": "2025-12-12T17:45:51.000Z",
+          "name": "Michelle FinService",
+          "role": "IT Administrator",
+          "role_id": 85,
+          "user_id": 507
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "will.warner+dev1@thetalake.com",
+          "last_login": "2025-10-13T17:11:33.000Z",
+          "name": "William Warner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 469
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "emily+superdev1@thetalake.com",
+          "last_login": "2024-02-21T16:34:31.000Z",
+          "name": "Emily Carter",
+          "role": "Administrator",
+          "role_id": 1,
+          "user_id": 630
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "sgomez@bixlabs.com",
+          "last_login": "2026-01-23T19:26:12.000Z",
+          "name": "Santiago Gomez",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 598
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2018-01-22T18:40:03.000Z",
+      "description": "This is the team of compliance and legal officers",
+      "external_id": null,
+      "id": 33,
+      "name": "Compliance Team",
+      "updated_at": "2021-02-18T14:30:49.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "rich@thetalake.com",
+          "last_login": "2026-01-21T00:21:58.000Z",
+          "name": "Rich Sutton",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 10
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "james+admin@thetalake.com",
+          "last_login": "2023-10-19T16:02:29.000Z",
+          "name": "James dev1 Anderson",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 18
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": true,
+          "email": "david@thetalake.com",
+          "last_login": "2025-10-11T05:45:59.000Z",
+          "name": "David J Pfeiffer",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 188
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "david+test@thetalake.com",
+          "last_login": "2021-01-28T22:13:41.000Z",
+          "name": "David Test Account",
+          "role": "David's Test Role M",
+          "role_id": 150,
+          "user_id": 202
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": false,
+          "email": "sharon+support@thetalake.com",
+          "last_login": "2026-01-23T16:48:20.000Z",
+          "name": "Sharon Hüffner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 203
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.com",
+          "last_login": "2026-01-23T14:27:48.000Z",
+          "name": "Gary Pinkham",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 268
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary+review1@thetalake.com",
+          "last_login": "2025-10-14T00:32:14.000Z",
+          "name": "Gary P Reviewer",
+          "role": "test joey",
+          "role_id": 246,
+          "user_id": 269
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "jeff+superdev1@thetalake.com",
+          "last_login": "2026-01-22T20:37:35.000Z",
+          "name": "Jeff Dev1 Superuser",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 311
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara+superdev1@thetalake.com",
+          "last_login": "2026-01-17T12:32:53.000Z",
+          "name": "Tara Daniel",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 460
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+dev1@thetalake.com",
+          "last_login": "2026-01-23T12:31:00.000Z",
+          "name": "Tara Medeiros",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 476
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "carlos+bix@webisoft.com",
+          "last_login": "2026-01-23T15:53:17.000Z",
+          "name": "Carlos J. Admin",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 19
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "brendan.dougan+cypress@thetalake.com",
+          "last_login": "2025-10-13T09:59:11.000Z",
+          "name": "Brendan Test",
+          "role": "Super Administrator (BD Test)",
+          "role_id": 251,
+          "user_id": 753
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "will.warner+dev1@thetalake.com",
+          "last_login": "2025-10-13T17:11:33.000Z",
+          "name": "William Warner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 469
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "mathew.corfield+dev1support@thetalake.com",
+          "last_login": "2026-01-20T16:08:12.000Z",
+          "name": "Mathew Corfield (Dev1support)",
+          "role": "Administrator",
+          "role_id": 1,
+          "user_id": 3198
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fbazurto@bixlabs.com",
+          "last_login": "2026-01-22T21:06:13.000Z",
+          "name": "Fabio Bazurto",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 369
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fabio@thetalake.org",
+          "last_login": "2025-08-27T21:20:12.000Z",
+          "name": "Case Manager Fabio",
+          "role": "Case Manager",
+          "role_id": 169,
+          "user_id": 29730
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fabio.bazurto@gmail.com",
+          "last_login": "2025-12-11T20:29:33.000Z",
+          "name": "REviewer Fabio",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 406
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2019-10-15T23:42:45.000Z",
+      "description": "Used for testing",
+      "external_id": null,
+      "id": 64,
+      "name": "David's Group",
+      "updated_at": "2020-10-14T18:58:23.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": true,
+          "email": "david@thetalake.com",
+          "last_login": "2025-10-11T05:45:59.000Z",
+          "name": "David J Pfeiffer",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 188
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "rich@thetalake.com",
+          "last_login": "2026-01-21T00:21:58.000Z",
+          "name": "Rich Sutton",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 10
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "david+test@thetalake.com",
+          "last_login": "2021-01-28T22:13:41.000Z",
+          "name": "David Test Account",
+          "role": "David's Test Role M",
+          "role_id": 150,
+          "user_id": 202
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary+devnoaccess@thetalake.com",
+          "last_login": "2020-10-22T15:19:20.000Z",
+          "name": "Gary No Access",
+          "role": "No Access",
+          "role_id": 2,
+          "user_id": 271
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "carlos+bix@webisoft.com",
+          "last_login": "2026-01-23T15:53:17.000Z",
+          "name": "Carlos J. Admin",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 19
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "cm.jovel@outlook.com",
+          "last_login": "2024-03-27T12:48:19.000Z",
+          "name": "Carlos Jovel",
+          "role": "No Download",
+          "role_id": 182,
+          "user_id": 213
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "reinier+theta@bixlabs.com",
+          "last_login": "2026-01-20T18:42:28.000Z",
+          "name": "Reinier Gonzalez Menendez",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 302
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.com",
+          "last_login": "2026-01-23T14:27:48.000Z",
+          "name": "Gary Pinkham",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 268
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek+clean@thetalake.com",
+          "last_login": "2021-08-23T17:35:26.000Z",
+          "name": "Derek Clean",
+          "role": "Administrator",
+          "role_id": 1,
+          "user_id": 364
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+hr1@thetalake.com",
+          "last_login": "2026-01-12T19:19:31.000Z",
+          "name": "Michelle HRUser",
+          "role": "Michelle Test Role",
+          "role_id": 226,
+          "user_id": 506
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+dev1@thetalake.com",
+          "last_login": "2026-01-23T12:31:00.000Z",
+          "name": "Tara Medeiros",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 476
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2020-09-02T08:39:02.000Z",
+      "description": "test",
+      "external_id": null,
+      "id": 75,
+      "name": "Derek",
+      "updated_at": "2021-01-06T20:50:59.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2020-12-03T14:33:25.000Z",
+      "description": "Just me",
+      "external_id": null,
+      "id": 76,
+      "name": "😃 Garys Group",
+      "updated_at": "2025-03-12T18:55:27.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.com",
+          "last_login": "2026-01-23T14:27:48.000Z",
+          "name": "Gary Pinkham",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 268
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "reinier+theta@bixlabs.com",
+          "last_login": "2026-01-20T18:42:28.000Z",
+          "name": "Reinier Gonzalez Menendez",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 302
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "jason.howell@thetalake.com",
+          "last_login": "2026-01-23T16:46:39.000Z",
+          "name": "Jason Howdye",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 428
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "htet.win@thetalake.com",
+          "last_login": "2026-01-23T18:14:34.000Z",
+          "name": "Htet Win",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 612
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "sgomez@bixlabs.com",
+          "last_login": "2026-01-23T19:26:12.000Z",
+          "name": "Santiago Gomez",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 598
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fbazurto@bixlabs.com",
+          "last_login": "2026-01-22T21:06:13.000Z",
+          "name": "Fabio Bazurto",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 369
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "carlos+bix@webisoft.com",
+          "last_login": "2026-01-23T15:53:17.000Z",
+          "name": "Carlos J. Admin",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 19
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary+review1@thetalake.com",
+          "last_login": "2025-10-14T00:32:14.000Z",
+          "name": "Gary P Reviewer",
+          "role": "test joey",
+          "role_id": 246,
+          "user_id": 269
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "cjovel+005@bixlabs.com",
+          "last_login": "2017-12-27T21:04:05.000Z",
+          "name": "Alice Thomson",
+          "role": "Reviewer Plus",
+          "role_id": 180,
+          "user_id": 61
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "carlos+admin@webisoft.com",
+          "last_login": "2025-11-07T14:05:48.000Z",
+          "name": "Carlos W",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 618
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+dev1@thetalake.com",
+          "last_login": "2026-01-23T12:31:00.000Z",
+          "name": "Tara Medeiros",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 476
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+reviewer@thetalake.com",
+          "last_login": "2025-08-27T14:23:07.000Z",
+          "name": "Tara M Reviewer",
+          "role": "Reviewer Plus",
+          "role_id": 180,
+          "user_id": 2914
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 378,
+            "name": "Realbank Compliance"
+          },
+          "disabled": false,
+          "email": "isobel+dev1@thetalake.com",
+          "last_login": "2026-01-05T19:50:38.000Z",
+          "name": "Isobel Williams",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 278
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": false,
+          "email": "dbarragan+dev1@bixlabs.com",
+          "last_login": "2026-01-23T16:50:35.000Z",
+          "name": "Daniela Barragan",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 802
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "dbarragan+revdev1@bixlabs.com",
+          "last_login": "2026-01-23T16:39:32.000Z",
+          "name": "Daniela Review Barragan",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 1155
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "mathew.corfield+dev1support@thetalake.com",
+          "last_login": "2026-01-20T16:08:12.000Z",
+          "name": "Mathew Corfield (Dev1support)",
+          "role": "Administrator",
+          "role_id": 1,
+          "user_id": 3198
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "sam.jang+dev1@thetalake.com",
+          "last_login": "2026-01-23T16:38:00.000Z",
+          "name": "Sam Jang",
+          "role": "Super Administrator (Sam Custom)",
+          "role_id": 303,
+          "user_id": 1083
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "julie.collins+dev1@thetalake.com",
+          "last_login": "2026-01-23T16:53:16.000Z",
+          "name": "Julie Collins",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 30244
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fabio.bazurto@gmail.com",
+          "last_login": "2025-12-11T20:29:33.000Z",
+          "name": "REviewer Fabio",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 406
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2020-12-21T19:28:53.000Z",
+      "description": "realbank",
+      "external_id": null,
+      "id": 78,
+      "name": "Realbank reviews",
+      "updated_at": "2020-12-21T19:28:53.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "dan+dev1super@thetalake.com",
+          "last_login": "2026-01-16T18:42:14.000Z",
+          "name": "Dan Nadir (SUPERUSER)",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 256
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": true,
+          "email": "david@thetalake.com",
+          "last_login": "2025-10-11T05:45:59.000Z",
+          "name": "David J Pfeiffer",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 188
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara+superdev1@thetalake.com",
+          "last_login": "2026-01-17T12:32:53.000Z",
+          "name": "Tara Daniel",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 460
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2021-08-19T19:04:30.000Z",
+      "description": "Derek Clean",
+      "external_id": null,
+      "id": 84,
+      "name": "Derek Clean",
+      "updated_at": "2021-08-19T19:04:30.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek+clean@thetalake.com",
+          "last_login": "2021-08-23T17:35:26.000Z",
+          "name": "Derek Clean",
+          "role": "Administrator",
+          "role_id": 1,
+          "user_id": 364
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "derek@thetalake.com",
+          "last_login": "2026-01-22T17:01:45.000Z",
+          "name": "Derek Admin Brenner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 24
+        }
+      ]
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 272,
+          "identifier": "PERSONAL_EMAIL_SCREEN",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 273,
+          "identifier": "PERSONAL_EMAIL_SPEECH",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2022-02-09T23:29:10.000Z",
+      "description": "just fabio",
+      "external_id": "external_id?",
+      "id": 87,
+      "name": "Fabio grorup",
+      "updated_at": "2022-04-20T20:01:20.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fbazurto@bixlabs.com",
+          "last_login": "2026-01-22T21:06:13.000Z",
+          "name": "Fabio Bazurto",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 369
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "fabio.bazurto@gmail.com",
+          "last_login": "2025-12-11T20:29:33.000Z",
+          "name": "REviewer Fabio",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 406
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-15T20:03:31.000Z",
+      "description": "testing user group support via SCIM/JIT",
+      "external_id": "external?",
+      "id": 90,
+      "name": "Gary's team in Azure (by Sam)",
+      "updated_at": "2022-04-21T17:46:19.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-19T16:07:26.000Z",
+      "description": "a194e59e-ed5c-42e7-a128-8cb154b0ceba",
+      "external_id": "a194e59e-ed5c-42e7-a128-8cb154b0ceba",
+      "id": 97,
+      "name": "a194e59e-ed5c-42e7-a128-8cb154b0ceba",
+      "updated_at": "2022-04-19T16:07:26.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-19T16:07:26.000Z",
+      "description": "4ae8bbb4-61e5-4feb-8bb9-ba4048b804cf",
+      "external_id": "4ae8bbb4-61e5-4feb-8bb9-ba4048b804cf",
+      "id": 98,
+      "name": "4ae8bbb4-61e5-4feb-8bb9-ba4048b804cf",
+      "updated_at": "2022-04-19T16:07:26.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-19T16:07:26.000Z",
+      "description": "2ab080af-4dd2-43b4-881c-22f22fa47a68",
+      "external_id": "2ab080af-4dd2-43b4-881c-22f22fa47a68",
+      "id": 99,
+      "name": "2ab080af-4dd2-43b4-881c-22f22fa47a68",
+      "updated_at": "2022-04-19T16:07:26.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-21T18:12:04.000Z",
+      "description": "Jeff's testing group",
+      "external_id": null,
+      "id": 100,
+      "name": "Jeff's Group",
+      "updated_at": "2022-04-21T18:12:04.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:38.000Z",
+      "description": "a3319444-da31-4c33-ad4f-d2425d065f8d",
+      "external_id": "a3319444-da31-4c33-ad4f-d2425d065f8d",
+      "id": 101,
+      "name": "a3319444-da31-4c33-ad4f-d2425d065f8d",
+      "updated_at": "2022-04-26T22:52:38.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:38.000Z",
+      "description": "4eb3169d-c692-46b9-9323-a00fe924b340",
+      "external_id": "4eb3169d-c692-46b9-9323-a00fe924b340",
+      "id": 102,
+      "name": "4eb3169d-c692-46b9-9323-a00fe924b340",
+      "updated_at": "2022-04-26T22:52:38.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:38.000Z",
+      "description": "980852ca-11f2-4d63-9a3f-10077af35d69",
+      "external_id": "980852ca-11f2-4d63-9a3f-10077af35d69",
+      "id": 103,
+      "name": "980852ca-11f2-4d63-9a3f-10077af35d69",
+      "updated_at": "2022-04-26T22:52:38.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:38.000Z",
+      "description": "552653f2-2bc1-4f1e-ba35-95531d2f73c2",
+      "external_id": "552653f2-2bc1-4f1e-ba35-95531d2f73c2",
+      "id": 104,
+      "name": "552653f2-2bc1-4f1e-ba35-95531d2f73c2",
+      "updated_at": "2022-04-26T22:52:38.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:38.000Z",
+      "description": "92c6e1da-d9f7-4ef7-9ad4-a37aebee7402",
+      "external_id": "92c6e1da-d9f7-4ef7-9ad4-a37aebee7402",
+      "id": 105,
+      "name": "92c6e1da-d9f7-4ef7-9ad4-a37aebee7402",
+      "updated_at": "2022-04-26T22:52:38.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "cbfa1395-7803-497d-b4cc-0cb0c177cf30",
+      "external_id": "cbfa1395-7803-497d-b4cc-0cb0c177cf30",
+      "id": 106,
+      "name": "cbfa1395-7803-497d-b4cc-0cb0c177cf30",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "fa5da0cd-5824-40ff-980e-0802bd54cbe0",
+      "external_id": "fa5da0cd-5824-40ff-980e-0802bd54cbe0",
+      "id": 107,
+      "name": "fa5da0cd-5824-40ff-980e-0802bd54cbe0",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "2dfb78fa-83a8-47aa-9e5a-6f924c73d26e",
+      "external_id": "2dfb78fa-83a8-47aa-9e5a-6f924c73d26e",
+      "id": 108,
+      "name": "2dfb78fa-83a8-47aa-9e5a-6f924c73d26e",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "8a1d4c5a-b28e-48a8-a7fb-adfdc0a30aa8",
+      "external_id": "8a1d4c5a-b28e-48a8-a7fb-adfdc0a30aa8",
+      "id": 109,
+      "name": "8a1d4c5a-b28e-48a8-a7fb-adfdc0a30aa8",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "1c3a792f-7a73-4273-9707-1159bc6ccb5b",
+      "external_id": "1c3a792f-7a73-4273-9707-1159bc6ccb5b",
+      "id": 110,
+      "name": "1c3a792f-7a73-4273-9707-1159bc6ccb5b",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "3cbdbe75-c519-4432-94e2-5a8ee358801f",
+      "external_id": "3cbdbe75-c519-4432-94e2-5a8ee358801f",
+      "id": 111,
+      "name": "3cbdbe75-c519-4432-94e2-5a8ee358801f",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "7121bbe9-463c-43f8-84d7-f92708a98ee4",
+      "external_id": "7121bbe9-463c-43f8-84d7-f92708a98ee4",
+      "id": 112,
+      "name": "7121bbe9-463c-43f8-84d7-f92708a98ee4",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "c8c0b6d3-6d23-4f57-9103-55db68424418",
+      "external_id": "c8c0b6d3-6d23-4f57-9103-55db68424418",
+      "id": 113,
+      "name": "c8c0b6d3-6d23-4f57-9103-55db68424418",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-26T22:52:39.000Z",
+      "description": "8ba2fa74-928b-47a1-8ace-a807f3083a89",
+      "external_id": "8ba2fa74-928b-47a1-8ace-a807f3083a89",
+      "id": 114,
+      "name": "8ba2fa74-928b-47a1-8ace-a807f3083a89",
+      "updated_at": "2022-04-26T22:52:39.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "gary@thetalake.io",
+          "last_login": "2022-06-30T23:48:20.000Z",
+          "name": "Gary PinkhamDN",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 597
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-27T00:21:26.000Z",
+      "description": "group 2",
+      "external_id": "garygroup2a",
+      "id": 115,
+      "name": "Garys Group2",
+      "updated_at": "2022-04-27T00:21:35.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-04-27T14:01:49.000Z",
+      "description": "Tara group test",
+      "external_id": "1234abcd",
+      "id": 116,
+      "name": "Tara's Group",
+      "updated_at": "2022-04-27T14:19:32.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "tara.medeiros+dev1@thetalake.com",
+          "last_login": "2026-01-23T12:31:00.000Z",
+          "name": "Tara Medeiros",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 476
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+dev1@thetalake.com",
+          "last_login": "2026-01-23T19:57:41.000Z",
+          "name": "Michelle Jarrett",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 462
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+twogrps@thetalake.com",
+          "last_login": "2025-10-01T14:52:53.000Z",
+          "name": "Michelle RevTwoGrps",
+          "role": "Michelle Test Role",
+          "role_id": 226,
+          "user_id": 515
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": false,
+          "email": "dbarragan+dev1@bixlabs.com",
+          "last_login": "2026-01-23T16:50:35.000Z",
+          "name": "Daniela Barragan",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 802
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "julie.collins+dev1@thetalake.com",
+          "last_login": "2026-01-23T16:53:16.000Z",
+          "name": "Julie Collins",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 30244
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-05-02T21:51:13.000Z",
+      "description": "HR reviewer",
+      "external_id": null,
+      "id": 195,
+      "name": "Michelle HR Group",
+      "updated_at": "2022-05-02T21:51:13.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "brendan.dougan+cypress@thetalake.com",
+          "last_login": "2025-10-13T09:59:11.000Z",
+          "name": "Brendan Test",
+          "role": "Super Administrator (BD Test)",
+          "role_id": 251,
+          "user_id": 753
+        }
+      ]
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 275,
+          "created_at": "2020-08-18T15:58:57.000Z",
+          "deprecated": false,
+          "description": "Apps shared on screen, including: Salesforce, Netsuite, Zoho, Hubspot, Gusto, ADP, Kronos, and Zenefits.",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 387,
+          "identifier": "CRM_APPS_ON_SCREEN",
+          "keywords": false,
+          "name": "Online CRM & HR Apps and Portals",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-14T21:48:55.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 256,
+          "identifier": "ACCOUNT_POLICY_ID_SPEECH",
+          "keywords": false,
+          "name": "Account and Policy Identifiers",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2021-09-01T21:03:10.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            },
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": null,
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 524,
+          "identifier": "CRYPTOCURRENCY",
+          "keywords": false,
+          "name": "Cryptocurrency Discussions",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2020-07-30T18:03:43.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 372,
+          "identifier": "FINANCIAL_LOGOS_BUILTIN",
+          "keywords": false,
+          "name": "Financial Logos",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2018-06-25T16:49:08.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 1,
+              "name": "Video"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": null,
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 276,
+          "identifier": "PROSPECTUS_DISCUSSIONS",
+          "keywords": false,
+          "name": "Financial Documents",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2018-05-16T21:23:42.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 265,
+          "identifier": "STOCK_SYMBOL_SPOKEN",
+          "keywords": false,
+          "name": "Stock or Mutual Fund Symbols",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2018-05-16T21:23:42.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 264,
+          "identifier": "STOCK_SYMBOL_SCREEN",
+          "keywords": false,
+          "name": "Stock or Mutual Fund Symbols",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 16,
+          "created_at": "2018-02-13T19:39:58.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 16,
+          "identifier": "FINRA_CUSTOMER_COMPLAINT",
+          "keywords": false,
+          "name": "Customer Complaints - General Financial",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:50.000Z"
+        },
+        {
+          "category_group_id": 278,
+          "created_at": "2020-06-16T23:00:37.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 361,
+          "identifier": "RISKY_URL_SECURITY",
+          "keywords": false,
+          "name": "Risky URLs: Security",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 278,
+          "created_at": "2020-06-16T23:00:37.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 362,
+          "identifier": "RISKY_URL_FINANCIAL_SERVICES",
+          "keywords": false,
+          "name": "Risky URLs: Financial Services",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2020-09-16T15:24:40.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 422,
+          "identifier": "TFN_SCREEN",
+          "keywords": false,
+          "name": "Australian Tax File Numbers (TFN)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2020-09-16T15:24:42.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 423,
+          "identifier": "TFN_SPEECH",
+          "keywords": false,
+          "name": "Australian Tax File Numbers (TFN)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 254,
+          "identifier": "CCN_SCREEN",
+          "keywords": false,
+          "name": "Credit Card Numbers (CC#)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 253,
+          "identifier": "CCN_SPEECH",
+          "keywords": false,
+          "name": "Credit Card Numbers (CC#)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 252,
+          "identifier": "SSN_SCREEN",
+          "keywords": false,
+          "name": "Social Security Numbers (SSN)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 251,
+          "identifier": "SSN_SPEECH",
+          "keywords": false,
+          "name": "Social Security Numbers (SSN)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2022-05-02T21:51:54.000Z",
+      "description": "Financial Services reviewer",
+      "external_id": null,
+      "id": 196,
+      "name": "Michelle Financial Services Group",
+      "updated_at": "2022-05-02T21:51:54.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1143,
+            "name": "Testing Parallel Review"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+fin1@thetalake.com",
+          "last_login": "2025-12-12T17:45:51.000Z",
+          "name": "Michelle FinService",
+          "role": "IT Administrator",
+          "role_id": 85,
+          "user_id": 507
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2022-05-02T21:52:22.000Z",
+      "description": "Generic Reviewer",
+      "external_id": null,
+      "id": 197,
+      "name": "Michelle Generic Review Group",
+      "updated_at": "2022-05-02T21:52:22.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2022-05-06T21:37:36.000Z",
+      "description": "foo bar foo bar foo bar foo bar ",
+      "external_id": "420",
+      "id": 199,
+      "name": "jhtest",
+      "updated_at": "2022-05-06T21:37:36.000Z",
+      "users": []
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 275,
+          "created_at": "2020-08-18T15:58:56.000Z",
+          "deprecated": false,
+          "description": "Apps shared on screen, including: Carta, Paypal, Quickbooks, and Zoho.",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 386,
+          "identifier": "FINANCIAL_APP_ON_SCREEN",
+          "keywords": false,
+          "name": "Online Financial Apps and Portals",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 275,
+          "created_at": "2020-08-18T15:58:58.000Z",
+          "deprecated": false,
+          "description": "Apps shared on screen, including: Atlassian (Confluence & Jira), GitHub, Hive, AWS, Azure, and Asana.",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 388,
+          "identifier": "DEV_APPS_ON_SCREEN",
+          "keywords": false,
+          "name": "Online Development & Infrastructure Apps and Portals",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2022-05-31T15:39:46.000Z",
+      "description": "Michelle Classifications Group",
+      "external_id": null,
+      "id": 200,
+      "name": "Michelle Classifications Group",
+      "updated_at": "2022-05-31T15:39:46.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+hr1@thetalake.com",
+          "last_login": "2026-01-12T19:19:31.000Z",
+          "name": "Michelle HRUser",
+          "role": "Michelle Test Role",
+          "role_id": 226,
+          "user_id": 506
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2023-01-05T00:20:32.000Z",
+      "description": "Will's Test Group",
+      "external_id": null,
+      "id": 204,
+      "name": "Will's Test Group",
+      "updated_at": "2023-01-05T00:20:32.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "will.warner+dev1@thetalake.com",
+          "last_login": "2025-10-13T17:11:33.000Z",
+          "name": "William Warner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 469
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "will.warner@thetalake.com",
+          "last_login": "2025-12-16T20:02:15.000Z",
+          "name": "Will Warner",
+          "role": "Super Administrator no self-review",
+          "role_id": 225,
+          "user_id": 511
+        }
+      ]
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 279,
+          "created_at": "2022-01-27T18:06:10.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            }
+          ],
+          "detection_type": null,
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 533,
+          "identifier": "SEXUAL_MISCONDUCT",
+          "keywords": false,
+          "name": "Sexual Misconduct",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-16T13:33:09.000Z",
+          "deprecated": false,
+          "description": "Marble Bar Social Media Lexicon",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 546,
+          "identifier": "CUSTOM_1_MARBLE_BAR_SOCIAL_MEDIA_LEXICON",
+          "keywords": false,
+          "name": "Marble Bar Social Media Lexicon",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"my cloud\" \n\"your cloud\"\n\"my dropbox\" \n\"your dropbox\"\n\"my personal wechat\" \n\"your personal wechat\"\n\"my home address\"\n\"take this offline\"\n\"email me at home\"\n\"use my personal email address\"\n\"email my personal address\"\n\"send me a private email\"\n\"my linkedin\" \n\"your linkedin\"\n\"my facebook\" \n\"your facebook\"\n\"my myspace\" \n\"your myspace\"\n\"my private wechat\" \n\"your private wechat\"\n\"my instagram\" \n\"your instagram\"\n\"my telegram account\" \n\"your telegram account\"\n\"my twitter account\" \n\"your twitter account\"\n\"my tiktok account\" \n\"your tiktok account\"\n\"my viber account\" \n\"your viber account\"\n\"my yy account\" \n\"your yy account\"\n\"my weibo account\" \n\"your weibo account\"\n\"call my private number\" \n\"call my personal number\"\n\"my whatsapp account\" \n\"your whatsapp account\"\n\"my line account\" \n\"your line account\"\n\"send me a message\"~5\n\"send you a message\"~5\n\"my qq account\" \n\"your qq account\"\n\"my snapchat account\" \n\"your snapchat account\"\n\"message me\"\n\"message you on\" \n\"message u on\"\n\"call me on my private mobile\" \n\"call my private mobile\"\n\"call me on my personal mobile\" \n\"call my personal mobile\"\n\"to my dropbox\" \n\"to your dropbox\"\n\"send you an sms\" \n\"send you a sms\"\n\"send me an sms\" \n\"send a sms\"\n\"talk offline\"\n\"private room\"\n\"private email address\"\n\"send me a private email\" \n\"send you a private email\"\n\"send me a message in\" \n\"send you a message in\"\n\"i'll message you\" \n\"ill message you\"\n\"whatsapp me\"\n\"send me a whatsapp\" \n\"send you a whatsapp\"\n\"send me a message on\" \n\"send you a message on\"\n\n",
+          "to_date": null,
+          "updated_at": "2022-09-16T13:33:09.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-20T13:23:59.000Z",
+          "deprecated": false,
+          "description": "Marble Bar - Gifts & Entertainment Lexicon",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 547,
+          "identifier": "CUSTOM_1_MARBLE_BAR__GIFTS__ENTERTAINMENT",
+          "keywords": false,
+          "name": "Marble Bar - Gifts & Entertainment",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"thank you for hamper\"\n\"thank you for the chocolate*\"\n\"thank you for the wine\"\n\"thank you for breakfast\"\n\"thank you for lunch\"\n\"thank you for dinner\"\n\"bottle of wine\" \n\"glass of wine\"\n\"go for drinks\" \n\"go out for drinks\"\n\"go for lunch\" \n\"go out for lunch\"\n\"meet for breakfast\" \n\"meet me for breakfast\"\n\"go for a drink\" \n\"go out for a drink\"\n\"go for dinner\" \n\"go out for dinner\"\n\"meet for lunch\" \n\"meet me for lunch\"\n\"meet for dinner\" \n\"meet me for dinner\"\n\"go for breakfast\" \n\"go out for breakfast\"\n\"have drinks\"\n\"have lunch\"\n\"have dinner\"\n\"have breakfast\"",
+          "to_date": null,
+          "updated_at": "2022-09-20T13:23:59.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-20T13:24:02.000Z",
+          "deprecated": false,
+          "description": "Marble Bar - Market Abuse Lexicon",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 548,
+          "identifier": "CUSTOM_1_MARBLE_BAR__MARKET_ABUSE",
+          "keywords": false,
+          "name": "Marble Bar - Market Abuse",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"get away with it\"\n\"need to fix it\"\n\"have faith in\"  \n\"had faith in\"\n\"bad feeling\"\n\"do it right now\"\n\"owe it to you\"\n\"owe me\"\n\"you have to buy\"  \n\"you must buy\"\n\"i'm shitting\"\n\"without emailing\"\n\"without calling\"\n\"who told you\"\n\"wheeze\"\n\"i want out\"\n\"i'm upset\" \n \"im upset\"\n\"unwind the position*\"\n\"unwind the trade*\"\n\"won't find out\" \n \"wont find out\"\n\"they will find out\"\n\"shit\"  \n\"shi*t\"\n\"undo it\"\n\"undo the position\"\n\"undo the trade\"\n\"going to trust you\"  \n\"gonna trust you\"\n\"hear the rumour\"  \n\"hear this rumour\"\n\"i trusted you\" \n \"i trusted u\"\n\"i will trust you\"\n\"trust me\"\n\"gave me a tip\"\n\"give me a tip\"\n\"give you a tip\" \n \"give u a tip\"\n\"listen to me\"\n\"gonna tank\"\n\"going to tank\"\n\"will tank\"\n\"agitated\"\n\"talk offline\"\n\"let's talk later\" \n \"lets talk later\"",
+          "to_date": null,
+          "updated_at": "2022-09-20T13:24:02.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-20T13:24:05.000Z",
+          "deprecated": false,
+          "description": "MB complaints lexicon with operators",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 549,
+          "identifier": "CUSTOM_1_MARBLE_BAR__COMPLAINTS_",
+          "keywords": false,
+          "name": "Marble Bar - Complaints ",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"you never told\"\n\"you never said\"\n\"unresponsive\"\n\"unsatisfactory\"\n\"i am unhappy\" OR \"we are unhappy\"\n\"terrible service\"\n\"want to terminate\"\n\"wish to terminate\"\n\"take the matter\"\n\"screwed up\"\n\"run out of patience\"\n\"return my money\" OR \"return our money\"\n\"i demand a\" OR \"we demand a\"\n\"request a resolution\"\n\"require a resolution\"\n\"expect a resolution\"\n\"repeated request\"\n\"remedy the issue\" OR \"remedy the problem\"\n\"reimburse me\" OR \"reimburse us\"\n\"be reimbursed\"\n\"request a refund\" OR \"demand a refund\"\n\"will redeem\"\n\"wish to redeem\" OR \"want to redeem\"\n\"receive a response\"\n\"receive an answer\"\n\"provide an response\"\n\"provide a reason\"\n\"provide an answer\"\n\"poor service\"\n\"pissed\"\n\"not responded\"\n\"not heard back\"\n\"not happy\"\n\"not made aware\"\n\"did not authorise\" OR \"did not authorize\"\n\"have not authorised\" OR \"have not authorized\"\n\"not answered\"\n\"unacceptable\"\n\"not acceptable\"\n\"no option but\"\n\"name of your manager\" OR \"name of your supervisor\"\n\"my solicitor\" OR \"our solicitor\"\n\"my lawyer\" OR \"our lawyer\"\n\"my attorney\" OR \"our attorney\"\n\"misrepresent*\"\n\"messed up\"\n\"make up the loss*\"\n\"lost patience\"\n\"lost trust\"\n\"lost faith\"\n\"lost confidence\"\n\"livid\"\n\"inept\"\n\"incompetent\"\n\"incensed\"\n\"i told you\"\n\"i have raised this\"\n\"have confidence\"\n\"hasn't answered\" OR \"has not answered\"\n\"hasn't responded\" OR \"has not responded\"\n\"hasn't replied\" OR \"has not replied\"\n\"happen again\"\n\"i am furious\" OR \"we are furious\"\n\"i am frustrated\" OR \"we are frustrated\"\n\"expect an explanation\"\n\"request an explanation\"\n\"require an explanation\"\n\"request a response\"\n\"require a response\"\n\"request an answer\"\n\"require an answer\"\n\"expect an answer\"\n\"expect a response\"\n\"wish to escalate\"\n\"will escalate\"\n\"dismayed\"\n\"bothered me\" or \"bothers us\"\n\"don't trust\"\n\"don't have faith\"\n\"doesn't respond\"\n\"doesn't reply\"\n\"bothers me\" OR \"bothers us\"\n\"am disturbed\" OR \"are disturbed\"\n\"am distressed\" OR \"are distressed\"\n\"dissatified\"\n\"i dispute\" OR \"we dispute\"\n\"displease*\"\n\"disappointed with\"\n\"didn't tell me\" OR \"didn't tell us\"\n\"didn't explain\"\n\"i demand\" OR \"we demand\"\n\"go to court\" OR \"take this to court\"\n\"speak to the regulator*\"\n\"contact the regulator*\"\n\"i am concern*\" OR \"we are concern*\"\n\"complain*\"\n\"below standard*\" OR \"below the standard*\"\n\"your attitude\"\n\"i'm angry\"\n\"against my\"\n\"not what said\"~4\n\"not what agreed\"~4",
+          "to_date": null,
+          "updated_at": "2022-09-20T13:24:05.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-27T15:24:23.000Z",
+          "deprecated": false,
+          "description": "MB Gifts & Entertainment custom lexicon",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 550,
+          "identifier": "CUSTOM_1_MARBLE_BAR__GIFTS_ENTERTAINMENT",
+          "keywords": false,
+          "name": "Marble Bar - Gifts and Entertainment",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"thank you for hamper\"\n\"thank you for the chocolate*\"\n\"thank you for the wine\"\n\"thank you for breakfast\"\n\"thank you for lunch\"\n\"thank you for dinner\"\n\"bottle of wine\" OR \"glass of wine\"\n\"go for drinks\" OR \"go out for drinks\"\n\"go for lunch\" OR \"go out for lunch\"\n\"meet for breakfast\" OR \"meet me for breakfast\"\n\"go for a drink\" OR \"go out for a drink\"\n\"go for dinner\" OR \"go out for dinner\"\n\"meet for lunch\" OR \"meet me for lunch\"\n\"meet for dinner\" OR \"meet me for dinner\"\n\"go for breakfast\" OR \"go out for breakfast\"\n\"have drinks\"\n\"have lunch\"\n\"have dinner\"\n\"have breakfast\"",
+          "to_date": null,
+          "updated_at": "2022-09-27T15:24:23.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 273,
+          "identifier": "PERSONAL_EMAIL_SPEECH",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 272,
+          "identifier": "PERSONAL_EMAIL_SCREEN",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2023-01-19T17:23:51.000Z",
+      "description": "Marble bar test",
+      "external_id": null,
+      "id": 205,
+      "name": "Marble bar test",
+      "updated_at": "2023-01-19T17:23:51.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "michelle.jarrett+hr1@thetalake.com",
+          "last_login": "2026-01-12T19:19:31.000Z",
+          "name": "Michelle HRUser",
+          "role": "Michelle Test Role",
+          "role_id": 226,
+          "user_id": 506
+        }
+      ]
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 253,
+          "identifier": "CCN_SPEECH",
+          "keywords": false,
+          "name": "Credit Card Numbers (CC#)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-03-13T18:47:25.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 254,
+          "identifier": "CCN_SCREEN",
+          "keywords": false,
+          "name": "Credit Card Numbers (CC#)",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2023-02-03T19:53:27.000Z",
+      "description": "Michelle new group",
+      "external_id": null,
+      "id": 206,
+      "name": "Michelle new group",
+      "updated_at": "2023-02-03T19:53:27.000Z",
+      "users": []
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-20T13:24:05.000Z",
+          "deprecated": false,
+          "description": "MB complaints lexicon with operators",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 549,
+          "identifier": "CUSTOM_1_MARBLE_BAR__COMPLAINTS_",
+          "keywords": false,
+          "name": "Marble Bar - Complaints ",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"you never told\"\n\"you never said\"\n\"unresponsive\"\n\"unsatisfactory\"\n\"i am unhappy\" OR \"we are unhappy\"\n\"terrible service\"\n\"want to terminate\"\n\"wish to terminate\"\n\"take the matter\"\n\"screwed up\"\n\"run out of patience\"\n\"return my money\" OR \"return our money\"\n\"i demand a\" OR \"we demand a\"\n\"request a resolution\"\n\"require a resolution\"\n\"expect a resolution\"\n\"repeated request\"\n\"remedy the issue\" OR \"remedy the problem\"\n\"reimburse me\" OR \"reimburse us\"\n\"be reimbursed\"\n\"request a refund\" OR \"demand a refund\"\n\"will redeem\"\n\"wish to redeem\" OR \"want to redeem\"\n\"receive a response\"\n\"receive an answer\"\n\"provide an response\"\n\"provide a reason\"\n\"provide an answer\"\n\"poor service\"\n\"pissed\"\n\"not responded\"\n\"not heard back\"\n\"not happy\"\n\"not made aware\"\n\"did not authorise\" OR \"did not authorize\"\n\"have not authorised\" OR \"have not authorized\"\n\"not answered\"\n\"unacceptable\"\n\"not acceptable\"\n\"no option but\"\n\"name of your manager\" OR \"name of your supervisor\"\n\"my solicitor\" OR \"our solicitor\"\n\"my lawyer\" OR \"our lawyer\"\n\"my attorney\" OR \"our attorney\"\n\"misrepresent*\"\n\"messed up\"\n\"make up the loss*\"\n\"lost patience\"\n\"lost trust\"\n\"lost faith\"\n\"lost confidence\"\n\"livid\"\n\"inept\"\n\"incompetent\"\n\"incensed\"\n\"i told you\"\n\"i have raised this\"\n\"have confidence\"\n\"hasn't answered\" OR \"has not answered\"\n\"hasn't responded\" OR \"has not responded\"\n\"hasn't replied\" OR \"has not replied\"\n\"happen again\"\n\"i am furious\" OR \"we are furious\"\n\"i am frustrated\" OR \"we are frustrated\"\n\"expect an explanation\"\n\"request an explanation\"\n\"require an explanation\"\n\"request a response\"\n\"require a response\"\n\"request an answer\"\n\"require an answer\"\n\"expect an answer\"\n\"expect a response\"\n\"wish to escalate\"\n\"will escalate\"\n\"dismayed\"\n\"bothered me\" or \"bothers us\"\n\"don't trust\"\n\"don't have faith\"\n\"doesn't respond\"\n\"doesn't reply\"\n\"bothers me\" OR \"bothers us\"\n\"am disturbed\" OR \"are disturbed\"\n\"am distressed\" OR \"are distressed\"\n\"dissatified\"\n\"i dispute\" OR \"we dispute\"\n\"displease*\"\n\"disappointed with\"\n\"didn't tell me\" OR \"didn't tell us\"\n\"didn't explain\"\n\"i demand\" OR \"we demand\"\n\"go to court\" OR \"take this to court\"\n\"speak to the regulator*\"\n\"contact the regulator*\"\n\"i am concern*\" OR \"we are concern*\"\n\"complain*\"\n\"below standard*\" OR \"below the standard*\"\n\"your attitude\"\n\"i'm angry\"\n\"against my\"\n\"not what said\"~4\n\"not what agreed\"~4",
+          "to_date": null,
+          "updated_at": "2022-09-20T13:24:05.000Z"
+        },
+        {
+          "category_group_id": 9,
+          "created_at": "2022-09-27T15:24:23.000Z",
+          "deprecated": false,
+          "description": "MB Gifts & Entertainment custom lexicon",
+          "detection_media_types": [],
+          "detection_type": "BOTH",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 550,
+          "identifier": "CUSTOM_1_MARBLE_BAR__GIFTS_ENTERTAINMENT",
+          "keywords": false,
+          "name": "Marble Bar - Gifts and Entertainment",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": "\"thank you for hamper\"\n\"thank you for the chocolate*\"\n\"thank you for the wine\"\n\"thank you for breakfast\"\n\"thank you for lunch\"\n\"thank you for dinner\"\n\"bottle of wine\" OR \"glass of wine\"\n\"go for drinks\" OR \"go out for drinks\"\n\"go for lunch\" OR \"go out for lunch\"\n\"meet for breakfast\" OR \"meet me for breakfast\"\n\"go for a drink\" OR \"go out for a drink\"\n\"go for dinner\" OR \"go out for dinner\"\n\"meet for lunch\" OR \"meet me for lunch\"\n\"meet for dinner\" OR \"meet me for dinner\"\n\"go for breakfast\" OR \"go out for breakfast\"\n\"have drinks\"\n\"have lunch\"\n\"have dinner\"\n\"have breakfast\"",
+          "to_date": null,
+          "updated_at": "2022-09-27T15:24:23.000Z"
+        },
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 273,
+          "identifier": "PERSONAL_EMAIL_SPEECH",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2023-03-20T23:54:26.000Z",
+      "description": "Accounting Department",
+      "external_id": "acct-123",
+      "id": 242,
+      "name": "Accounting2",
+      "updated_at": "2023-03-21T00:01:57.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2023-03-24T19:54:00.000Z",
+      "description": "Accounting Department",
+      "external_id": "acct-123",
+      "id": 402,
+      "name": "Accounting",
+      "updated_at": "2023-03-24T19:54:00.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2023-03-24T20:57:58.000Z",
+      "description": "Accounting Department",
+      "external_id": "acct-123",
+      "id": 407,
+      "name": "Accounting34",
+      "updated_at": "2023-03-24T20:57:58.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2023-09-01T16:13:26.000Z",
+      "description": "Testing",
+      "external_id": null,
+      "id": 411,
+      "name": "Brendan's Group",
+      "updated_at": "2023-09-01T16:13:26.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "brendan.dougan+cypress@thetalake.com",
+          "last_login": "2025-10-13T09:59:11.000Z",
+          "name": "Brendan Test",
+          "role": "Super Administrator (BD Test)",
+          "role_id": 251,
+          "user_id": 753
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "brendan.dougan+dev1@thetalake.com",
+          "last_login": "2026-01-23T16:24:41.000Z",
+          "name": "Brendan Dougan",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 652
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2024-02-07T01:27:12.000Z",
+      "description": "testing if external id is required",
+      "external_id": null,
+      "id": 563,
+      "name": "jh test required",
+      "updated_at": "2024-02-07T01:27:12.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2024-04-01T16:07:56.000Z",
+      "description": "testyy",
+      "external_id": null,
+      "id": 681,
+      "name": "ytesty",
+      "updated_at": "2024-04-01T16:08:34.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": true,
+          "email": "will.warner+dev1@thetalake.com",
+          "last_login": "2025-10-13T17:11:33.000Z",
+          "name": "William Warner",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 469
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2024-08-06T15:51:13.000Z",
+      "description": "test group",
+      "external_id": null,
+      "id": 980,
+      "name": "Sam Jang Test Group",
+      "updated_at": "2024-08-06T15:51:13.000Z",
+      "users": []
+    },
+    {
+      "categories": [],
+      "created_at": "2024-08-09T05:24:28.000Z",
+      "description": "https://thetalake.atlassian.net/browse/PORT-11365",
+      "external_id": null,
+      "id": 990,
+      "name": "PORT-11365",
+      "updated_at": "2024-08-09T05:24:28.000Z",
+      "users": []
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 284,
+          "created_at": "2018-05-31T00:44:11.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 1,
+              "name": "Video"
+            }
+          ],
+          "detection_type": "SCREEN",
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 272,
+          "identifier": "PERSONAL_EMAIL_SCREEN",
+          "keywords": false,
+          "name": "Email Addresses",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2025-07-25T17:53:46.000Z",
+      "description": "Just daniela ",
+      "external_id": null,
+      "id": 2215,
+      "name": "A new group ",
+      "updated_at": "2025-07-25T17:53:46.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 108,
+            "name": "Data Science Team"
+          },
+          "disabled": false,
+          "email": "dbarragan+dev1@bixlabs.com",
+          "last_login": "2026-01-23T16:50:35.000Z",
+          "name": "Daniela Barragan",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 802
+        },
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 1,
+            "name": "Theta Lake Support"
+          },
+          "disabled": false,
+          "email": "dbarragan+revdev1@bixlabs.com",
+          "last_login": "2026-01-23T16:39:32.000Z",
+          "name": "Daniela Review Barragan",
+          "role": "Review Manager",
+          "role_id": 81,
+          "user_id": 1155
+        }
+      ]
+    },
+    {
+      "categories": [],
+      "created_at": "2025-09-02T11:32:25.000Z",
+      "description": "Isobel testing",
+      "external_id": null,
+      "id": 2340,
+      "name": "Isobel test group",
+      "updated_at": "2025-09-02T11:32:25.000Z",
+      "users": [
+        {
+          "current_org_unit": {
+            "archive_only": false,
+            "id": 378,
+            "name": "Realbank Compliance"
+          },
+          "disabled": false,
+          "email": "isobel+dev1@thetalake.com",
+          "last_login": "2026-01-05T19:50:38.000Z",
+          "name": "Isobel Williams",
+          "role": "Super Administrator",
+          "role_id": 3,
+          "user_id": 278
+        }
+      ]
+    },
+    {
+      "categories": [
+        {
+          "category_group_id": 2,
+          "created_at": "2017-12-21T20:04:54.000Z",
+          "deprecated": true,
+          "description": "",
+          "detection_media_types": [],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": true,
+          "from_date": null,
+          "hidden": false,
+          "id": 1,
+          "identifier": "DISCLAIMER_SPEECH",
+          "keywords": false,
+          "name": "FINRA Spoken or Written Disclaimers Validation",
+          "risk_type": "VALIDATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:50.000Z"
+        },
+        {
+          "category_group_id": 285,
+          "created_at": "2019-12-18T17:40:29.000Z",
+          "deprecated": false,
+          "description": "Common financial disclaimers and disclosures that are not specifically related to advice nor products",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            },
+            {
+              "id": 6,
+              "name": "Image"
+            }
+          ],
+          "detection_type": "SPOKEN",
+          "disabled_at": null,
+          "disclaimer": true,
+          "from_date": null,
+          "hidden": false,
+          "id": 308,
+          "identifier": "GENERAL_DISCLAIMERS_SPOKEN",
+          "keywords": false,
+          "name": "General Disclaimers",
+          "risk_type": "INFORMATION",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        },
+        {
+          "category_group_id": 279,
+          "created_at": "2021-06-23T14:33:08.000Z",
+          "deprecated": false,
+          "description": "",
+          "detection_media_types": [
+            {
+              "id": 2,
+              "name": "Audio"
+            },
+            {
+              "id": 3,
+              "name": "Chat"
+            },
+            {
+              "id": 4,
+              "name": "Attachment"
+            },
+            {
+              "id": 5,
+              "name": "Email"
+            }
+          ],
+          "detection_type": null,
+          "disabled_at": null,
+          "disclaimer": false,
+          "from_date": null,
+          "hidden": false,
+          "id": 502,
+          "identifier": "THREATS_AGGRESSIVE",
+          "keywords": false,
+          "name": "Threats and Aggressive Language",
+          "risk_type": "RISK",
+          "status": "Active",
+          "status_color": "#0bb676",
+          "terms": null,
+          "to_date": null,
+          "updated_at": "2025-09-24T15:31:51.000Z"
+        }
+      ],
+      "created_at": "2025-11-11T17:22:03.000Z",
+      "description": "short-description",
+      "external_id": null,
+      "id": 2660,
+      "name": "testing-fabio-group-nil",
+      "updated_at": "2025-11-11T17:22:03.000Z",
+      "users": []
+    }
+  ]
+}

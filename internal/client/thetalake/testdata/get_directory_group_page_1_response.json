@@ -1,0 +1,2892 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "53b860a3-fb24-4f39-a6ad-3325ac0b021d",
+  "paging": {
+    "prev_page_token": null,
+    "next_page_token": "page-2-token"
+  },
+  "directory_groups": [
+    {
+      "created_at": "2022-03-29T21:53:12.000Z",
+      "description": "UK IT Support2",
+      "external_id": "GrosadfasdfupID1",
+      "id": 1988,
+      "identity_count": 51,
+      "name": "Directory grosadfup Name",
+      "updated_at": "2024-11-12T18:49:07.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rico@thetalake.org",
+          "external_id": "665960ac-bd0a-47c7-88f6-aeff91268a60",
+          "id": 49944,
+          "name": "rico sutton",
+          "phone_number": null,
+          "updated_at": "2023-09-14T07:36:03.000Z"
+        },
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "andrew@thetalake.io",
+          "external_id": "cbb89770-e434-4c5d-8935-56cd7a9ada62",
+          "id": 49946,
+          "name": "andrew cannata",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rich@thetalake.io",
+          "external_id": "04c24339-746f-40bd-a98e-23a677bae192",
+          "id": 49948,
+          "name": "rich sutton",
+          "phone_number": "18059940141",
+          "updated_at": "2026-01-21T08:44:08.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@dan.pm",
+          "external_id": "17cc86a0-0493-4768-adf2-bfa9b60b56b4",
+          "id": 49949,
+          "name": "dan n",
+          "phone_number": "4185600832",
+          "updated_at": "2025-11-24T20:30:40.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-10-27T00:02:36.000Z",
+          "email": "rca-io@thetalake.io",
+          "external_id": "b7b9d2cb-7320-4c4e-8a8b-eab7db18fdfa",
+          "id": 6832,
+          "name": "realtime compliance advisor",
+          "phone_number": "1-212-555-1212",
+          "updated_at": "2025-03-19T23:23:52.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "ad_ldap@thetalake.io",
+          "external_id": "f578dc9e-8e8b-4d90-b330-3b257d970fc4",
+          "id": 49953,
+          "name": "ad-ldap connector",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "thetaarchive@thetalake.io",
+          "external_id": "144e7ae3-ae2f-46ba-bdf5-a8abc92a9fd1",
+          "id": 49954,
+          "name": "thetalake archive",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-03-03T00:00:05.000Z",
+          "email": "bernard@thetalake.io",
+          "external_id": "CN=Bernard,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1554,
+          "name": "Bernard Redding",
+          "phone_number": null,
+          "updated_at": "2025-07-09T18:17:37.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "charles@thetalake.io",
+          "external_id": "c0102518-0186-433d-810c-8cf8df224011",
+          "id": 49956,
+          "name": "Charley Black",
+          "phone_number": "18058690053",
+          "updated_at": "2026-01-12T16:40:03.000Z"
+        },
+        {
+          "created_at": "2021-02-03T08:24:20.000Z",
+          "email": "jeff@thetalake.org",
+          "external_id": "15124230773",
+          "id": 1368,
+          "name": "jeff overton",
+          "phone_number": "15124230773",
+          "updated_at": "2025-11-24T19:43:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "james-dev1-teams@thetalake.io",
+          "external_id": "77512516-3ffe-4e5e-980f-7ace9de6f0ce",
+          "id": 49959,
+          "name": "thetalakerecordingbotdev1",
+          "phone_number": "2288992049",
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "alex@thetalake.com",
+          "external_id": "1f92bff1-5004-4b01-9660-544e2ff65b2e",
+          "id": 49962,
+          "name": "alex lannon",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:03:20.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "aj@thetalake.com",
+          "external_id": "8db1ac21-b2d1-4705-ba98-af31293f8de0",
+          "id": 49965,
+          "name": "ardeshir javaherchi",
+          "phone_number": "4978301854",
+          "updated_at": "2025-12-18T21:43:36.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "paul.daniel@thetalake.com",
+          "external_id": "4285ced4-e1c1-41a1-b063-b2cf3b6ae4f0",
+          "id": 49966,
+          "name": "paul daniel",
+          "phone_number": "9214105602",
+          "updated_at": "2025-03-20T19:43:06.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "upntest@thetalake.io",
+          "external_id": "048cc228-5e23-4bdb-8aeb-2a91e939e3b2",
+          "id": 69849,
+          "name": "upn test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "role2@thetalake.io",
+          "external_id": "0c6d3db0-8dcf-4755-9363-fa2c00df06fc",
+          "id": 69850,
+          "name": "role  test 2",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "isobelwilliams@thetalake.io",
+          "external_id": "7b3a293d-c706-4fe6-98e1-2464a64005d6",
+          "id": 69851,
+          "name": "isobel williams test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest1@thetalake.io",
+          "external_id": "488c4303-4e1a-4913-a8d5-3fd34ef5c78b",
+          "id": 75312,
+          "name": "theta  lake test 1",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest3@thetalake.io",
+          "external_id": "8842cc1f-4d14-4f02-8226-5d1ce69a8243",
+          "id": 75313,
+          "name": "theta lake test 3",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "skerns@thetalake.io",
+          "external_id": "48e89e0c-7cdb-4d11-b84b-35b90612f9ef",
+          "id": 75763,
+          "name": "shawn kerns",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "Tklub@thetalake.io",
+          "external_id": "3593eb15-fb76-444f-a046-78c289d8eb3a",
+          "id": 75764,
+          "name": "tod klub",
+          "phone_number": "5559995555",
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-06T16:56:17.000Z",
+          "email": "Rotem.Shein+dev1labs@thetalake.com",
+          "external_id": "06587418-9e80-4679-82fb-018374036b99",
+          "id": 75380,
+          "name": "rotem shein",
+          "phone_number": null,
+          "updated_at": "2023-05-04T23:12:03.000Z"
+        },
+        {
+          "created_at": "2022-05-18T12:00:40.000Z",
+          "email": "jake@thetalake.io",
+          "external_id": "9462f9bf-3875-4025-b427-595339e0fcc9",
+          "id": 75906,
+          "name": "jake taylor",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-05-21T00:00:25.000Z",
+          "email": "tim@thetalake.io",
+          "external_id": "73cfd958-e544-4c5d-98c6-eb13c58e8c88",
+          "id": 75939,
+          "name": "tim test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-09-08T00:00:33.000Z",
+          "email": "journaluser@thetalake.io",
+          "external_id": "d66895bf-5de1-4304-8852-2a1cff9b9314",
+          "id": 86448,
+          "name": "journal user",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-07-26T16:42:01.000Z",
+          "email": "daniel.nelis@thetalake.com",
+          "external_id": "yWZ3eIcrTwCJAmvu8LPYBA",
+          "id": 85313,
+          "name": "daniel nelis",
+          "phone_number": null,
+          "updated_at": "2025-11-24T19:35:51.000Z"
+        },
+        {
+          "created_at": "2022-09-30T00:00:28.000Z",
+          "email": "rohit.jain@thetalake.io",
+          "external_id": "5fea6e41-0e54-4442-83dd-32273e2707c3",
+          "id": 87144,
+          "name": "rohit (io) jain",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-10-08T00:00:30.000Z",
+          "email": "kannan.a@thetalake.io",
+          "external_id": "1e65641a-0a0c-49db-82d0-3b95acb61ad0",
+          "id": 87461,
+          "name": "kannan io appachi",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-07-25T18:34:13.000Z",
+          "email": "david.yelle@thetalake.com",
+          "external_id": "eYAc7dylRqKGI091IQCUrQ",
+          "id": 85306,
+          "name": "david yelle",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-22T20:48:49.000Z",
+          "email": "austin.tarver@thetalake.com",
+          "external_id": "N4Z394cyRI6kQGgvcpCnag",
+          "id": 75233,
+          "name": "austin tarver",
+          "phone_number": null,
+          "updated_at": "2024-12-05T08:36:22.000Z"
+        },
+        {
+          "created_at": "2023-01-11T07:15:25.000Z",
+          "email": "john@smith.com",
+          "external_id": "it-236",
+          "id": 88484,
+          "name": "John Jacob Smith",
+          "phone_number": "555-867-5309",
+          "updated_at": "2023-03-06T18:57:00.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2020-11-07T00:08:46.000Z",
+          "email": "jacob@thetalake.com",
+          "external_id": "U03658D1RDG",
+          "id": 507,
+          "name": "marc gilman",
+          "phone_number": "5555555555",
+          "updated_at": "2026-01-17T00:00:18.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2023-03-30T20:19:57.000Z",
+          "email": "new@email.com",
+          "external_id": "ksadf",
+          "id": 91387,
+          "name": "John Smith3",
+          "phone_number": "555-867-534",
+          "updated_at": "2023-03-30T20:19:57.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:02.000Z",
+          "email": "ryan@thetalake.com",
+          "external_id": "bf9b0089-c789-8bdc-eb2c-46d0bfcf66b8",
+          "id": 182086,
+          "name": "ryan johnson",
+          "phone_number": "16466219156",
+          "updated_at": "2025-12-12T19:09:07.000Z"
+        },
+        {
+          "created_at": "2020-11-07T00:08:46.000Z",
+          "email": "jacob@thetalake.com",
+          "external_id": "U03658D1RDG",
+          "id": 507,
+          "name": "marc gilman",
+          "phone_number": "5555555555",
+          "updated_at": "2026-01-17T00:00:18.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:12.000Z",
+      "description": "Brandon Field Test Team for POCs",
+      "external_id": "2412b890-963d-4231-abff-d292cecc9f35",
+      "id": 1989,
+      "identity_count": 6,
+      "name": "POC Team",
+      "updated_at": "2022-05-04T00:00:30.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "anthony@thetalake.io",
+          "external_id": "f2b548a1-8e52-47ae-b87b-49246e30972c",
+          "id": 321514,
+          "name": "anthony robinson",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-05-15T00:00:21.000Z",
+          "email": "atom.eynon@thetalake.io",
+          "external_id": "e3716598-3664-480e-b9c1-91e456dd0b8b",
+          "id": 664470,
+          "name": "atom eynon",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:02.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:13.000Z",
+      "description": "This is the default group for everyone in the network",
+      "external_id": "2ab080af-4dd2-43b4-881c-22f22fa47a68",
+      "id": 1990,
+      "identity_count": 0,
+      "name": "All Company",
+      "updated_at": "2022-03-29T21:53:13.000Z",
+      "identities": []
+    },
+    {
+      "created_at": "2022-03-29T21:53:13.000Z",
+      "description": "Team chat for UKSOUTH (only)",
+      "external_id": "3cbdbe75-c519-4432-94e2-5a8ee358801f",
+      "id": 1991,
+      "identity_count": 60,
+      "name": "Team Chat (prod2)",
+      "updated_at": "2022-03-29T21:53:13.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rico@thetalake.org",
+          "external_id": "665960ac-bd0a-47c7-88f6-aeff91268a60",
+          "id": 49944,
+          "name": "rico sutton",
+          "phone_number": null,
+          "updated_at": "2023-09-14T07:36:03.000Z"
+        },
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rich@thetalake.io",
+          "external_id": "04c24339-746f-40bd-a98e-23a677bae192",
+          "id": 49948,
+          "name": "rich sutton",
+          "phone_number": "18059940141",
+          "updated_at": "2026-01-21T08:44:08.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@dan.pm",
+          "external_id": "17cc86a0-0493-4768-adf2-bfa9b60b56b4",
+          "id": 49949,
+          "name": "dan n",
+          "phone_number": "4185600832",
+          "updated_at": "2025-11-24T20:30:40.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-10-27T00:02:36.000Z",
+          "email": "rca-io@thetalake.io",
+          "external_id": "b7b9d2cb-7320-4c4e-8a8b-eab7db18fdfa",
+          "id": 6832,
+          "name": "realtime compliance advisor",
+          "phone_number": "1-212-555-1212",
+          "updated_at": "2025-03-19T23:23:52.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "ad_ldap@thetalake.io",
+          "external_id": "f578dc9e-8e8b-4d90-b330-3b257d970fc4",
+          "id": 49953,
+          "name": "ad-ldap connector",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "thetaarchive@thetalake.io",
+          "external_id": "144e7ae3-ae2f-46ba-bdf5-a8abc92a9fd1",
+          "id": 49954,
+          "name": "thetalake archive",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-03-03T00:00:05.000Z",
+          "email": "bernard@thetalake.io",
+          "external_id": "CN=Bernard,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1554,
+          "name": "Bernard Redding",
+          "phone_number": null,
+          "updated_at": "2025-07-09T18:17:37.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "charles@thetalake.io",
+          "external_id": "c0102518-0186-433d-810c-8cf8df224011",
+          "id": 49956,
+          "name": "Charley Black",
+          "phone_number": "18058690053",
+          "updated_at": "2026-01-12T16:40:03.000Z"
+        },
+        {
+          "created_at": "2021-02-03T08:24:20.000Z",
+          "email": "jeff@thetalake.org",
+          "external_id": "15124230773",
+          "id": 1368,
+          "name": "jeff overton",
+          "phone_number": "15124230773",
+          "updated_at": "2025-11-24T19:43:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "james-dev1-teams@thetalake.io",
+          "external_id": "77512516-3ffe-4e5e-980f-7ace9de6f0ce",
+          "id": 49959,
+          "name": "thetalakerecordingbotdev1",
+          "phone_number": "2288992049",
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "alex@thetalake.com",
+          "external_id": "1f92bff1-5004-4b01-9660-544e2ff65b2e",
+          "id": 49962,
+          "name": "alex lannon",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:03:20.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "aj@thetalake.com",
+          "external_id": "8db1ac21-b2d1-4705-ba98-af31293f8de0",
+          "id": 49965,
+          "name": "ardeshir javaherchi",
+          "phone_number": "4978301854",
+          "updated_at": "2025-12-18T21:43:36.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "upntest@thetalake.io",
+          "external_id": "048cc228-5e23-4bdb-8aeb-2a91e939e3b2",
+          "id": 69849,
+          "name": "upn test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "role2@thetalake.io",
+          "external_id": "0c6d3db0-8dcf-4755-9363-fa2c00df06fc",
+          "id": 69850,
+          "name": "role  test 2",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "isobelwilliams@thetalake.io",
+          "external_id": "7b3a293d-c706-4fe6-98e1-2464a64005d6",
+          "id": 69851,
+          "name": "isobel williams test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest3@thetalake.io",
+          "external_id": "8842cc1f-4d14-4f02-8226-5d1ce69a8243",
+          "id": 75313,
+          "name": "theta lake test 3",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest1@thetalake.io",
+          "external_id": "488c4303-4e1a-4913-a8d5-3fd34ef5c78b",
+          "id": 75312,
+          "name": "theta  lake test 1",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "skerns@thetalake.io",
+          "external_id": "48e89e0c-7cdb-4d11-b84b-35b90612f9ef",
+          "id": 75763,
+          "name": "shawn kerns",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "Tklub@thetalake.io",
+          "external_id": "3593eb15-fb76-444f-a046-78c289d8eb3a",
+          "id": 75764,
+          "name": "tod klub",
+          "phone_number": "5559995555",
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-18T12:00:40.000Z",
+          "email": "jake@thetalake.io",
+          "external_id": "9462f9bf-3875-4025-b427-595339e0fcc9",
+          "id": 75906,
+          "name": "jake taylor",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-05-21T00:00:25.000Z",
+          "email": "tim@thetalake.io",
+          "external_id": "73cfd958-e544-4c5d-98c6-eb13c58e8c88",
+          "id": 75939,
+          "name": "tim test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-09-08T00:00:33.000Z",
+          "email": "journaluser@thetalake.io",
+          "external_id": "d66895bf-5de1-4304-8852-2a1cff9b9314",
+          "id": 86448,
+          "name": "journal user",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-07-26T16:42:01.000Z",
+          "email": "daniel.nelis@thetalake.com",
+          "external_id": "yWZ3eIcrTwCJAmvu8LPYBA",
+          "id": 85313,
+          "name": "daniel nelis",
+          "phone_number": null,
+          "updated_at": "2025-11-24T19:35:51.000Z"
+        },
+        {
+          "created_at": "2022-09-30T00:00:28.000Z",
+          "email": "rohit.jain@thetalake.io",
+          "external_id": "5fea6e41-0e54-4442-83dd-32273e2707c3",
+          "id": 87144,
+          "name": "rohit (io) jain",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-10-08T00:00:30.000Z",
+          "email": "kannan.a@thetalake.io",
+          "external_id": "1e65641a-0a0c-49db-82d0-3b95acb61ad0",
+          "id": 87461,
+          "name": "kannan io appachi",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-07-25T18:34:13.000Z",
+          "email": "david.yelle@thetalake.com",
+          "external_id": "eYAc7dylRqKGI091IQCUrQ",
+          "id": 85306,
+          "name": "david yelle",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2023-01-13T00:00:12.000Z",
+          "email": "ThetaLake.test08@thetalake.io",
+          "external_id": "1b62ed81-0b60-40ea-99b6-837f5943e29a",
+          "id": 88494,
+          "name": "theta lake test08",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-08-02T00:00:14.000Z",
+          "email": "darak@thetalake.io",
+          "external_id": "dfa3faac-3259-48ae-b24a-96d867d71651",
+          "id": 187980,
+          "name": "darak@thetalake.io",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "anthony@thetalake.io",
+          "external_id": "f2b548a1-8e52-47ae-b87b-49246e30972c",
+          "id": 321514,
+          "name": "anthony robinson",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "jaimie@thetalake.io",
+          "external_id": "3a431dad-53a4-42bf-8a78-7f177fe0f856",
+          "id": 321513,
+          "name": "jaimie spears",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-11-07T00:00:17.000Z",
+          "email": "brad@thetalake.com",
+          "external_id": "6d659a47-40a4-452e-bb21-f99a04832cd3",
+          "id": 321642,
+          "name": "brad edmondson",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:01.000Z"
+        },
+        {
+          "created_at": "2024-02-22T12:00:11.000Z",
+          "email": "josims@thetalake.io",
+          "external_id": "a4fef868-cb13-42bd-bba9-7a7c39cc11d8",
+          "id": 485143,
+          "name": "jo sims",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-05-15T00:00:21.000Z",
+          "email": "atom.eynon@thetalake.io",
+          "external_id": "e3716598-3664-480e-b9c1-91e456dd0b8b",
+          "id": 664470,
+          "name": "atom eynon",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:02.000Z"
+        },
+        {
+          "created_at": "2024-06-24T17:36:01.000Z",
+          "email": "notifications@yammer.com",
+          "external_id": "30b06829-8f93-334b-4aeb-89f66a90ed9e",
+          "id": 668034,
+          "name": "tara daniel",
+          "phone_number": null,
+          "updated_at": "2024-09-30T15:50:01.000Z"
+        },
+        {
+          "created_at": "2024-08-27T17:50:30.000Z",
+          "email": "brandon.lacanaria@thetalake.io",
+          "external_id": "122431cc-0fe5-ae97-6489-2870c99e794c",
+          "id": 675210,
+          "name": "brandon lacanaria",
+          "phone_number": null,
+          "updated_at": "2025-08-27T21:32:00.000Z"
+        },
+        {
+          "created_at": "2024-07-01T18:32:00.000Z",
+          "email": "ameya.bhakay@thetalake.org",
+          "external_id": "62532297-14aa-d228-013c-dac7f57f0ee4",
+          "id": 669774,
+          "name": "ameya bhakay",
+          "phone_number": null,
+          "updated_at": "2026-01-02T21:14:30.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "michelle.jarrett@thetalake.io",
+          "external_id": "bcb3e369-eeaf-a55d-99fd-b6191c00238b",
+          "id": 668332,
+          "name": "michelle jarrett",
+          "phone_number": "18058252821",
+          "updated_at": "2025-05-07T16:28:19.000Z"
+        },
+        {
+          "created_at": "2021-04-23T23:08:01.000Z",
+          "email": "kannan@thetalake.com",
+          "external_id": "105",
+          "id": 1893,
+          "name": "kannan appachi",
+          "phone_number": "3233481768",
+          "updated_at": "2023-03-30T00:00:29.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "daniela.barragan@thetalake.io",
+          "external_id": "4c9e8e9e-b4e3-2054-a9fa-e2caadc2896f",
+          "id": 668336,
+          "name": "daniela barragan",
+          "phone_number": null,
+          "updated_at": "2025-04-12T00:00:22.000Z"
+        },
+        {
+          "created_at": "2022-04-11T22:04:05.000Z",
+          "email": "will.warner@thetalake.com",
+          "external_id": "U03BWDS95NV",
+          "id": 69980,
+          "name": "Will Warner",
+          "phone_number": "16464186081",
+          "updated_at": "2025-02-04T17:10:08.000Z"
+        },
+        {
+          "created_at": "2023-11-13T20:30:01.000Z",
+          "email": "tara.medeiros@thetalake.io",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS83NDVjOWZkZS01MWFlLTQyMmMtYWRjMC1iNTcyY2RjMGQ4MjA",
+          "id": 321777,
+          "name": "tara medeiros",
+          "phone_number": null,
+          "updated_at": "2023-11-13T20:30:01.000Z"
+        },
+        {
+          "created_at": "2025-03-10T17:46:03.000Z",
+          "email": "doug@thetalake.io",
+          "external_id": "c9a8309a-81f3-4bd2-98a9-6c6919c36de9",
+          "id": 749428,
+          "name": "doug coleman",
+          "phone_number": null,
+          "updated_at": "2025-04-16T00:00:14.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "michelle.jarrett.preview@thetalake.org",
+          "external_id": "4fa45191-a938-4423-ad11-e6533d7bb5a1",
+          "id": 663605,
+          "name": "michelle jarrett preview",
+          "phone_number": "18482446653",
+          "updated_at": "2025-02-20T19:52:19.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "tara.medeiros.preview@thetalake.org",
+          "external_id": "5ef0c129-5fff-41ca-9ec4-f0332fa71850",
+          "id": 663606,
+          "name": "tara medeiros preview",
+          "phone_number": null,
+          "updated_at": "2025-06-17T20:52:42.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "will.warner.preview@thetalake.io",
+          "external_id": "8a15b9b2-0457-40b9-afbb-ca88c7b10c7c",
+          "id": 754286,
+          "name": "will warner preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "gary.preview@thetalake.io",
+          "external_id": "0d3e898c-5f94-4c16-84be-246a29499c4b",
+          "id": 754287,
+          "name": "gary pinkham preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2025-06-25T19:54:28.000Z",
+          "email": "tara.medeiros.nonadmin@thetalake.io",
+          "external_id": "cd4db0b0-ee7a-464e-9ef5-548513e707ce",
+          "id": 758895,
+          "name": "tara nonadmin",
+          "phone_number": null,
+          "updated_at": "2025-06-25T19:54:28.000Z"
+        },
+        {
+          "created_at": "2023-05-05T15:06:13.000Z",
+          "email": "johausti@cisco.com",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS82OTdhYjk0NS0xNTNmLTQ3MTMtOGFkNy02NDhhZmJmM2E1ZTU",
+          "id": 181014,
+          "name": "john austin",
+          "phone_number": null,
+          "updated_at": "2023-05-05T15:06:13.000Z"
+        },
+        {
+          "created_at": "2026-01-21T00:00:13.000Z",
+          "email": null,
+          "external_id": "b8faba82-43c9-4394-9331-764d7c07b47b",
+          "id": 909595,
+          "name": "kannan non admin",
+          "phone_number": null,
+          "updated_at": "2026-01-21T00:00:13.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:13.000Z",
+      "description": "",
+      "external_id": "552653f2-2bc1-4f1e-ba35-95531d2f73c2",
+      "id": 1992,
+      "identity_count": 11,
+      "name": "Journaled_Accounts",
+      "updated_at": "2022-03-29T21:53:13.000Z",
+      "identities": [
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rich@thetalake.io",
+          "external_id": "04c24339-746f-40bd-a98e-23a677bae192",
+          "id": 49948,
+          "name": "rich sutton",
+          "phone_number": "18059940141",
+          "updated_at": "2026-01-21T08:44:08.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@dan.pm",
+          "external_id": "17cc86a0-0493-4768-adf2-bfa9b60b56b4",
+          "id": 49949,
+          "name": "dan n",
+          "phone_number": "4185600832",
+          "updated_at": "2025-11-24T20:30:40.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-03-03T00:00:05.000Z",
+          "email": "bernard@thetalake.io",
+          "external_id": "CN=Bernard,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1554,
+          "name": "Bernard Redding",
+          "phone_number": null,
+          "updated_at": "2025-07-09T18:17:37.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "charles@thetalake.io",
+          "external_id": "c0102518-0186-433d-810c-8cf8df224011",
+          "id": 49956,
+          "name": "Charley Black",
+          "phone_number": "18058690053",
+          "updated_at": "2026-01-12T16:40:03.000Z"
+        },
+        {
+          "created_at": "2021-02-03T08:24:20.000Z",
+          "email": "jeff@thetalake.org",
+          "external_id": "15124230773",
+          "id": 1368,
+          "name": "jeff overton",
+          "phone_number": "15124230773",
+          "updated_at": "2025-11-24T19:43:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:13.000Z",
+      "description": "This is the default group for everyone in the network",
+      "external_id": "69fa5d3e-af75-485c-97b0-894565345478",
+      "id": 1993,
+      "identity_count": 1,
+      "name": "All Company",
+      "updated_at": "2022-03-29T21:53:13.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:13.000Z",
+      "description": "Link this team to USEAST prod1 environment",
+      "external_id": "7121bbe9-463c-43f8-84d7-f92708a98ee4",
+      "id": 1994,
+      "identity_count": 61,
+      "name": "Team Chat (prod1)",
+      "updated_at": "2022-03-29T21:53:13.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rico@thetalake.org",
+          "external_id": "665960ac-bd0a-47c7-88f6-aeff91268a60",
+          "id": 49944,
+          "name": "rico sutton",
+          "phone_number": null,
+          "updated_at": "2023-09-14T07:36:03.000Z"
+        },
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rich@thetalake.io",
+          "external_id": "04c24339-746f-40bd-a98e-23a677bae192",
+          "id": 49948,
+          "name": "rich sutton",
+          "phone_number": "18059940141",
+          "updated_at": "2026-01-21T08:44:08.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@dan.pm",
+          "external_id": "17cc86a0-0493-4768-adf2-bfa9b60b56b4",
+          "id": 49949,
+          "name": "dan n",
+          "phone_number": "4185600832",
+          "updated_at": "2025-11-24T20:30:40.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-10-27T00:02:36.000Z",
+          "email": "rca-io@thetalake.io",
+          "external_id": "b7b9d2cb-7320-4c4e-8a8b-eab7db18fdfa",
+          "id": 6832,
+          "name": "realtime compliance advisor",
+          "phone_number": "1-212-555-1212",
+          "updated_at": "2025-03-19T23:23:52.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "ad_ldap@thetalake.io",
+          "external_id": "f578dc9e-8e8b-4d90-b330-3b257d970fc4",
+          "id": 49953,
+          "name": "ad-ldap connector",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "thetaarchive@thetalake.io",
+          "external_id": "144e7ae3-ae2f-46ba-bdf5-a8abc92a9fd1",
+          "id": 49954,
+          "name": "thetalake archive",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-03-03T00:00:05.000Z",
+          "email": "bernard@thetalake.io",
+          "external_id": "CN=Bernard,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1554,
+          "name": "Bernard Redding",
+          "phone_number": null,
+          "updated_at": "2025-07-09T18:17:37.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "charles@thetalake.io",
+          "external_id": "c0102518-0186-433d-810c-8cf8df224011",
+          "id": 49956,
+          "name": "Charley Black",
+          "phone_number": "18058690053",
+          "updated_at": "2026-01-12T16:40:03.000Z"
+        },
+        {
+          "created_at": "2021-02-03T08:24:20.000Z",
+          "email": "jeff@thetalake.org",
+          "external_id": "15124230773",
+          "id": 1368,
+          "name": "jeff overton",
+          "phone_number": "15124230773",
+          "updated_at": "2025-11-24T19:43:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "james-dev1-teams@thetalake.io",
+          "external_id": "77512516-3ffe-4e5e-980f-7ace9de6f0ce",
+          "id": 49959,
+          "name": "thetalakerecordingbotdev1",
+          "phone_number": "2288992049",
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "alex@thetalake.com",
+          "external_id": "1f92bff1-5004-4b01-9660-544e2ff65b2e",
+          "id": 49962,
+          "name": "alex lannon",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:03:20.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "aj@thetalake.com",
+          "external_id": "8db1ac21-b2d1-4705-ba98-af31293f8de0",
+          "id": 49965,
+          "name": "ardeshir javaherchi",
+          "phone_number": "4978301854",
+          "updated_at": "2025-12-18T21:43:36.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "upntest@thetalake.io",
+          "external_id": "048cc228-5e23-4bdb-8aeb-2a91e939e3b2",
+          "id": 69849,
+          "name": "upn test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "role2@thetalake.io",
+          "external_id": "0c6d3db0-8dcf-4755-9363-fa2c00df06fc",
+          "id": 69850,
+          "name": "role  test 2",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "isobelwilliams@thetalake.io",
+          "external_id": "7b3a293d-c706-4fe6-98e1-2464a64005d6",
+          "id": 69851,
+          "name": "isobel williams test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest3@thetalake.io",
+          "external_id": "8842cc1f-4d14-4f02-8226-5d1ce69a8243",
+          "id": 75313,
+          "name": "theta lake test 3",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest1@thetalake.io",
+          "external_id": "488c4303-4e1a-4913-a8d5-3fd34ef5c78b",
+          "id": 75312,
+          "name": "theta  lake test 1",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "skerns@thetalake.io",
+          "external_id": "48e89e0c-7cdb-4d11-b84b-35b90612f9ef",
+          "id": 75763,
+          "name": "shawn kerns",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "Tklub@thetalake.io",
+          "external_id": "3593eb15-fb76-444f-a046-78c289d8eb3a",
+          "id": 75764,
+          "name": "tod klub",
+          "phone_number": "5559995555",
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-18T12:00:40.000Z",
+          "email": "jake@thetalake.io",
+          "external_id": "9462f9bf-3875-4025-b427-595339e0fcc9",
+          "id": 75906,
+          "name": "jake taylor",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-05-21T00:00:25.000Z",
+          "email": "tim@thetalake.io",
+          "external_id": "73cfd958-e544-4c5d-98c6-eb13c58e8c88",
+          "id": 75939,
+          "name": "tim test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-09-08T00:00:33.000Z",
+          "email": "journaluser@thetalake.io",
+          "external_id": "d66895bf-5de1-4304-8852-2a1cff9b9314",
+          "id": 86448,
+          "name": "journal user",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-07-26T16:42:01.000Z",
+          "email": "daniel.nelis@thetalake.com",
+          "external_id": "yWZ3eIcrTwCJAmvu8LPYBA",
+          "id": 85313,
+          "name": "daniel nelis",
+          "phone_number": null,
+          "updated_at": "2025-11-24T19:35:51.000Z"
+        },
+        {
+          "created_at": "2022-09-30T00:00:28.000Z",
+          "email": "rohit.jain@thetalake.io",
+          "external_id": "5fea6e41-0e54-4442-83dd-32273e2707c3",
+          "id": 87144,
+          "name": "rohit (io) jain",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-10-08T00:00:30.000Z",
+          "email": "kannan.a@thetalake.io",
+          "external_id": "1e65641a-0a0c-49db-82d0-3b95acb61ad0",
+          "id": 87461,
+          "name": "kannan io appachi",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-07-25T18:34:13.000Z",
+          "email": "david.yelle@thetalake.com",
+          "external_id": "eYAc7dylRqKGI091IQCUrQ",
+          "id": 85306,
+          "name": "david yelle",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2023-01-13T00:00:12.000Z",
+          "email": "ThetaLake.test08@thetalake.io",
+          "external_id": "1b62ed81-0b60-40ea-99b6-837f5943e29a",
+          "id": 88494,
+          "name": "theta lake test08",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-08-02T00:00:14.000Z",
+          "email": "darak@thetalake.io",
+          "external_id": "dfa3faac-3259-48ae-b24a-96d867d71651",
+          "id": 187980,
+          "name": "darak@thetalake.io",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "anthony@thetalake.io",
+          "external_id": "f2b548a1-8e52-47ae-b87b-49246e30972c",
+          "id": 321514,
+          "name": "anthony robinson",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "jaimie@thetalake.io",
+          "external_id": "3a431dad-53a4-42bf-8a78-7f177fe0f856",
+          "id": 321513,
+          "name": "jaimie spears",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-11-07T00:00:17.000Z",
+          "email": "brad@thetalake.com",
+          "external_id": "6d659a47-40a4-452e-bb21-f99a04832cd3",
+          "id": 321642,
+          "name": "brad edmondson",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:01.000Z"
+        },
+        {
+          "created_at": "2024-02-22T12:00:11.000Z",
+          "email": "josims@thetalake.io",
+          "external_id": "a4fef868-cb13-42bd-bba9-7a7c39cc11d8",
+          "id": 485143,
+          "name": "jo sims",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-05-15T00:00:21.000Z",
+          "email": "atom.eynon@thetalake.io",
+          "external_id": "e3716598-3664-480e-b9c1-91e456dd0b8b",
+          "id": 664470,
+          "name": "atom eynon",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:02.000Z"
+        },
+        {
+          "created_at": "2024-06-24T17:36:01.000Z",
+          "email": "notifications@yammer.com",
+          "external_id": "30b06829-8f93-334b-4aeb-89f66a90ed9e",
+          "id": 668034,
+          "name": "tara daniel",
+          "phone_number": null,
+          "updated_at": "2024-09-30T15:50:01.000Z"
+        },
+        {
+          "created_at": "2024-08-27T17:50:30.000Z",
+          "email": "brandon.lacanaria@thetalake.io",
+          "external_id": "122431cc-0fe5-ae97-6489-2870c99e794c",
+          "id": 675210,
+          "name": "brandon lacanaria",
+          "phone_number": null,
+          "updated_at": "2025-08-27T21:32:00.000Z"
+        },
+        {
+          "created_at": "2024-07-01T18:32:00.000Z",
+          "email": "ameya.bhakay@thetalake.org",
+          "external_id": "62532297-14aa-d228-013c-dac7f57f0ee4",
+          "id": 669774,
+          "name": "ameya bhakay",
+          "phone_number": null,
+          "updated_at": "2026-01-02T21:14:30.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "michelle.jarrett@thetalake.io",
+          "external_id": "bcb3e369-eeaf-a55d-99fd-b6191c00238b",
+          "id": 668332,
+          "name": "michelle jarrett",
+          "phone_number": "18058252821",
+          "updated_at": "2025-05-07T16:28:19.000Z"
+        },
+        {
+          "created_at": "2021-04-23T23:08:01.000Z",
+          "email": "kannan@thetalake.com",
+          "external_id": "105",
+          "id": 1893,
+          "name": "kannan appachi",
+          "phone_number": "3233481768",
+          "updated_at": "2023-03-30T00:00:29.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "daniela.barragan@thetalake.io",
+          "external_id": "4c9e8e9e-b4e3-2054-a9fa-e2caadc2896f",
+          "id": 668336,
+          "name": "daniela barragan",
+          "phone_number": null,
+          "updated_at": "2025-04-12T00:00:22.000Z"
+        },
+        {
+          "created_at": "2022-04-11T22:04:05.000Z",
+          "email": "will.warner@thetalake.com",
+          "external_id": "U03BWDS95NV",
+          "id": 69980,
+          "name": "Will Warner",
+          "phone_number": "16464186081",
+          "updated_at": "2025-02-04T17:10:08.000Z"
+        },
+        {
+          "created_at": "2023-11-13T20:30:01.000Z",
+          "email": "tara.medeiros@thetalake.io",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS83NDVjOWZkZS01MWFlLTQyMmMtYWRjMC1iNTcyY2RjMGQ4MjA",
+          "id": 321777,
+          "name": "tara medeiros",
+          "phone_number": null,
+          "updated_at": "2023-11-13T20:30:01.000Z"
+        },
+        {
+          "created_at": "2025-03-10T17:46:03.000Z",
+          "email": "doug@thetalake.io",
+          "external_id": "c9a8309a-81f3-4bd2-98a9-6c6919c36de9",
+          "id": 749428,
+          "name": "doug coleman",
+          "phone_number": null,
+          "updated_at": "2025-04-16T00:00:14.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "michelle.jarrett.preview@thetalake.org",
+          "external_id": "4fa45191-a938-4423-ad11-e6533d7bb5a1",
+          "id": 663605,
+          "name": "michelle jarrett preview",
+          "phone_number": "18482446653",
+          "updated_at": "2025-02-20T19:52:19.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "tara.medeiros.preview@thetalake.org",
+          "external_id": "5ef0c129-5fff-41ca-9ec4-f0332fa71850",
+          "id": 663606,
+          "name": "tara medeiros preview",
+          "phone_number": null,
+          "updated_at": "2025-06-17T20:52:42.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "will.warner.preview@thetalake.io",
+          "external_id": "8a15b9b2-0457-40b9-afbb-ca88c7b10c7c",
+          "id": 754286,
+          "name": "will warner preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "daniela.barragan.preview@thetalake.org",
+          "external_id": "99fc6db9-d970-4f38-930b-9387fbd27dbe",
+          "id": 663604,
+          "name": "daniela barragan preview",
+          "phone_number": null,
+          "updated_at": "2024-04-26T07:28:07.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "gary.preview@thetalake.io",
+          "external_id": "0d3e898c-5f94-4c16-84be-246a29499c4b",
+          "id": 754287,
+          "name": "gary pinkham preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2025-06-25T19:54:28.000Z",
+          "email": "tara.medeiros.nonadmin@thetalake.io",
+          "external_id": "cd4db0b0-ee7a-464e-9ef5-548513e707ce",
+          "id": 758895,
+          "name": "tara nonadmin",
+          "phone_number": null,
+          "updated_at": "2025-06-25T19:54:28.000Z"
+        },
+        {
+          "created_at": "2023-05-05T15:06:13.000Z",
+          "email": "johausti@cisco.com",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS82OTdhYjk0NS0xNTNmLTQ3MTMtOGFkNy02NDhhZmJmM2E1ZTU",
+          "id": 181014,
+          "name": "john austin",
+          "phone_number": null,
+          "updated_at": "2023-05-05T15:06:13.000Z"
+        },
+        {
+          "created_at": "2026-01-21T00:00:13.000Z",
+          "email": null,
+          "external_id": "b8faba82-43c9-4394-9331-764d7c07b47b",
+          "id": 909595,
+          "name": "kannan non admin",
+          "phone_number": null,
+          "updated_at": "2026-01-21T00:00:13.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "Brandon Test - No Ownership",
+      "external_id": "857a3feb-ef54-4e9f-9a20-d62a8de7bced",
+      "id": 1995,
+      "identity_count": 0,
+      "name": "Brandon Test - No Ownership",
+      "updated_at": "2022-03-29T21:53:14.000Z",
+      "identities": []
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "UK IT Support",
+      "external_id": "Group32234ID1",
+      "id": 1997,
+      "identity_count": 1,
+      "name": "Directory group Name",
+      "updated_at": "2023-01-14T18:43:43.000Z",
+      "identities": [
+        {
+          "created_at": "2021-03-23T00:00:05.000Z",
+          "email": null,
+          "external_id": "CN=Brandon Online Meetings Recorder,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1694,
+          "name": "brandon online meetings recorder",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:14.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "Test Team for Integration",
+      "external_id": "980852ca-11f2-4d63-9a3f-10077af35d69",
+      "id": 1998,
+      "identity_count": 8,
+      "name": "Test Team for Integration",
+      "updated_at": "2022-03-29T21:53:14.000Z",
+      "identities": [
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-09-30T00:00:28.000Z",
+          "email": "rohit.jain@thetalake.io",
+          "external_id": "5fea6e41-0e54-4442-83dd-32273e2707c3",
+          "id": 87144,
+          "name": "rohit (io) jain",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "This is the default group for everyone in the network",
+      "external_id": "990e0118-5952-4c8d-be8f-2d1b54cb3ce4",
+      "id": 1999,
+      "identity_count": 1,
+      "name": "All Company",
+      "updated_at": "2022-03-29T21:53:14.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "",
+      "external_id": "a3319444-da31-4c33-ad4f-d2425d065f8d",
+      "id": 2000,
+      "identity_count": 4,
+      "name": "AAD DC Administrators",
+      "updated_at": "2022-03-29T21:53:14.000Z",
+      "identities": [
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T15:22:55.000Z",
+          "email": null,
+          "external_id": "a3319444-da31-4c33-ad4f-d2425d065f8d",
+          "id": 49967,
+          "name": "aad dc administrators",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:14.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "ad_ldap@thetalake.io",
+          "external_id": "f578dc9e-8e8b-4d90-b330-3b257d970fc4",
+          "id": 49953,
+          "name": "ad-ldap connector",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:14.000Z",
+      "description": "team chats can be monitored in any Prod environment",
+      "external_id": "c8c0b6d3-6d23-4f57-9103-55db68424418",
+      "id": 2001,
+      "identity_count": 60,
+      "name": "thetalake.io",
+      "updated_at": "2022-03-29T21:53:14.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rico@thetalake.org",
+          "external_id": "665960ac-bd0a-47c7-88f6-aeff91268a60",
+          "id": 49944,
+          "name": "rico sutton",
+          "phone_number": null,
+          "updated_at": "2023-09-14T07:36:03.000Z"
+        },
+        {
+          "created_at": "2024-03-14T19:54:00.000Z",
+          "email": "jakob@thetalake.ai",
+          "external_id": "09bedfd3-a56f-71a5-13cc-c1a2cfdf0649",
+          "id": 585018,
+          "name": "jakob greenwood",
+          "phone_number": "12064521435",
+          "updated_at": "2026-01-10T17:03:34.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@thetalake.io",
+          "external_id": "fe13e248-38df-4ce4-9f90-f5a1014aa50a",
+          "id": 49947,
+          "name": "dan nadirs",
+          "phone_number": "16462426635",
+          "updated_at": "2025-04-10T21:16:30.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "rich@thetalake.io",
+          "external_id": "04c24339-746f-40bd-a98e-23a677bae192",
+          "id": 49948,
+          "name": "rich sutton",
+          "phone_number": "18059940141",
+          "updated_at": "2026-01-21T08:44:08.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "dan@dan.pm",
+          "external_id": "17cc86a0-0493-4768-adf2-bfa9b60b56b4",
+          "id": 49949,
+          "name": "dan n",
+          "phone_number": "4185600832",
+          "updated_at": "2025-11-24T20:30:40.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "ad_ldap@thetalake.io",
+          "external_id": "f578dc9e-8e8b-4d90-b330-3b257d970fc4",
+          "id": 49953,
+          "name": "ad-ldap connector",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "thetaarchive@thetalake.io",
+          "external_id": "144e7ae3-ae2f-46ba-bdf5-a8abc92a9fd1",
+          "id": 49954,
+          "name": "thetalake archive",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2021-03-03T00:00:05.000Z",
+          "email": "bernard@thetalake.io",
+          "external_id": "CN=Bernard,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1554,
+          "name": "Bernard Redding",
+          "phone_number": null,
+          "updated_at": "2025-07-09T18:17:37.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "charles@thetalake.io",
+          "external_id": "c0102518-0186-433d-810c-8cf8df224011",
+          "id": 49956,
+          "name": "Charley Black",
+          "phone_number": "18058690053",
+          "updated_at": "2026-01-12T16:40:03.000Z"
+        },
+        {
+          "created_at": "2021-02-03T08:24:20.000Z",
+          "email": "jeff@thetalake.org",
+          "external_id": "15124230773",
+          "id": 1368,
+          "name": "jeff overton",
+          "phone_number": "15124230773",
+          "updated_at": "2025-11-24T19:43:29.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "james-dev1-teams@thetalake.io",
+          "external_id": "77512516-3ffe-4e5e-980f-7ace9de6f0ce",
+          "id": 49959,
+          "name": "thetalakerecordingbotdev1",
+          "phone_number": "2288992049",
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2023-06-05T17:14:03.000Z",
+          "email": "derek@thetalake.com",
+          "external_id": "7b2bd93e-c32d-7634-7a09-82727e6a9eab",
+          "id": 182109,
+          "name": "derek brenner",
+          "phone_number": "6505042569",
+          "updated_at": "2025-03-17T20:47:06.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "alex@thetalake.com",
+          "external_id": "1f92bff1-5004-4b01-9660-544e2ff65b2e",
+          "id": 49962,
+          "name": "alex lannon",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:03:20.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "aj@thetalake.com",
+          "external_id": "8db1ac21-b2d1-4705-ba98-af31293f8de0",
+          "id": 49965,
+          "name": "ardeshir javaherchi",
+          "phone_number": "4978301854",
+          "updated_at": "2025-12-18T21:43:36.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "upntest@thetalake.io",
+          "external_id": "048cc228-5e23-4bdb-8aeb-2a91e939e3b2",
+          "id": 69849,
+          "name": "upn test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "role2@thetalake.io",
+          "external_id": "0c6d3db0-8dcf-4755-9363-fa2c00df06fc",
+          "id": 69850,
+          "name": "role  test 2",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "isobelwilliams@thetalake.io",
+          "external_id": "7b3a293d-c706-4fe6-98e1-2464a64005d6",
+          "id": 69851,
+          "name": "isobel williams test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest3@thetalake.io",
+          "external_id": "8842cc1f-4d14-4f02-8226-5d1ce69a8243",
+          "id": 75313,
+          "name": "theta lake test 3",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-04-30T00:00:25.000Z",
+          "email": "tltest1@thetalake.io",
+          "external_id": "488c4303-4e1a-4913-a8d5-3fd34ef5c78b",
+          "id": 75312,
+          "name": "theta  lake test 1",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "skerns@thetalake.io",
+          "external_id": "48e89e0c-7cdb-4d11-b84b-35b90612f9ef",
+          "id": 75763,
+          "name": "shawn kerns",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "Tklub@thetalake.io",
+          "external_id": "3593eb15-fb76-444f-a046-78c289d8eb3a",
+          "id": 75764,
+          "name": "tod klub",
+          "phone_number": "5559995555",
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-18T12:00:40.000Z",
+          "email": "jake@thetalake.io",
+          "external_id": "9462f9bf-3875-4025-b427-595339e0fcc9",
+          "id": 75906,
+          "name": "jake taylor",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-05-21T00:00:25.000Z",
+          "email": "tim@thetalake.io",
+          "external_id": "73cfd958-e544-4c5d-98c6-eb13c58e8c88",
+          "id": 75939,
+          "name": "tim test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-09-08T00:00:33.000Z",
+          "email": "journaluser@thetalake.io",
+          "external_id": "d66895bf-5de1-4304-8852-2a1cff9b9314",
+          "id": 86448,
+          "name": "journal user",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-07-26T16:42:01.000Z",
+          "email": "daniel.nelis@thetalake.com",
+          "external_id": "yWZ3eIcrTwCJAmvu8LPYBA",
+          "id": 85313,
+          "name": "daniel nelis",
+          "phone_number": null,
+          "updated_at": "2025-11-24T19:35:51.000Z"
+        },
+        {
+          "created_at": "2022-09-30T00:00:28.000Z",
+          "email": "rohit.jain@thetalake.io",
+          "external_id": "5fea6e41-0e54-4442-83dd-32273e2707c3",
+          "id": 87144,
+          "name": "rohit (io) jain",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2022-10-08T00:00:30.000Z",
+          "email": "kannan.a@thetalake.io",
+          "external_id": "1e65641a-0a0c-49db-82d0-3b95acb61ad0",
+          "id": 87461,
+          "name": "kannan io appachi",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-07-25T18:34:13.000Z",
+          "email": "david.yelle@thetalake.com",
+          "external_id": "eYAc7dylRqKGI091IQCUrQ",
+          "id": 85306,
+          "name": "david yelle",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2023-01-13T00:00:12.000Z",
+          "email": "ThetaLake.test08@thetalake.io",
+          "external_id": "1b62ed81-0b60-40ea-99b6-837f5943e29a",
+          "id": 88494,
+          "name": "theta lake test08",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-08-02T00:00:14.000Z",
+          "email": "darak@thetalake.io",
+          "external_id": "dfa3faac-3259-48ae-b24a-96d867d71651",
+          "id": 187980,
+          "name": "darak@thetalake.io",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "anthony@thetalake.io",
+          "external_id": "f2b548a1-8e52-47ae-b87b-49246e30972c",
+          "id": 321514,
+          "name": "anthony robinson",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-10-26T00:00:19.000Z",
+          "email": "jaimie@thetalake.io",
+          "external_id": "3a431dad-53a4-42bf-8a78-7f177fe0f856",
+          "id": 321513,
+          "name": "jaimie spears",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2023-11-07T00:00:17.000Z",
+          "email": "brad@thetalake.com",
+          "external_id": "6d659a47-40a4-452e-bb21-f99a04832cd3",
+          "id": 321642,
+          "name": "brad edmondson",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:01.000Z"
+        },
+        {
+          "created_at": "2024-02-22T12:00:11.000Z",
+          "email": "josims@thetalake.io",
+          "external_id": "a4fef868-cb13-42bd-bba9-7a7c39cc11d8",
+          "id": 485143,
+          "name": "jo sims",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-05-15T00:00:21.000Z",
+          "email": "atom.eynon@thetalake.io",
+          "external_id": "e3716598-3664-480e-b9c1-91e456dd0b8b",
+          "id": 664470,
+          "name": "atom eynon",
+          "phone_number": null,
+          "updated_at": "2025-04-22T18:04:02.000Z"
+        },
+        {
+          "created_at": "2024-06-24T17:36:01.000Z",
+          "email": "notifications@yammer.com",
+          "external_id": "30b06829-8f93-334b-4aeb-89f66a90ed9e",
+          "id": 668034,
+          "name": "tara daniel",
+          "phone_number": null,
+          "updated_at": "2024-09-30T15:50:01.000Z"
+        },
+        {
+          "created_at": "2024-08-27T17:50:30.000Z",
+          "email": "brandon.lacanaria@thetalake.io",
+          "external_id": "122431cc-0fe5-ae97-6489-2870c99e794c",
+          "id": 675210,
+          "name": "brandon lacanaria",
+          "phone_number": null,
+          "updated_at": "2025-08-27T21:32:00.000Z"
+        },
+        {
+          "created_at": "2024-07-01T18:32:00.000Z",
+          "email": "ameya.bhakay@thetalake.org",
+          "external_id": "62532297-14aa-d228-013c-dac7f57f0ee4",
+          "id": 669774,
+          "name": "ameya bhakay",
+          "phone_number": null,
+          "updated_at": "2026-01-02T21:14:30.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "michelle.jarrett@thetalake.io",
+          "external_id": "bcb3e369-eeaf-a55d-99fd-b6191c00238b",
+          "id": 668332,
+          "name": "michelle jarrett",
+          "phone_number": "18058252821",
+          "updated_at": "2025-05-07T16:28:19.000Z"
+        },
+        {
+          "created_at": "2021-04-23T23:08:01.000Z",
+          "email": "kannan@thetalake.com",
+          "external_id": "105",
+          "id": 1893,
+          "name": "kannan appachi",
+          "phone_number": "3233481768",
+          "updated_at": "2023-03-30T00:00:29.000Z"
+        },
+        {
+          "created_at": "2024-06-27T14:46:01.000Z",
+          "email": "daniela.barragan@thetalake.io",
+          "external_id": "4c9e8e9e-b4e3-2054-a9fa-e2caadc2896f",
+          "id": 668336,
+          "name": "daniela barragan",
+          "phone_number": null,
+          "updated_at": "2025-04-12T00:00:22.000Z"
+        },
+        {
+          "created_at": "2022-04-11T22:04:05.000Z",
+          "email": "will.warner@thetalake.com",
+          "external_id": "U03BWDS95NV",
+          "id": 69980,
+          "name": "Will Warner",
+          "phone_number": "16464186081",
+          "updated_at": "2025-02-04T17:10:08.000Z"
+        },
+        {
+          "created_at": "2023-11-13T20:30:01.000Z",
+          "email": "tara.medeiros@thetalake.io",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS83NDVjOWZkZS01MWFlLTQyMmMtYWRjMC1iNTcyY2RjMGQ4MjA",
+          "id": 321777,
+          "name": "tara medeiros",
+          "phone_number": null,
+          "updated_at": "2023-11-13T20:30:01.000Z"
+        },
+        {
+          "created_at": "2025-03-10T17:46:03.000Z",
+          "email": "doug@thetalake.io",
+          "external_id": "c9a8309a-81f3-4bd2-98a9-6c6919c36de9",
+          "id": 749428,
+          "name": "doug coleman",
+          "phone_number": null,
+          "updated_at": "2025-04-16T00:00:14.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "michelle.jarrett.preview@thetalake.org",
+          "external_id": "4fa45191-a938-4423-ad11-e6533d7bb5a1",
+          "id": 663605,
+          "name": "michelle jarrett preview",
+          "phone_number": "18482446653",
+          "updated_at": "2025-02-20T19:52:19.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "tara.medeiros.preview@thetalake.org",
+          "external_id": "5ef0c129-5fff-41ca-9ec4-f0332fa71850",
+          "id": 663606,
+          "name": "tara medeiros preview",
+          "phone_number": null,
+          "updated_at": "2025-06-17T20:52:42.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "will.warner.preview@thetalake.io",
+          "external_id": "8a15b9b2-0457-40b9-afbb-ca88c7b10c7c",
+          "id": 754286,
+          "name": "will warner preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2024-04-26T00:02:30.000Z",
+          "email": "daniela.barragan.preview@thetalake.org",
+          "external_id": "99fc6db9-d970-4f38-930b-9387fbd27dbe",
+          "id": 663604,
+          "name": "daniela barragan preview",
+          "phone_number": null,
+          "updated_at": "2024-04-26T07:28:07.000Z"
+        },
+        {
+          "created_at": "2025-05-06T00:00:15.000Z",
+          "email": "gary.preview@thetalake.io",
+          "external_id": "0d3e898c-5f94-4c16-84be-246a29499c4b",
+          "id": 754287,
+          "name": "gary pinkham preview",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        },
+        {
+          "created_at": "2025-06-25T19:54:28.000Z",
+          "email": "tara.medeiros.nonadmin@thetalake.io",
+          "external_id": "cd4db0b0-ee7a-464e-9ef5-548513e707ce",
+          "id": 758895,
+          "name": "tara nonadmin",
+          "phone_number": null,
+          "updated_at": "2025-06-25T19:54:28.000Z"
+        },
+        {
+          "created_at": "2023-05-05T15:06:13.000Z",
+          "email": "johausti@cisco.com",
+          "external_id": "Y2lzY29zcGFyazovL3VzL1BFT1BMRS82OTdhYjk0NS0xNTNmLTQ3MTMtOGFkNy02NDhhZmJmM2E1ZTU",
+          "id": 181014,
+          "name": "john austin",
+          "phone_number": null,
+          "updated_at": "2023-05-05T15:06:13.000Z"
+        },
+        {
+          "created_at": "2026-01-21T00:00:13.000Z",
+          "email": null,
+          "external_id": "b8faba82-43c9-4394-9331-764d7c07b47b",
+          "id": 909595,
+          "name": "kannan non admin",
+          "phone_number": null,
+          "updated_at": "2026-01-21T00:00:13.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-03-29T21:53:15.000Z",
+      "description": "QA Disclaimers account for issues.",
+      "external_id": "d36fc18c-048a-4c38-bac7-e67f8be32800",
+      "id": 2002,
+      "identity_count": 0,
+      "name": "QA Chat",
+      "updated_at": "2022-04-13T00:00:25.000Z",
+      "identities": []
+    },
+    {
+      "created_at": "2022-03-29T21:53:15.000Z",
+      "description": "Group for AZAD Tesy/sync",
+      "external_id": "fc96dfc0-013c-4075-a03f-3b6f32818d11",
+      "id": 2003,
+      "identity_count": 4,
+      "name": "Brandon Azure AD TEST",
+      "updated_at": "2022-03-29T21:53:15.000Z",
+      "identities": [
+        {
+          "created_at": "2021-03-23T00:00:05.000Z",
+          "email": null,
+          "external_id": "CN=Brandon Online Meetings Recorder,OU=AADDC Users,DC=thetalake,DC=io",
+          "id": 1694,
+          "name": "brandon online meetings recorder",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:14.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "upntest@thetalake.io",
+          "external_id": "048cc228-5e23-4bdb-8aeb-2a91e939e3b2",
+          "id": 69849,
+          "name": "upn test",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:28.000Z"
+        },
+        {
+          "created_at": "2022-03-29T21:53:11.000Z",
+          "email": "role2@thetalake.io",
+          "external_id": "0c6d3db0-8dcf-4755-9363-fa2c00df06fc",
+          "id": 69850,
+          "name": "role  test 2",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-04-09T00:00:25.000Z",
+      "description": "Disclaimers Group",
+      "external_id": "cbdc131a-8fc5-4861-b68c-80f7b045361e",
+      "id": 2004,
+      "identity_count": 2,
+      "name": "Disclaimers",
+      "updated_at": "2022-04-09T00:00:25.000Z",
+      "identities": [
+        {
+          "created_at": "2022-05-10T00:00:26.000Z",
+          "email": "Tklub@thetalake.io",
+          "external_id": "3593eb15-fb76-444f-a046-78c289d8eb3a",
+          "id": 75764,
+          "name": "tod klub",
+          "phone_number": "5559995555",
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-05-18T12:00:40.000Z",
+          "email": "jake@thetalake.io",
+          "external_id": "9462f9bf-3875-4025-b427-595339e0fcc9",
+          "id": 75906,
+          "name": "jake taylor",
+          "phone_number": null,
+          "updated_at": "2025-05-07T12:53:29.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-04-13T00:00:25.000Z",
+      "description": "UK Members",
+      "external_id": "692dba40-db73-48a7-89ce-2340c714c515",
+      "id": 2005,
+      "identity_count": 2,
+      "name": "UK",
+      "updated_at": "2022-04-13T00:00:25.000Z",
+      "identities": [
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-04-13T00:00:25.000Z",
+      "description": "Field Services Members",
+      "external_id": "6d8e749e-eddc-4296-9235-91b4236daa99",
+      "id": 2006,
+      "identity_count": 6,
+      "name": "Field Services",
+      "updated_at": "2022-04-13T00:00:25.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2024-07-01T18:32:00.000Z",
+          "email": "ameya.bhakay@thetalake.org",
+          "external_id": "62532297-14aa-d228-013c-dac7f57f0ee4",
+          "id": 669774,
+          "name": "ameya bhakay",
+          "phone_number": null,
+          "updated_at": "2026-01-02T21:14:30.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-04-13T00:00:25.000Z",
+      "description": "USA members",
+      "external_id": "d3cb3363-77ca-4f03-afb9-92d5afc9c73c",
+      "id": 2007,
+      "identity_count": 3,
+      "name": "USA",
+      "updated_at": "2022-04-13T00:00:25.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        },
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "christy@thetalake.io",
+          "external_id": "856813bf-190f-494e-a680-e52dd6d6432c",
+          "id": 49960,
+          "name": "christy tofanelli",
+          "phone_number": null,
+          "updated_at": "2025-12-18T20:59:35.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-04-27T00:00:25.000Z",
+      "description": "Group for Testing Groups vs JIT",
+      "external_id": "4eb3169d-c692-46b9-9323-a00fe924b340",
+      "id": 2009,
+      "identity_count": 1,
+      "name": "Garys Group",
+      "updated_at": "2022-04-27T00:00:25.000Z",
+      "identities": [
+        {
+          "created_at": "2020-10-13T17:25:10.000Z",
+          "email": "gary@thetalake.com",
+          "external_id": "e14e7d1d-8562-4d81-97f3-4c0ef30e9921",
+          "id": 332,
+          "name": "gary pinkham",
+          "phone_number": "7817384663",
+          "updated_at": "2026-01-24T00:00:17.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-05-10T00:00:28.000Z",
+      "description": "Reg Users for Disclaimers",
+      "external_id": "fb177129-c250-4cb5-b2b3-6a721ac05548",
+      "id": 2025,
+      "identity_count": 3,
+      "name": "Reg Users",
+      "updated_at": "2022-05-10T00:00:28.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:49.000Z",
+          "email": "steven@thetalake.io",
+          "external_id": "65cdb11c-4a7f-4e40-b41c-49b23ffff4dc",
+          "id": 49964,
+          "name": "steven wescoat",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:11.000Z"
+        },
+        {
+          "created_at": "2022-06-30T00:00:32.000Z",
+          "email": "Dave@thetalake.io",
+          "external_id": "5e30bab8-7ca8-47eb-a513-87128fe934ce",
+          "id": 76287,
+          "name": "dave hamel",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2024-07-01T18:32:00.000Z",
+          "email": "ameya.bhakay@thetalake.org",
+          "external_id": "62532297-14aa-d228-013c-dac7f57f0ee4",
+          "id": 669774,
+          "name": "ameya bhakay",
+          "phone_number": null,
+          "updated_at": "2026-01-02T21:14:30.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-05-23T12:00:26.000Z",
+      "description": "rotem test team",
+      "external_id": "fc7b806f-d1e1-42d7-8164-6544f57c0469",
+      "id": 2026,
+      "identity_count": 0,
+      "name": "rotem test team",
+      "updated_at": "2022-05-23T12:00:26.000Z",
+      "identities": []
+    },
+    {
+      "created_at": "2022-05-26T12:00:28.000Z",
+      "description": "language testing",
+      "external_id": "daf29496-a25b-47ba-8dca-b2b4b8ac8628",
+      "id": 2029,
+      "identity_count": 1,
+      "name": "language testing",
+      "updated_at": "2022-05-26T12:00:28.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-05-27T12:00:27.000Z",
+      "description": "Shared Channel Team",
+      "external_id": "7857031d-4c51-4aaa-87bb-9940fbf16034",
+      "id": 2030,
+      "identity_count": 1,
+      "name": "Shared Channel Team",
+      "updated_at": "2022-05-27T12:00:27.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "brandon@thetalake.io",
+          "external_id": "85b97285-f362-4c90-914b-d540e0ee444d",
+          "id": 49952,
+          "name": "brandon landin",
+          "phone_number": null,
+          "updated_at": "2025-12-18T21:36:42.000Z"
+        }
+      ]
+    },
+    {
+      "created_at": "2022-06-07T00:00:29.000Z",
+      "description": "UK testing Team",
+      "external_id": "83bef67d-6a18-4ce6-b062-2b8cb65c3e1f",
+      "id": 2031,
+      "identity_count": 4,
+      "name": "UK - Testing",
+      "updated_at": "2022-06-07T00:00:29.000Z",
+      "identities": [
+        {
+          "created_at": "2021-12-11T14:03:48.000Z",
+          "email": "isobel@thetalake.io",
+          "external_id": "7aafeb23-ddb1-4096-b6a0-837838715459",
+          "id": 49950,
+          "name": "isobel",
+          "phone_number": "447870354730",
+          "updated_at": "2025-06-04T04:34:06.000Z"
+        },
+        {
+          "created_at": "2024-11-04T16:20:08.000Z",
+          "email": "jackgallagher@thetalake.io",
+          "external_id": "5e79213a-0c5b-4922-ab51-39a948d01424",
+          "id": 680944,
+          "name": "jack gallagher",
+          "phone_number": "07710452062",
+          "updated_at": "2025-12-18T20:05:51.000Z"
+        },
+        {
+          "created_at": "2022-04-02T00:00:19.000Z",
+          "email": "jamesmccullough@thetalake.io",
+          "external_id": "5b1cb292-dd46-43fa-af1a-145936f4adbb",
+          "id": 69880,
+          "name": "james mccullough",
+          "phone_number": null,
+          "updated_at": "2023-03-30T00:00:12.000Z"
+        },
+        {
+          "created_at": "2022-07-26T16:42:01.000Z",
+          "email": "daniel.nelis@thetalake.com",
+          "external_id": "yWZ3eIcrTwCJAmvu8LPYBA",
+          "id": 85313,
+          "name": "daniel nelis",
+          "phone_number": null,
+          "updated_at": "2025-11-24T19:35:51.000Z"
+        }
+      ]
+    }
+  ]
+}

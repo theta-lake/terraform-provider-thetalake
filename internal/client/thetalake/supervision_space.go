@@ -19,7 +19,7 @@ type SupervisionSpace struct {
 	Disabled                 bool                   `json:"disabled"`
 	ExternalId               string                 `json:"external_id"`
 	HardEnforce              bool                   `json:"hard_enforce"`
-	ID                       int                    `json:"id"`
+	Id                       int64                  `json:"id"`
 	IntegrationIds           []int64                `json:"integration_ids"`
 	Integrations             []Integration          `json:"integrations,omitempty"`
 	MediaTypeIds             []int64                `json:"media_type_ids"`
@@ -44,7 +44,7 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// Add users to the supervision space if any are specified
 	if len(space.UserIds) > 0 {
-		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.ID), space.UserIds, "supervision_space", &responseSpace)
+		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), space.UserIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -52,7 +52,7 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// Add user groups to the supervision space if any are specified
 	if len(space.UserGroupIds) > 0 {
-		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.ID), space.UserGroupIds, "supervision_space", &responseSpace)
+		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.Id), space.UserGroupIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -88,7 +88,7 @@ func (s *Client) GetSupervisionSpaceById(ctx context.Context, spaceId int64) (Su
 
 func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSpace) (SupervisionSpace, error) {
 	var responseSpace SupervisionSpace
-	endpoint := fmt.Sprintf("/supervision_spaces/%v", space.ID)
+	endpoint := fmt.Sprintf("/supervision_spaces/%v", space.Id)
 
 	err := s.doRequest(http.MethodPut, endpoint, space, "supervision_space", &responseSpace)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	}
 
 	// Update user groups, adding and removing as necessary
-	userGroupsUrl := fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.ID)
+	userGroupsUrl := fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.Id)
 	if len(space.UserGroupIds) > 0 {
 		err = s.doRequest(http.MethodPost, userGroupsUrl, space.UserGroupIds, "supervision_space", &responseSpace)
 		if err != nil {
@@ -129,7 +129,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	}
 
 	// Update users, adding and removing as necessary
-	usersUrls := fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.ID)
+	usersUrls := fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id)
 
 	// Add users
 	if len(space.UserIds) > 0 {
@@ -142,7 +142,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	// Remove users
 	ids = findIdsToRemove(responseSpace.UserIds, space.UserIds)
 	if len(ids) > 0 {
-		err = s.doRequest(http.MethodDelete, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.ID), ids, "supervision_space", &responseSpace)
+		err = s.doRequest(http.MethodDelete, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), ids, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}

@@ -61,7 +61,7 @@ func fromApiModel(space thetalake.SupervisionSpace) supervisionSpaceStateModel {
 		Disabled:                         types.BoolValue(space.Disabled),
 		ExternalId:                       types.StringValue(space.ExternalId),
 		HardEnforce:                      types.BoolValue(space.HardEnforce),
-		Id:                               types.Int64Value(int64(space.ID)),
+		Id:                               types.Int64Value(int64(space.Id)),
 		Name:                             types.StringValue(space.Name),
 		AssignedSupervisionSpacePriority: types.Int64Value(int64(space.SupervisionSpacePriority)),
 		UpdatedAt:                        timetypes.NewRFC3339TimeValue(space.UpdatedAt),

@@ -131,7 +131,7 @@ func (r *supervisionSpaceResource) Update(ctx context.Context, req resource.Upda
 
 	// Map plan model to API model
 	apiModel := toApiModel(&plan)
-	apiModel.ID = int(state.Id.ValueInt64())
+	apiModel.Id = state.Id.ValueInt64()
 
 	updatedSpace, err := r.client.UpdateSupervisionSpace(ctx, apiModel)
 	if err != nil {
