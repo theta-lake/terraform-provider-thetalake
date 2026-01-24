@@ -8,7 +8,11 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
+	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/directory_group"
+	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/integration"
+	retentionlibrary "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/retention_library"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/role"
+	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
 	supervisionspace "github.com/theta-lake/terraform-provider-thetalake/internal/resources/supervision_space"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/user"
 )
@@ -83,5 +87,9 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 func (p *ThetalakeProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		role.NewRoleDataSource,
+		integration.NewIntegrationDataSource,
+		retentionlibrary.NewRetentionLibraryDataSource,
+		directorygroup.NewDirectoryGroupDataSource,
+		usergroup.NewUserGroupDataSource,
 	}
 }

@@ -18,14 +18,13 @@ type SecurityFilter struct {
 	Name     string `json:"name"`
 }
 
-type User struct {
+type user struct {
 	CreatedAt             time.Time        `json:"created_at"`
 	Id                    int64            `json:"id"`
 	Email                 string           `json:"email"`
 	Name                  string           `json:"name"`
 	Password              string           `json:"password"`
 	PasswordConfirmation  string           `json:"password_confirmation"`
-	RoleId                int64            `json:"role_id"`
 	SearchId              int64            `json:"search_id,omitempty"`
 	CurrentWorkspace      CurrentWorkspace `json:"current_org_unit"`
 	Disabled              bool             `json:"disabled"`
@@ -39,8 +38,19 @@ type User struct {
 	PasswordChangedAt     *time.Time       `json:"password_changed_at"`
 	QueuePaused           bool             `json:"queue_paused"`
 	UpdatedAt             *time.Time       `json:"updated_at"`
-	Role                  Role             `json:"role"`
 	SecurityFilter        *SecurityFilter  `json:"security_filter"`
+	RoleId                int64            `json:"role_id,omitempty"`
+}
+
+type User struct {
+	user
+	Role Role `json:"role"`
+}
+
+type SupervisionSpaceUser struct {
+	user
+	Role   string `json:"role"`
+	UserId int64  `json:"user_id"`
 }
 
 func (s *Client) CreateUser(ctx context.Context, user User) (User, error) {

@@ -31,13 +31,12 @@ type userStateModel struct {
 }
 
 func toApiModel(userModel *userPlanModel) thetalake.User {
-	newUser := thetalake.User{
-		Email:                userModel.Email.ValueString(),
-		Name:                 userModel.Name.ValueString(),
-		Password:             userModel.Password.ValueString(),
-		PasswordConfirmation: userModel.Password.ValueString(),
-		RoleId:               userModel.RoleId.ValueInt64(),
-	}
+	newUser := thetalake.User{}
+	newUser.Email = userModel.Email.ValueString()
+	newUser.Name = userModel.Name.ValueString()
+	newUser.Password = userModel.Password.ValueString()
+	newUser.PasswordConfirmation = userModel.Password.ValueString()
+	newUser.RoleId = userModel.RoleId.ValueInt64()
 
 	if userModel.SecurityFilterId.ValueInt64() != 0 {
 		newUser.SearchId = userModel.SecurityFilterId.ValueInt64()

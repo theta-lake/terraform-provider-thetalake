@@ -84,11 +84,6 @@ func (r *supervisionSpaceResource) Schema(ctx context.Context, req resource.Sche
 				Computed:            true,
 				MarkdownDescription: "Indicates if all participants can be enabled for the supervision space",
 			},
-			"compiled_user_list": schema.ListAttribute{
-				ElementType:         types.Int64Type,
-				Computed:            true,
-				MarkdownDescription: "The compiled list of user IDs associated with this supervision space",
-			},
 			"created_at": schema.StringAttribute{
 				Computed:            true,
 				CustomType:          timetypes.RFC3339Type{},

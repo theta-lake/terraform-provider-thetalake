@@ -32,7 +32,6 @@ type supervisionSpaceStateModel struct {
 	AllUsers                          types.Bool        `tfsdk:"all_users"`
 	CanDelete                         types.Bool        `tfsdk:"can_delete"`
 	CanEnableAllParticipants          types.Bool        `tfsdk:"can_enable_all_participants"`
-	CompiledUserList                  types.List        `tfsdk:"compiled_user_list"`
 	CreatedAt                         timetypes.RFC3339 `tfsdk:"created_at"`
 	Description                       types.String      `tfsdk:"description"`
 	DirectoryGroupIds                 types.List        `tfsdk:"directory_group_ids"`
@@ -68,13 +67,6 @@ func fromApiModel(space thetalake.SupervisionSpace) supervisionSpaceStateModel {
 		UpdatedAt:                        timetypes.NewRFC3339TimeValue(space.UpdatedAt),
 	}
 
-	// Populate list-typed attributes
-	var compiledUserListValues []attr.Value
-	for _, user := range space.CompiledUserList {
-		compiledUserListValues = append(compiledUserListValues, types.Int64Value(int64(user.Id)))
-	}
-	spaceModel.CompiledUserList = types.ListValueMust(types.Int64Type, compiledUserListValues)
-
 	var directoryGroupIdsValues []attr.Value
 	for _, group := range space.DirectoryGroups {
 		directoryGroupIdsValues = append(directoryGroupIdsValues, types.Int64Value(int64(group.Id)))
@@ -106,8 +98,8 @@ func fromApiModel(space thetalake.SupervisionSpace) supervisionSpaceStateModel {
 	spaceModel.UserGroupIds = types.ListValueMust(types.Int64Type, userGroupIdsValues)
 
 	var userIdsValues []attr.Value
-	for _, user := range space.Users {
-		userIdsValues = append(userIdsValues, types.Int64Value(int64(user.Id)))
+	for _, id := range space.UserIds {
+		userIdsValues = append(userIdsValues, types.Int64Value(id))
 	}
 	spaceModel.UserIds = types.ListValueMust(types.Int64Type, userIdsValues)
 
@@ -128,6 +120,7 @@ func toApiModel(spaceModel *supervisionSpacePlanModel) thetalake.SupervisionSpac
 		RetentionLibraryIds:      []int64{},
 		UserGroupIds:             []int64{},
 		UserIds:                  []int64{},
+		DirectoryGroupIds:        []int64{},
 	}
 
 	// Iterate over the DirectoryGroupIds list and populate DirectoryGroupIds field
