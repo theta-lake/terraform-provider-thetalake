@@ -9,15 +9,6 @@ jobs:
   unit-tests:
     runs-on: ubuntu-latest
     steps:
-      - name: Diagnostic Check
-        run: |
-          if [ -z "${{ secrets.TF_ACC_TEST_CLIENT_ID }}" ]; then
-            echo "❌ CLIENT_ID is MISSING"
-          else
-            echo "✅ CLIENT_ID is PRESENT (Length: ${#SECRET_VAL})"
-          fi
-        env:
-          SECRET_VAL: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -25,9 +16,14 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: '1.25'
+          cache: true
 
       - name: Run unit tests
         run: go test ./...
+        env:
+          TF_ACC: '1'
+          TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
+          TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
 
   acceptance-tests:
     runs-on: ubuntu-latest
