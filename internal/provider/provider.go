@@ -19,15 +19,10 @@ import (
 
 var _ provider.Provider = &ThetalakeProvider{}
 
-// ThetalakeProvider defines the provider implementation
 type ThetalakeProvider struct {
-	// version is set to the provider version on release, "dev" when the
-	// provider is built and ran locally, and "test" when running acceptance
-	// testing
 	version string
 }
 
-// ThetalakeProviderModel describes the provider data model
 type ThetalakeProviderModel struct {
 	ApiServerUrl types.String `tfsdk:"api_server"`
 	ClientId     types.String `tfsdk:"client_id"`

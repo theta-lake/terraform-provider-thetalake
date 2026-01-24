@@ -1,0 +1,47 @@
+project_name: terraform-provider-thetalake
+
+before:
+  hooks:
+    # Run tests before creating a release
+    - go test ./...
+
+builds:
+  - id: terraform-provider-thetalake
+    main: ./main.go
+    binary: terraform-provider-thetalake
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - darwin
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    ldflags:
+      - -s -w -X main.version={{ .Version }}
+
+archives:
+  - id: terraform-provider-thetalake
+    builds:
+      - terraform-provider-thetalake
+    format: zip
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}'
+    files:
+      - LICENSE
+      - README.md
+
+checksum:
+  name_template: '{{ .ProjectName }}_{{ .Version }}_SHA256SUMS'
+
+changelog:
+  sort: desc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+release:
+  github:
+    owner: theta-lake
+    name: terraform-provider-thetalake
