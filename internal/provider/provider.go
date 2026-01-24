@@ -72,6 +72,7 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 	}
 
 	client := thetalake.NewClient(providerModel.ApiServerUrl.ValueString(), providerModel.ClientId.ValueString(), providerModel.ClientSecret.ValueString())
+	client.SetVersion(p.version)
 
 	resp.DataSourceData = client
 	resp.ResourceData = client

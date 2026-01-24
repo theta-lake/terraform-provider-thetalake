@@ -18,6 +18,7 @@ type Client struct {
 	clientSecret string
 	bearerToken  string
 	httpClient   *http.Client
+	version      string
 }
 
 type apiResponse struct {
@@ -43,6 +44,7 @@ func NewClient(endpoint, clientId, clientSecret string) *Client {
 		clientId:     clientId,
 		clientSecret: clientSecret,
 		httpClient:   &http.Client{},
+		version:      "localdev",
 	}
 
 	// Attempt to fetch an access token immediately. For now, ignore
@@ -53,6 +55,10 @@ func NewClient(endpoint, clientId, clientSecret string) *Client {
 	}
 
 	return c
+}
+
+func (c *Client) SetVersion(version string) {
+	c.version = version
 }
 
 func (c *Client) doRequestWithPagination(method, endpoint string, body any, responseObjectName string, responseObject any, max int) error {
@@ -118,7 +124,7 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	}
 
 	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
-	req.Header.Set("User-Agent", "ThetaLake-Terraform-Provider/0.0.0-dev") // TODO make version dynamic from the build info
+	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
 
 	if body != nil {
 		req.Header.Set("Content-Type", "application/json")
