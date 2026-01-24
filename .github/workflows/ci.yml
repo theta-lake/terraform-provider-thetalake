@@ -21,7 +21,6 @@ jobs:
       - name: Run unit tests
         run: go test ./...
         env:
-          TF_ACC: '1'
           TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
           TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
 
