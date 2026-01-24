@@ -11,13 +11,13 @@ jobs:
     steps:
       - name: Diagnostic Check
         run: |
-          if [ -z "${{ secrets.CLIENT_ID }}" ]; then
+          if [ -z "${{ secrets.TF_ACC_TEST_CLIENT_ID }}" ]; then
             echo "❌ CLIENT_ID is MISSING"
           else
             echo "✅ CLIENT_ID is PRESENT (Length: ${#SECRET_VAL})"
           fi
         env:
-          SECRET_VAL: ${{ secrets.CLIENT_ID }}
+          SECRET_VAL: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
       - name: Checkout
         uses: actions/checkout@v4
 
