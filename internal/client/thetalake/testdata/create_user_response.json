@@ -1,0 +1,34 @@
+{
+  "status_code": 201,
+  "status_string": "Created",
+  "request_id": "ca116f96-bbd5-11ef-9468-53af98260bba",
+  "user": {
+    "created_at": "2021-06-16T01:37:04.262Z",
+    "current_org_unit": {
+      "archive_only": false,
+      "id": 1,
+      "name": "Theta Lake Support"
+    },
+    "disabled": false,
+    "default_user_timezone": null,
+    "disabled_at": null,
+    "email": "test@test.com",
+    "force_sso": false,
+    "has_datums": true,
+    "has_multiple_workspaces": true,
+    "id": 5,
+    "last_login": "2022-10-21T16:08:37.000Z",
+    "name": "Test User",
+    "otp_enabled": false,
+    "otp_enabled_at": null,
+    "password_changed_at": null,
+    "queue_paused": false,
+    "role": {
+      "id": 1,
+      "name": "Reviewer"
+    },
+    "search_id": 10,
+    "updated_at": "2022-10-12T02:29:49.146Z",
+    "user_initials": "JD"
+  }
+}
