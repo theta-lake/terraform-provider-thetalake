@@ -12,13 +12,14 @@ import (
 var (
 	clientId           = os.Getenv("TF_ACC_TEST_CLIENT_ID")
 	clientSecret       = os.Getenv("TF_ACC_TEST_CLIENT_SECRET")
+	apiServer          = os.Getenv("TF_ACC_TEST_API_SERVER")
 	TestProviderConfig = fmt.Sprintf(`
 provider "thetalake" {
-  api_server    = "https://api-dev1.thetalake.com"
+  api_server    = "%s"
   client_id     = "%s"
   client_secret = "%s"
 }
-`, clientId, clientSecret)
+`, apiServer, clientId, clientSecret)
 )
 
 var (
