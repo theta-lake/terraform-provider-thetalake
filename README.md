@@ -1,6 +1,8 @@
 # terraform-provider-thetalake
 Terraform Provider for Theta Lake
 
+[![CI](https://github.com/theta-lake/terraform-provider-thetalake/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theta-lake/terraform-provider-thetalake/actions/workflows/ci.yml)
+
 ## Local Testing
 1. Install the provider
 ```bash
