@@ -23,6 +23,7 @@ jobs:
         env:
           TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
           TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
+          TF_ACC_TEST_API_SERVER: ${{ secrets.TF_ACC_TEST_API_SERVER }}
 
   acceptance-tests:
     runs-on: ubuntu-latest

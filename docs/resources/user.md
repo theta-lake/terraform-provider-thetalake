@@ -3,12 +3,12 @@
 page_title: "thetalake_user Resource - thetalake"
 subcategory: ""
 description: |-
-  
+  The user resource allows for the creation and management of users within Theta Lake.
 ---
 
 # thetalake_user (Resource)
 
-
+The user resource allows for the creation and management of users within Theta Lake.
 
 
 

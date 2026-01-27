@@ -1,8 +1,10 @@
+.PHONY: build install docs
+
 build:
 	go build -o terraform-provider-thetalake .
 
 install:
 	@go install .
 
-generate-docs:
-	@tfplugindocs generate
+docs:
+	go generate ./tools
