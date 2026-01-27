@@ -4,5 +4,5 @@ build:
 install:
 	@go install .
 
-generate-docs:
+docs:
 	@tfplugindocs generate

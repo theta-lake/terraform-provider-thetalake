@@ -11,6 +11,7 @@ import (
 
 func (r *userResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		MarkdownDescription: "The user resource allows for the creation and management of users within Theta Lake.",
 		Attributes: map[string]schema.Attribute{
 			"created_at": schema.StringAttribute{
 				Computed:            true,

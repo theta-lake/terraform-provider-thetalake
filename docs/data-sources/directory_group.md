@@ -3,12 +3,12 @@
 page_title: "thetalake_directory_group Data Source - thetalake"
 subcategory: ""
 description: |-
-  
+  The directory group data source enables look up from directory group name to ID
 ---
 
 # thetalake_directory_group (Data Source)
 
-
+The directory group data source enables look up from directory group name to ID
 
 
 

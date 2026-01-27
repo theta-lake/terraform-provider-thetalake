@@ -3,12 +3,12 @@
 page_title: "thetalake_supervision_space Resource - thetalake"
 subcategory: ""
 description: |-
-  
+  The supervision space resource allows for the creation and management of supervision spaces within Theta Lake.
 ---
 
 # thetalake_supervision_space (Resource)
 
-
+The supervision space resource allows for the creation and management of supervision spaces within Theta Lake.
 
 
 

@@ -1,86 +1,60 @@
-# terraform-provider-thetalake
-Terraform Provider for Theta Lake
+# Theta Lake Provider for Terraform
 
-[![CI](https://github.com/theta-lake/terraform-provider-thetalake/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/theta-lake/terraform-provider-thetalake/actions/workflows/ci.yml)
+The Theta Lake Provider enables you to manage Theta Lake compliance, archiving, supervision, and risk detection configurations using Terraform’s Infrastructure as Code workflows.
 
-## Local Testing
-1. Install the provider
-```bash
-# Installs the provider to the bin directory of your go path
-make install
-```
+## Requirements
 
-2. Create a `~/.terraformrc` file if it does not already exist
+The Theta Lake Provider requires [Terraform](https://developer.hashicorp.com/terraform) 1.13.x or newer.
 
-3. Update your `~/.terraformrc` file
-```txt
-# the direct section is needed to ensure that the other providers run properly
-provider_installation {
-    dev_overrides {
-        "registry.terraform.io/thetalake/thetalake" = "/Users/tyang/go/bin"
-    }
-    direct {
-        enabled = true
-    }
-}
-```
+The provider has been tested with Terraform up to version 1.13.4. Versions newer than 1.13.4 may work, but are not officially supported.
 
-4. Create and cd into a test directory
-```bash
-mkdir provider-test
+## Installation
 
-# cd into the directory
-cd provider-test
-```
+Add the provider to your Terraform configuration:
 
-5. Create your `main.tf` file and save it in the test directory
-```txt
+```hcl
 terraform {
     required_providers {
         thetalake = {
-            source = "registry.terraform.io/thetalake/thetalake"
-            version = "0.1.0"
+            source  = "thetalake/thetalake"
+            version = "~> 1.0"
         }
     }
 }
 
 provider "thetalake" {
-    endpoint = "http://localhost:6002/api/v1/users"
-    token = "insert-token"
-}
-
-resource "thetalake_user" "user_01" {
-    name = "insert-name"
-    email = "insert-email@thetalake.com"
-    password = "insert-password"
-    password_confirmation = "insert-password"
-    role_id = 3
-    search_id = 372899
+    api_server    = "API URL here"
+    client_id     = "client-id"
+    client_secret = "client-secret"
 }
 ```
 
-6. Run Terraform plan
+Then run
+
 ```bash
-# terraform init is not used for local dev testing
-terraform plan
+terraform init
 ```
 
-7. Run Terraform apply
-```bash
-terraform apply
-```
+## Documentation
 
-## Generate Documentation
-1. Install the tool
-```bash
-go install github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs@latest
+You can find documentation for the Theta Lake Provider on the [Terraform Registry](https://registry.terraform.io/providers/thetalake/thetalake/latest) site.
 
-# verify the installation
-tfplugindocs --version
-```
+## Authentication Credentials
 
-2. Generate the docs
-```bash
-# make sure to run from the root of the repo
-make generate-docs
-```
+You can find documentation on obtaining Theta Lake OAuth credentials at the [Theta Lake Developer](https://developer.thetalake.ai/documentation/api-keys) site.
+
+## License
+
+Copyright 2026 Theta Lake, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+<http://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.

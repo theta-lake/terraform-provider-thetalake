@@ -3,12 +3,12 @@
 page_title: "thetalake_retention_library Data Source - thetalake"
 subcategory: ""
 description: |-
-  
+  The retention library data source enables look up from retention library name to ID
 ---
 
 # thetalake_retention_library (Data Source)
 
-
+The retention library data source enables look up from retention library name to ID
 
 
 

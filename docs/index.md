@@ -12,10 +12,86 @@ description: |-
 ## Example Usage
 
 ```terraform
+terraform {
+  required_version = ">= 1.13.0"
+  required_providers {
+    thetalake = {
+      source  = "registry.terraform.io/thetalake/thetalake"
+      version = "0.1.0"
+    }
+  }
+}
+
 provider "thetalake" {
-  endpoint      = "https://api.thetalake.ai"
-  client_id     = "abc123"
-  client_secret = "secret"
+  api_server    = "insert-api-server"
+  client_id     = "insert-api-token"
+  client_secret = "insert-api-secret"
+}
+
+variable "default_user_password" {
+  type      = string
+  default   = "Testtesttest123"
+  sensitive = true
+}
+
+data "thetalake_role" "reviewer" {
+  name = "Reviewer"
+}
+
+data "thetalake_role" "api_only" {
+  name = "API Only"
+}
+
+data "thetalake_integration" "test_integration" {
+  name = "Test integration 1"
+}
+
+data "thetalake_integration" "test_integration2" {
+  name = "Test integration 2"
+}
+
+data "thetalake_retention_library" "test_retention_library" {
+  name = "Test retention library"
+}
+
+data "thetalake_directory_group" "test_directory_group" {
+  name = "Test directory group"
+}
+
+data "thetalake_user_group" "test_user_group" {
+  name = "Test user group"
+}
+
+resource "thetalake_user" "user_01" {
+  name     = "test user 1"
+  email    = "user1@email.com"
+  password = var.default_user_password
+  disabled = false
+  role_id  = data.thetalake_role.reviewer.id
+}
+
+resource "thetalake_user" "user_02" {
+  name     = "test user 2"
+  email    = "user2@email.com"
+  password = var.default_user_password
+  disabled = false
+  role_id  = data.thetalake_role.api_only.id
+}
+
+resource "thetalake_supervision_space" "test_space" {
+  all_participants                     = false # Note that only one supervision space can have this set to true
+  all_users                            = false # Note that only one supervision space can have this set to true
+  name                                 = "Test supervision space"
+  description                          = "Test supervision space description"
+  directory_group_ids                  = [data.thetalake_directory_group.test_directory_group.id]
+  external_id                          = "space-test-id3"
+  hard_enforce                         = false
+  integration_ids                      = [data.thetalake_integration.test_integration.id, data.thetalake_integration.test_integration2.id]
+  media_types                          = ["chat", "email"]
+  retention_library_ids                = [data.thetalake_retention_library.test_retention_library.id]
+  requested_supervision_space_priority = 100
+  user_group_ids                       = [data.thetalake_user_group.test_user_group.id]
+  user_ids                             = [resource.thetalake_user.user_01.id, resource.thetalake_user.user_02.id]
 }
 ```
 

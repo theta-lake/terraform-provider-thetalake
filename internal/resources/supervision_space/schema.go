@@ -14,6 +14,7 @@ import (
 
 func (r *supervisionSpaceResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = schema.Schema{
+		MarkdownDescription: "The supervision space resource allows for the creation and management of supervision spaces within Theta Lake.",
 		Attributes: map[string]schema.Attribute{
 			"all_participants": schema.BoolAttribute{
 				Required:            true,
