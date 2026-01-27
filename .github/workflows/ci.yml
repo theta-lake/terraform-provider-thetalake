@@ -33,6 +33,7 @@ jobs:
       TF_ACC: '1'
       TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
       TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
+      TF_ACC_TEST_API_SERVER: ${{ secrets.TF_ACC_TEST_API_SERVER }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
