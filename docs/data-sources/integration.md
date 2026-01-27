@@ -3,12 +3,12 @@
 page_title: "thetalake_integration Data Source - thetalake"
 subcategory: ""
 description: |-
-  The integration data source enables look up from integration name to ID
+  The integration data source enables lookup of integration IDs by name
 ---
 
 # thetalake_integration (Data Source)
 
-The integration data source enables look up from integration name to ID
+The integration data source enables lookup of integration IDs by name
 
 
 

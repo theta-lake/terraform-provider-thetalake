@@ -3,12 +3,12 @@
 page_title: "thetalake_user_group Data Source - thetalake"
 subcategory: ""
 description: |-
-  The user group data source enables look up from user group name to ID
+  The user group data source enables lookup of user group IDs by name
 ---
 
 # thetalake_user_group (Data Source)
 
-The user group data source enables look up from user group name to ID
+The user group data source enables lookup of user group IDs by name
 
 
 

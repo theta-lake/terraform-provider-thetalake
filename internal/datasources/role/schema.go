@@ -10,7 +10,7 @@ import (
 
 func (r *roleDataSource) Schema(ctx context.Context, req datasource.SchemaRequest, resp *datasource.SchemaResponse) {
 	resp.Schema = schema.Schema{
-		MarkdownDescription: "The role data source enables look up from role name to ID",
+		MarkdownDescription: "The role data source enables lookup of role IDs by name.",
 		Attributes: map[string]schema.Attribute{
 			"created_at": schema.StringAttribute{
 				Computed:            true,

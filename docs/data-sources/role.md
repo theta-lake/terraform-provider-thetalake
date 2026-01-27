@@ -3,12 +3,12 @@
 page_title: "thetalake_role Data Source - thetalake"
 subcategory: ""
 description: |-
-  The role data source enables look up from role name to ID
+  The role data source enables lookup of role IDs by name.
 ---
 
 # thetalake_role (Data Source)
 
-The role data source enables look up from role name to ID
+The role data source enables lookup of role IDs by name.
 
 
 

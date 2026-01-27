@@ -92,5 +92,5 @@ Terraform Provider for Theta Lake
 
     ```bash
     # make sure to run from the root of the repo
-    make generate-docs
+    make docs
     ```
