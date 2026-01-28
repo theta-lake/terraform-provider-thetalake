@@ -37,7 +37,7 @@ terraform init
 
 ## Documentation
 
-You can find documentation for the Theta Lake Provider on the [Terraform Registry](https://registry.terraform.io/providers/thetalake/thetalake/latest) site.
+You can find documentation for the Theta Lake Provider on the [Terraform Registry](https://registry.terraform.io/providers/theta-lake/thetalake/latest) site.
 
 ## Authentication Credentials
 
