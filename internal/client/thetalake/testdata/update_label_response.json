@@ -1,0 +1,17 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "ca116f96-bbd5-11ef-9468-53af98260bba",
+  "label": {
+    "background_color": "#FF0000",
+    "created_at": "2021-06-16T01:37:04.262Z",
+    "hidden": true,
+    "id": 5,
+    "long_name": "Updated test label",
+    "org_unit_id": 108,
+    "short_name": "Updated Label",
+    "tagged_datums_count": 7,
+    "updated_at": "2023-01-01T00:00:00.000Z",
+    "user_id": 422
+  }
+}

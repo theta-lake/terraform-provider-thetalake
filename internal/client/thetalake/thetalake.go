@@ -191,6 +191,7 @@ func (c *Client) getToken(ctx context.Context) (string, error) {
 		return "", fmt.Errorf("failed to create token request: %w", err)
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
