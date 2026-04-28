@@ -16,6 +16,7 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
 	supervisionspace "github.com/theta-lake/terraform-provider-thetalake/internal/resources/supervision_space"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/user"
+	usergroupresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/user_group"
 )
 
 var _ provider.Provider = &ThetalakeProvider{}
@@ -79,6 +80,7 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 		user.NewUserResource,
 		supervisionspace.NewSupervisionSpaceResource,
 		label.NewLabelResource,
+		usergroupresource.NewUserGroupResource,
 	}
 }
 
