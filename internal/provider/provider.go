@@ -13,6 +13,7 @@ import (
 	retentionlibrary "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/retention_library"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/role"
 	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
+	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
 	supervisionspace "github.com/theta-lake/terraform-provider-thetalake/internal/resources/supervision_space"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/user"
 )
@@ -77,6 +78,7 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 	return []func() resource.Resource{
 		user.NewUserResource,
 		supervisionspace.NewSupervisionSpaceResource,
+		label.NewLabelResource,
 	}
 }
 
