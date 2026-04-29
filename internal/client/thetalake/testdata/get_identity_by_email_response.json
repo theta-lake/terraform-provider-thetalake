@@ -1,0 +1,17 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "test-request-id",
+  "paging": {
+    "prev_page_token": null,
+    "next_page_token": null
+  },
+  "identities": [
+    {
+      "id": 49944,
+      "name": "Test Identity",
+      "email": "test@thetalake.com",
+      "external_id": "identity-ext-001"
+    }
+  ]
+}

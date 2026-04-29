@@ -7,4 +7,4 @@ install:
 	@go install .
 
 docs:
-	go generate ./tools
+	tfplugindocs generate --provider-name thetalake

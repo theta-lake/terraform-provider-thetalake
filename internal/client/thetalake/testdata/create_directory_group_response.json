@@ -1,0 +1,14 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "test-request-id",
+  "directory_group": {
+    "id": 1996,
+    "name": "Test Directory Group",
+    "description": "Test directory group description",
+    "external_id": "dg-ext-001",
+    "identity_count": 0,
+    "created_at": "2024-01-15T10:00:00.000Z",
+    "updated_at": "2024-01-15T10:00:00.000Z"
+  }
+}
