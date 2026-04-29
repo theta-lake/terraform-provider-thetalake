@@ -118,3 +118,18 @@ func TestDeleteUser(t *testing.T) {
 	err := client.DeleteUser(context.Background(), 422)
 	assert.NoError(t, err)
 }
+
+func TestGetUserByEmail(t *testing.T) {
+	testHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("get_users_response.json"))
+	}
+
+	client := newTestClient(t, http.MethodGet, "/users", testHandler)
+
+	u, err := client.GetUserByEmail(context.Background(), "jacob@thetalake.com")
+	assert.NoError(t, err)
+	assert.Equal(t, int64(422), u.Id)
+	assert.Equal(t, "Jacob Christensen", u.Name)
+	assert.Equal(t, "jacob@thetalake.com", u.Email)
+}
