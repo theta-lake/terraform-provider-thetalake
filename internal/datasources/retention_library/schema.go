@@ -17,7 +17,7 @@ func (r *retentionLibraryDataSource) Schema(ctx context.Context, req datasource.
 			},
 			"name": schema.StringAttribute{
 				Required:            true,
-				MarkdownDescription: "The name of the retention library",
+				MarkdownDescription: "The name of the retention library to look up",
 			},
 		},
 	}

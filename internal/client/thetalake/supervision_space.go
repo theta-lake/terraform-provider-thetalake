@@ -61,7 +61,7 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 	// Ensure UserIds in the response reflect the requested user IDs so
 	// Terraform state stays consistent with the plan even if the API
 	// response omits or does not populate user_ids.
-	responseSpace.UserIds = append([]int64(nil), space.UserIds...)
+	responseSpace.UserIds = space.UserIds
 
 	return responseSpace, nil
 }
@@ -158,7 +158,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// As with Create, ensure UserIds in the response reflect the
 	// requested user IDs so downstream state mapping remains stable.
-	responseSpace.UserIds = append([]int64(nil), space.UserIds...)
+	responseSpace.UserIds = space.UserIds
 
 	return responseSpace, nil
 }

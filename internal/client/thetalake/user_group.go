@@ -62,7 +62,7 @@ func (s *Client) CreateUserGroup(ctx context.Context, userGroup UserGroup) (User
 		}
 	}
 
-	responseUserGroup.UserIds = append([]int64(nil), userGroup.UserIds...)
+	responseUserGroup.UserIds = userGroup.UserIds
 
 	return responseUserGroup, nil
 }
@@ -92,7 +92,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 		return UserGroup{}, err
 	}
 
-	// Collect current user IDs from response
+	// Collect current user IDs from the PUT response
 	var currentUserIds []int64
 	for _, user := range responseUserGroup.Users {
 		currentUserIds = append(currentUserIds, user.Id)
@@ -101,9 +101,10 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 	addUrl := fmt.Sprintf("/user_groups/%d/add_users", responseUserGroup.Id)
 	removeUrl := fmt.Sprintf("/user_groups/%d/remove_users", responseUserGroup.Id)
 
-	// Add all desired users (API is idempotent for already-added users)
-	if len(userGroup.UserIds) > 0 {
-		err = s.doRequest(http.MethodPut, addUrl, userGroup.UserIds, "user_group", &responseUserGroup)
+	// Only add users that are not already in the group
+	idsToAdd := findIdsToRemove(userGroup.UserIds, currentUserIds) // Switch the order of arguments to findIdsToRemove to get the correct IDs to add
+	if len(idsToAdd) > 0 {
+		err = s.doRequest(http.MethodPut, addUrl, idsToAdd, "user_group", &responseUserGroup)
 		if err != nil {
 			return responseUserGroup, err
 		}
@@ -118,7 +119,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 		}
 	}
 
-	responseUserGroup.UserIds = append([]int64(nil), userGroup.UserIds...)
+	responseUserGroup.UserIds = userGroup.UserIds
 
 	return responseUserGroup, nil
 }

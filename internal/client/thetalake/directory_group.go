@@ -63,7 +63,7 @@ func (s *Client) CreateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 		}
 	}
 
-	responseDg.IdentityIds = append([]int64(nil), dg.IdentityIds...)
+	responseDg.IdentityIds = dg.IdentityIds
 	return responseDg, nil
 }
 
@@ -121,7 +121,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	// Populate timestamps from the GET response and stamp final identity IDs
 	responseDg.CreatedAt = currentDg.CreatedAt
 	responseDg.UpdatedAt = currentDg.UpdatedAt
-	responseDg.IdentityIds = append([]int64(nil), dg.IdentityIds...)
+	responseDg.IdentityIds = dg.IdentityIds
 	return responseDg, nil
 }
 
