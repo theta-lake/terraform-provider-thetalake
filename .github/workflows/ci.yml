@@ -31,7 +31,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version-file: go.mod
           cache: true
 
       - name: Run unit tests
@@ -40,10 +40,10 @@ jobs:
           TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
           TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
           TF_ACC_TEST_API_SERVER: ${{ secrets.TF_ACC_TEST_API_SERVER }}
-          TF_ACC_TEST_INTEGRATION_NAME: $TF_ACC_TEST_INTEGRATION_NAME
-          TF_ACC_TEST_RETENTION_LIBRARY_NAME: $TF_ACC_TEST_RETENTION_LIBRARY_NAME
-          TF_ACC_TEST_IDENTITY_EMAIL: $TF_ACC_TEST_IDENTITY_EMAIL
-          TF_ACC_TEST_USER_EMAIL: $TF_ACC_TEST_USER_EMAIL
+          TF_ACC_TEST_INTEGRATION_NAME: ${{ vars.TF_ACC_TEST_INTEGRATION_NAME }}
+          TF_ACC_TEST_RETENTION_LIBRARY_NAME: ${{ vars.TF_ACC_TEST_RETENTION_LIBRARY_NAME }}
+          TF_ACC_TEST_IDENTITY_EMAIL: ${{ vars.TF_ACC_TEST_IDENTITY_EMAIL }}
+          TF_ACC_TEST_USER_EMAIL: ${{ vars.TF_ACC_TEST_USER_EMAIL }}
 
   docs:
     runs-on: ubuntu-latest
@@ -55,7 +55,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version-file: go.mod
           cache: true
 
       - name: Setup Terraform
@@ -85,7 +85,7 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v6
         with:
-          go-version: '1.25'
+          go-version-file: go.mod
           cache: true
 
       - name: Run acceptance tests
