@@ -18,13 +18,12 @@ import (
 var ErrNotFound = errors.New("not found")
 
 type Client struct {
-	apiServerUrl   string
-	clientId       string
-	clientSecret   string
-	bearerToken    string
-	tokenExpiresAt time.Time
-	httpClient     *http.Client
-	version        string
+	apiServerUrl string
+	clientId     string
+	clientSecret string
+	bearerToken  string
+	httpClient   *http.Client
+	version      string
 }
 
 type apiResponse struct {
@@ -53,30 +52,7 @@ func NewClient(endpoint, clientId, clientSecret string) *Client {
 		version:      "localdev",
 	}
 
-	// Attempt to fetch an access token immediately. Errors are silently ignored;
-	// the first API call will trigger a refresh if the token is missing or expired.
-	_ = c.refreshToken(context.Background())
-
 	return c
-}
-
-// refreshToken fetches a new token and stores it with its expiry time.
-func (c *Client) refreshToken(ctx context.Context) error {
-	token, expiresAt, err := c.getToken(ctx)
-	if err != nil {
-		return err
-	}
-	c.bearerToken = token
-	c.tokenExpiresAt = expiresAt
-	return nil
-}
-
-// ensureValidToken refreshes the bearer token if it will expire within 60 seconds.
-func (c *Client) ensureValidToken(ctx context.Context) error {
-	if !c.tokenExpiresAt.IsZero() && time.Now().Add(60*time.Second).Before(c.tokenExpiresAt) {
-		return nil
-	}
-	return c.refreshToken(ctx)
 }
 
 func (c *Client) SetVersion(version string) {
@@ -128,10 +104,6 @@ func (c *Client) doRequest(method, endpoint string, body any, responseObjectName
 // Proactively refreshes the token if it is near expiry. On a 401 Unauthorized
 // response the token is force-refreshed and the request is retried exactly once.
 func (c *Client) doRequestInner(method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
-	if err := c.ensureValidToken(context.Background()); err != nil {
-		return "", fmt.Errorf("failed to ensure valid token: %w", err)
-	}
-
 	var bodyBytes []byte
 
 	if body != nil {
@@ -171,9 +143,6 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 		// On 401, force a token refresh and retry once.
 		if resp.StatusCode == http.StatusUnauthorized && attempt == 0 {
 			resp.Body.Close()
-			if err := c.refreshToken(context.Background()); err != nil {
-				return "", fmt.Errorf("request returned 401 and token refresh failed: %w", err)
-			}
 			continue
 		}
 
