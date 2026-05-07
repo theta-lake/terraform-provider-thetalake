@@ -61,7 +61,7 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 	// Ensure UserIds in the response reflect the requested user IDs so
 	// Terraform state stays consistent with the plan even if the API
 	// response omits or does not populate user_ids.
-	responseSpace.UserIds = append([]int64(nil), space.UserIds...)
+	responseSpace.UserIds = space.UserIds
 
 	return responseSpace, nil
 }
@@ -112,7 +112,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 		responseSpace.UserIds = append(responseSpace.UserIds, user.UserId)
 	}
 
-	ids := findIdsToRemove(responseSpace.UserGroupIds, space.UserGroupIds)
+	ids := diffIdSets(responseSpace.UserGroupIds, space.UserGroupIds)
 	if len(ids) > 0 {
 		err = s.doRequest(http.MethodDelete, userGroupsUrl, ids, "supervision_space", &responseSpace)
 		if err != nil {
@@ -140,7 +140,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	}
 
 	// Remove users
-	ids = findIdsToRemove(responseSpace.UserIds, space.UserIds)
+	ids = diffIdSets(responseSpace.UserIds, space.UserIds)
 	if len(ids) > 0 {
 		err = s.doRequest(http.MethodDelete, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), ids, "supervision_space", &responseSpace)
 		if err != nil {
@@ -158,7 +158,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// As with Create, ensure UserIds in the response reflect the
 	// requested user IDs so downstream state mapping remains stable.
-	responseSpace.UserIds = append([]int64(nil), space.UserIds...)
+	responseSpace.UserIds = space.UserIds
 
 	return responseSpace, nil
 }
@@ -173,12 +173,14 @@ func (s *Client) DeleteSupervisionSpace(ctx context.Context, spaceId int64) erro
 	return nil
 }
 
-func findIdsToRemove(existingIds []int64, newIds []int64) []int64 {
+// diffIdSets returns the IDs that are present in setOne but not in setTwo
+// Used to determine which associations to remove on update
+func diffIdSets(setOne []int64, setTwo []int64) []int64 {
 	var idsToRemove []int64
 
-	for _, id := range existingIds {
+	for _, id := range setOne {
 		found := false
-		for _, newId := range newIds {
+		for _, newId := range setTwo {
 			if id == newId {
 				found = true
 				break

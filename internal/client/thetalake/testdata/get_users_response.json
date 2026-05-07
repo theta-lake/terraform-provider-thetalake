@@ -1,0 +1,24 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "test-request-id",
+  "users": [
+    {
+      "id": 422,
+      "email": "jacob@thetalake.com",
+      "name": "Jacob Christensen",
+      "disabled": false,
+      "created_at": "2022-03-03T22:31:08.000Z",
+      "current_org_unit": {
+        "archive_only": false,
+        "id": 1,
+        "name": "Theta Lake Support"
+      },
+      "role_id": 3,
+      "role": {
+        "id": 3,
+        "name": "Administrator"
+      }
+    }
+  ]
+}

@@ -17,7 +17,7 @@ func (r *integrationDataSource) Schema(ctx context.Context, req datasource.Schem
 			},
 			"name": schema.StringAttribute{
 				Required:            true,
-				MarkdownDescription: "The name of the integration",
+				MarkdownDescription: "The name of the integration to look up",
 			},
 		},
 	}

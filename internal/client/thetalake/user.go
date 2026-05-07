@@ -96,3 +96,20 @@ func (s *Client) DeleteUser(ctx context.Context, userId int64) error {
 
 	return nil
 }
+
+func (s *Client) GetUserByEmail(ctx context.Context, email string) (User, error) {
+	var users []User
+
+	err := s.doRequest(http.MethodGet, "/users", nil, "users", &users)
+	if err != nil {
+		return User{}, err
+	}
+
+	for _, u := range users {
+		if u.Email == email {
+			return u, nil
+		}
+	}
+
+	return User{}, fmt.Errorf("user with email %q not found", email)
+}

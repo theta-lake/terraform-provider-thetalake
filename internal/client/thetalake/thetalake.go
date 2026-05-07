@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,6 +12,9 @@ import (
 	"reflect"
 	"strings"
 )
+
+// ErrNotFound is returned when the API responds with a 404 status code.
+var ErrNotFound = errors.New("not found")
 
 type Client struct {
 	apiServerUrl string
@@ -47,9 +51,6 @@ func NewClient(endpoint, clientId, clientSecret string) *Client {
 		version:      "localdev",
 	}
 
-	// Attempt to fetch an access token immediately. For now, ignore
-	// errors and leave bearerToken empty; callers should handle
-	// authorization failures from subsequent requests.
 	if token, err := c.getToken(context.Background()); err == nil {
 		c.bearerToken = token
 	}
@@ -102,21 +103,25 @@ func (c *Client) doRequest(method, endpoint string, body any, responseObjectName
 	return err
 }
 
-// Returns the page token if present, nil otherwise
+// Returns the page token if present, nil otherwise.
 func (c *Client) doRequestInner(method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
-	var bodyReader io.Reader
+	var bodyBytes []byte
 
 	if body != nil {
-		bodyBytes, err := json.Marshal(body)
+		var err error
+		bodyBytes, err = json.Marshal(body)
 		if err != nil {
 			return "", fmt.Errorf("failed to marshal request body: %w", err)
 		}
-
-		bodyReader = bytes.NewReader(bodyBytes)
 	}
 
 	// Build the full request URL without escaping query delimiters in endpoint.
 	path := c.apiServerUrl + "/api/v1" + endpoint
+
+	var bodyReader io.Reader
+	if bodyBytes != nil {
+		bodyReader = bytes.NewReader(bodyBytes)
+	}
 
 	req, err := http.NewRequest(method, path, bodyReader)
 	if err != nil {
@@ -126,7 +131,7 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
 	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
 
-	if body != nil {
+	if bodyBytes != nil {
 		req.Header.Set("Content-Type", "application/json")
 	}
 
@@ -135,11 +140,14 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 		return "", fmt.Errorf("request failed: %w", err)
 	}
 
-	defer resp.Body.Close()
-
 	respBody, err := io.ReadAll(resp.Body)
+	resp.Body.Close()
 	if err != nil {
 		return "", fmt.Errorf("failed to read response body: %w", err)
+	}
+
+	if resp.StatusCode == http.StatusNotFound {
+		return "", ErrNotFound
 	}
 
 	if resp.StatusCode >= 400 {
@@ -169,7 +177,6 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 		}
 
 		if pagingInfo.NextPageToken != "" {
-			// Return the next page token if present
 			return pagingInfo.NextPageToken, nil
 		}
 	}
@@ -177,8 +184,8 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	return "", nil
 }
 
-// getToken retrieves an OAuth2 access token using the
-// client_credentials grant type against the Theta Lake token endpoint.
+// getToken retrieves an OAuth2 access token using the client_credentials grant
+// type against the Theta Lake token endpoint.
 func (c *Client) getToken(ctx context.Context) (string, error) {
 	form := url.Values{}
 	form.Set("grant_type", "client_credentials")

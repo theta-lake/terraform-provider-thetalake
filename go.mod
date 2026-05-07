@@ -1,10 +1,9 @@
 module github.com/theta-lake/terraform-provider-thetalake
 
-go 1.25.1
+go 1.26.2
 
 require (
 	github.com/go-openapi/testify/v2 v2.1.8
-	github.com/hashicorp/terraform-plugin-docs v0.24.0
 	github.com/hashicorp/terraform-plugin-framework v1.17.0
 	github.com/hashicorp/terraform-plugin-framework-timetypes v0.5.0
 	github.com/hashicorp/terraform-plugin-framework-validators v0.19.0

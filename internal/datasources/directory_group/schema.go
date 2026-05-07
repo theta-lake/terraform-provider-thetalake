@@ -17,7 +17,7 @@ func (r *directoryGroupDataSource) Schema(ctx context.Context, req datasource.Sc
 			},
 			"name": schema.StringAttribute{
 				Required:            true,
-				MarkdownDescription: "The name of the directory group",
+				MarkdownDescription: "The name of the directory group to look up",
 			},
 		},
 	}
