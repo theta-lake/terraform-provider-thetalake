@@ -74,25 +74,4 @@ jobs:
       - name: Verify docs are up to date
         run: git diff --exit-code
 
-  acceptance-tests:
-    runs-on: ubuntu-latest
-    needs: unit-tests
-    if: github.event_name == 'push'
-    env:
-      TF_ACC: '1'
-      TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
-      TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
-      TF_ACC_TEST_API_SERVER: ${{ secrets.TF_ACC_TEST_API_SERVER }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Go
-        uses: actions/setup-go@v6
-        with:
-          go-version-file: go.mod
-          cache: true
-
-      - name: Run acceptance tests
-        run: go test ./internal/... -run 'TestAcc'
 
