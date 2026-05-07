@@ -69,7 +69,7 @@ jobs:
           terraform_version: '1.14.3'
 
       - name: Generate docs
-        run: go generate ./tools
+        run: make docs
 
       - name: Verify docs are up to date
         run: git diff --exit-code
