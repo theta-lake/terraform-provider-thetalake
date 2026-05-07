@@ -1,4 +1,7 @@
-.PHONY: build install docs test
+.PHONY: build install docs test testacc testall
+
+-include local.env
+export
 
 build:
 	go build -o terraform-provider-thetalake .
@@ -12,3 +15,9 @@ docs:
 
 test:
 	go test $(shell go list ./internal/... | grep -v acctest) -json -coverprofile=coverage.out | go run github.com/mfridman/tparse@latest -notests -follow
+
+testacc:
+	TF_ACC=1 go test ./internal/... -run TestAcc -v -count=1
+
+testall:
+	TF_ACC=1 go test $(shell go list ./internal/... | grep -v acctest) -count=1 -p 1 -json -coverprofile=coverage.out | go run github.com/mfridman/tparse@latest -notests -follow

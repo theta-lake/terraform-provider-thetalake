@@ -35,11 +35,15 @@ jobs:
           cache: true
 
       - name: Run unit tests
-        run: go test ./...
+        run: make testall
         env:
           TF_ACC_TEST_CLIENT_ID: ${{ secrets.TF_ACC_TEST_CLIENT_ID }}
           TF_ACC_TEST_CLIENT_SECRET: ${{ secrets.TF_ACC_TEST_CLIENT_SECRET }}
           TF_ACC_TEST_API_SERVER: ${{ secrets.TF_ACC_TEST_API_SERVER }}
+          TF_ACC_TEST_INTEGRATION_NAME: $TF_ACC_TEST_INTEGRATION_NAME
+          TF_ACC_TEST_RETENTION_LIBRARY_NAME: $TF_ACC_TEST_RETENTION_LIBRARY_NAME
+          TF_ACC_TEST_IDENTITY_EMAIL: $TF_ACC_TEST_IDENTITY_EMAIL
+          TF_ACC_TEST_USER_EMAIL: $TF_ACC_TEST_USER_EMAIL
 
   docs:
     runs-on: ubuntu-latest

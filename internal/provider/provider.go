@@ -13,8 +13,8 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/integration"
 	retentionlibrary "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/retention_library"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/role"
-	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
 	userds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user"
+	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
 	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/resources/directory_group"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
 	supervisionspace "github.com/theta-lake/terraform-provider-thetalake/internal/resources/supervision_space"
@@ -26,6 +26,7 @@ var _ provider.Provider = &ThetalakeProvider{}
 
 type ThetalakeProvider struct {
 	version string
+	client  *thetalake.Client // optional pre-built client; used by tests to avoid repeated token fetches
 }
 
 type ThetalakeProviderModel struct {
@@ -42,12 +43,31 @@ func New(version string) func() provider.Provider {
 	}
 }
 
+// NewWithClient returns a provider factory that uses the supplied pre-built
+// client instead of constructing one in Configure. Intended for acceptance
+// tests so a single authenticated client is shared across all test steps.
+func NewWithClient(version string, client *thetalake.Client) func() provider.Provider {
+	return func() provider.Provider {
+		return &ThetalakeProvider{
+			version: version,
+			client:  client,
+		}
+	}
+}
+
 func (p *ThetalakeProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
 	resp.TypeName = "thetalake"
 	resp.Version = p.version
 }
 
 func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+	// If a client was injected (e.g. by tests), skip configuration and use it directly.
+	if p.client != nil {
+		resp.DataSourceData = p.client
+		resp.ResourceData = p.client
+		return
+	}
+
 	providerModel := &ThetalakeProviderModel{}
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &providerModel)...)

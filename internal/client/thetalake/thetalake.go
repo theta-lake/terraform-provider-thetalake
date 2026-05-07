@@ -11,18 +11,20 @@ import (
 	"net/url"
 	"reflect"
 	"strings"
+	"time"
 )
 
 // ErrNotFound is returned when the API responds with a 404 status code.
 var ErrNotFound = errors.New("not found")
 
 type Client struct {
-	apiServerUrl string
-	clientId     string
-	clientSecret string
-	bearerToken  string
-	httpClient   *http.Client
-	version      string
+	apiServerUrl   string
+	clientId       string
+	clientSecret   string
+	bearerToken    string
+	tokenExpiresAt time.Time
+	httpClient     *http.Client
+	version        string
 }
 
 type apiResponse struct {
@@ -51,14 +53,30 @@ func NewClient(endpoint, clientId, clientSecret string) *Client {
 		version:      "localdev",
 	}
 
-	// Attempt to fetch an access token immediately. For now, ignore
-	// errors and leave bearerToken empty; callers should handle
-	// authorization failures from subsequent requests.
-	if token, err := c.getToken(context.Background()); err == nil {
-		c.bearerToken = token
-	}
+	// Attempt to fetch an access token immediately. Errors are silently ignored;
+	// the first API call will trigger a refresh if the token is missing or expired.
+	_ = c.refreshToken(context.Background())
 
 	return c
+}
+
+// refreshToken fetches a new token and stores it with its expiry time.
+func (c *Client) refreshToken(ctx context.Context) error {
+	token, expiresAt, err := c.getToken(ctx)
+	if err != nil {
+		return err
+	}
+	c.bearerToken = token
+	c.tokenExpiresAt = expiresAt
+	return nil
+}
+
+// ensureValidToken refreshes the bearer token if it will expire within 60 seconds.
+func (c *Client) ensureValidToken(ctx context.Context) error {
+	if !c.tokenExpiresAt.IsZero() && time.Now().Add(60*time.Second).Before(c.tokenExpiresAt) {
+		return nil
+	}
+	return c.refreshToken(ctx)
 }
 
 func (c *Client) SetVersion(version string) {
@@ -106,88 +124,134 @@ func (c *Client) doRequest(method, endpoint string, body any, responseObjectName
 	return err
 }
 
-// Returns the page token if present, nil otherwise
+// Returns the page token if present, nil otherwise.
+// Proactively refreshes the token if it is near expiry. On a 401 Unauthorized
+// response the token is force-refreshed and the request is retried exactly once.
 func (c *Client) doRequestInner(method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
-	var bodyReader io.Reader
+	if err := c.ensureValidToken(context.Background()); err != nil {
+		return "", fmt.Errorf("failed to ensure valid token: %w", err)
+	}
+
+	var bodyBytes []byte
 
 	if body != nil {
-		bodyBytes, err := json.Marshal(body)
+		var err error
+		bodyBytes, err = json.Marshal(body)
 		if err != nil {
 			return "", fmt.Errorf("failed to marshal request body: %w", err)
 		}
-
-		bodyReader = bytes.NewReader(bodyBytes)
 	}
 
 	// Build the full request URL without escaping query delimiters in endpoint.
 	path := c.apiServerUrl + "/api/v1" + endpoint
 
-	req, err := http.NewRequest(method, path, bodyReader)
-	if err != nil {
-		return "", fmt.Errorf("failed to create request: %w", err)
-	}
-
-	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
-	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
-
-	if body != nil {
-		req.Header.Set("Content-Type", "application/json")
-	}
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return "", fmt.Errorf("request failed: %w", err)
-	}
-
-	defer resp.Body.Close()
-
-	respBody, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return "", fmt.Errorf("failed to read response body: %w", err)
-	}
-
-	if resp.StatusCode == http.StatusNotFound {
-		return "", ErrNotFound
-	}
-
-	if resp.StatusCode >= 400 {
-		var apiErr apiErrorResponse
-		if err := json.Unmarshal(respBody, &apiErr); err != nil {
-			return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, string(respBody))
-		}
-		return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, apiErr.ErrorMessage)
-	}
-
-	var responseMap map[string]json.RawMessage
-	err = json.Unmarshal(respBody, &responseMap)
-	if err != nil {
-		return "", fmt.Errorf("failed to unmarshal response body: %w", err)
-	}
-
-	if responseData, ok := responseMap[responseObjectName]; ok && responseObject != nil {
-		if err := json.Unmarshal(responseData, responseObject); err != nil {
-			return "", fmt.Errorf("failed to unmarshal %s from response: %w", responseObjectName, err)
-		}
-	}
-
-	if pagingInfoData, ok := responseMap["paging"]; ok {
-		var pagingInfo PagingInfo
-		if err := json.Unmarshal(pagingInfoData, &pagingInfo); err != nil {
-			return "", fmt.Errorf("failed to unmarshal paging from response: %w", err)
+	for attempt := 0; attempt < 2; attempt++ {
+		var bodyReader io.Reader
+		if bodyBytes != nil {
+			bodyReader = bytes.NewReader(bodyBytes)
 		}
 
-		if pagingInfo.NextPageToken != "" {
-			// Return the next page token if present
-			return pagingInfo.NextPageToken, nil
+		req, err := http.NewRequest(method, path, bodyReader)
+		if err != nil {
+			return "", fmt.Errorf("failed to create request: %w", err)
 		}
+
+		req.Header.Set("Authorization", "Bearer "+c.bearerToken)
+		req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
+
+		if bodyBytes != nil {
+			req.Header.Set("Content-Type", "application/json")
+		}
+
+		resp, err := c.httpClient.Do(req)
+		if err != nil {
+			return "", fmt.Errorf("request failed: %w", err)
+		}
+
+		// On 401, force a token refresh and retry once.
+		if resp.StatusCode == http.StatusUnauthorized && attempt == 0 {
+			resp.Body.Close()
+			if err := c.refreshToken(context.Background()); err != nil {
+				return "", fmt.Errorf("request returned 401 and token refresh failed: %w", err)
+			}
+			continue
+		}
+
+		respBody, err := io.ReadAll(resp.Body)
+		resp.Body.Close()
+		if err != nil {
+			return "", fmt.Errorf("failed to read response body: %w", err)
+		}
+
+		if resp.StatusCode == http.StatusNotFound {
+			return "", ErrNotFound
+		}
+
+		if resp.StatusCode >= 400 {
+			var apiErr apiErrorResponse
+			if err := json.Unmarshal(respBody, &apiErr); err != nil {
+				return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, string(respBody))
+			}
+			return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, apiErr.ErrorMessage)
+		}
+
+		var responseMap map[string]json.RawMessage
+		err = json.Unmarshal(respBody, &responseMap)
+		if err != nil {
+			return "", fmt.Errorf("failed to unmarshal response body: %w", err)
+		}
+
+		if responseData, ok := responseMap[responseObjectName]; ok && responseObject != nil {
+			if err := json.Unmarshal(responseData, responseObject); err != nil {
+				return "", fmt.Errorf("failed to unmarshal %s from response: %w", responseObjectName, err)
+			}
+		}
+
+		if pagingInfoData, ok := responseMap["paging"]; ok {
+			var pagingInfo PagingInfo
+			if err := json.Unmarshal(pagingInfoData, &pagingInfo); err != nil {
+				return "", fmt.Errorf("failed to unmarshal paging from response: %w", err)
+			}
+
+			if pagingInfo.NextPageToken != "" {
+				// Return the next page token if present
+				return pagingInfo.NextPageToken, nil
+			}
+		}
+
+		return "", nil
 	}
 
-	return "", nil
+	return "", fmt.Errorf("request failed after token refresh")
 }
 
-// getToken retrieves an OAuth2 access token using the
-// client_credentials grant type against the Theta Lake token endpoint.
-func (c *Client) getToken(ctx context.Context) (string, error) {
+// getToken retrieves an OAuth2 access token using the client_credentials grant
+// type. It retries up to 3 times with exponential backoff on 429 responses.
+func (c *Client) getToken(ctx context.Context) (string, time.Time, error) {
+	delays := []time.Duration{0, 2 * time.Second, 5 * time.Second}
+	var lastErr error
+	for i, delay := range delays {
+		if delay > 0 {
+			select {
+			case <-ctx.Done():
+				return "", time.Time{}, ctx.Err()
+			case <-time.After(delay):
+			}
+		}
+
+		token, expiresAt, err := c.doGetToken(ctx)
+		if err == nil {
+			return token, expiresAt, nil
+		}
+		if !strings.Contains(err.Error(), "429") || i == len(delays)-1 {
+			return "", time.Time{}, err
+		}
+		lastErr = err
+	}
+	return "", time.Time{}, lastErr
+}
+
+func (c *Client) doGetToken(ctx context.Context) (string, time.Time, error) {
 	form := url.Values{}
 	form.Set("grant_type", "client_credentials")
 	form.Set("client_id", c.clientId)
@@ -196,19 +260,19 @@ func (c *Client) getToken(ctx context.Context) (string, error) {
 	endpoint := c.apiServerUrl + "/token"
 	req, err := http.NewRequestWithContext(ctx, http.MethodPost, endpoint, strings.NewReader(form.Encode()))
 	if err != nil {
-		return "", fmt.Errorf("failed to create token request: %w", err)
+		return "", time.Time{}, fmt.Errorf("failed to create token request: %w", err)
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
 
 	resp, err := c.httpClient.Do(req)
 	if err != nil {
-		return "", fmt.Errorf("token request failed: %w", err)
+		return "", time.Time{}, fmt.Errorf("token request failed: %w", err)
 	}
 	defer resp.Body.Close()
 
 	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		return "", fmt.Errorf("token request returned non-2xx status: %s", resp.Status)
+		return "", time.Time{}, fmt.Errorf("token request returned non-2xx status: %s", resp.Status)
 	}
 
 	var body struct {
@@ -217,12 +281,13 @@ func (c *Client) getToken(ctx context.Context) (string, error) {
 		ExpiresIn   int    `json:"expires_in"`
 	}
 	if err := json.NewDecoder(resp.Body).Decode(&body); err != nil {
-		return "", fmt.Errorf("failed to decode token response: %w", err)
+		return "", time.Time{}, fmt.Errorf("failed to decode token response: %w", err)
 	}
 
 	if body.AccessToken == "" {
-		return "", fmt.Errorf("token response did not contain access_token")
+		return "", time.Time{}, fmt.Errorf("token response did not contain access_token")
 	}
 
-	return body.AccessToken, nil
+	expiresAt := time.Now().Add(time.Duration(body.ExpiresIn) * time.Second)
+	return body.AccessToken, expiresAt, nil
 }

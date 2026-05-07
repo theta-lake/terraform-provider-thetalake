@@ -100,7 +100,7 @@ func (s *Client) DeleteUser(ctx context.Context, userId int64) error {
 func (s *Client) GetUserByEmail(ctx context.Context, email string) (User, error) {
 	var users []User
 
-	err := s.doRequestWithPagination(http.MethodGet, "/users", nil, "users", &users, 500)
+	err := s.doRequest(http.MethodGet, "/users", nil, "users", &users)
 	if err != nil {
 		return User{}, err
 	}

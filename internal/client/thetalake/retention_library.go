@@ -14,7 +14,7 @@ type RetentionLibrary struct {
 func (s *Client) GetRetentionLibraryByName(ctx context.Context, name string) (RetentionLibrary, error) {
 	var retentionLibraries []RetentionLibrary
 
-	err := s.doRequest(http.MethodGet, "/retention_libraries", nil, "retention_libraries", &retentionLibraries)
+	err := s.doRequestWithPagination(http.MethodGet, "/retention_libraries", nil, "retention_libraries", &retentionLibraries, 500)
 	if err != nil {
 		return RetentionLibrary{}, err
 	}

@@ -66,6 +66,41 @@ func TestCreateUserGroup(t *testing.T) {
 	assert.Equal(t, &externalId, createdUserGroup.ExternalId)
 }
 
+func TestCreateUserGroupWithUsers(t *testing.T) {
+	externalId := "ug-ext-001"
+	desc := "Test user group description"
+	var addedIds []int64
+
+	createHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("create_user_group_response.json"))
+	}
+
+	addUsersHandler := func(w http.ResponseWriter, r *http.Request) {
+		body, _ := io.ReadAll(r.Body)
+		defer r.Body.Close()
+		json.Unmarshal(body, &addedIds)
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("create_user_group_response.json"))
+	}
+
+	client := newTestClientWithRoutes(t,
+		testRoute{Method: http.MethodPost, Path: "/user_groups", Handler: createHandler},
+		testRoute{Method: http.MethodPut, Path: "/user_groups/75/add_users", Handler: addUsersHandler},
+	)
+
+	createdUserGroup, err := client.CreateUserGroup(context.Background(), UserGroup{
+		Name:        "Test User Group",
+		Description: &desc,
+		ExternalId:  &externalId,
+		UserIds:     []int64{10, 20},
+	})
+	assert.NoError(t, err)
+	assert.Equal(t, int64(75), createdUserGroup.Id)
+	assert.Equal(t, []int64{10, 20}, createdUserGroup.UserIds)
+	assert.Equal(t, []int64{10, 20}, addedIds)
+}
+
 func TestGetUserGroupById(t *testing.T) {
 	testHandler := func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
