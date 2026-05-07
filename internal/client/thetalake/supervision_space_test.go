@@ -15,7 +15,7 @@ func TestFindIdsToRemove(t *testing.T) {
 	newIds := []int64{2, 4, 6}
 
 	expected := []int64{1, 3, 5}
-	result := findIdsToRemove(existingIds, newIds)
+	result := diffIdSets(existingIds, newIds)
 
 	assert.Equal(t, expected, result, "The IDs to remove do not match the expected values")
 }

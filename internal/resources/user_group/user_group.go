@@ -2,6 +2,7 @@ package usergroup
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strconv"
 
@@ -72,6 +73,10 @@ func (r *userGroupResource) Read(ctx context.Context, req resource.ReadRequest, 
 
 	userGroup, err := r.client.GetUserGroupById(ctx, state.Id.ValueInt64())
 	if err != nil {
+		if errors.Is(err, thetalake.ErrNotFound) {
+			resp.State.RemoveResource(ctx)
+			return
+		}
 		resp.Diagnostics.AddError("Failed to read User Group", fmt.Sprintf("Read failed with error: %s", err.Error()))
 		return
 	}

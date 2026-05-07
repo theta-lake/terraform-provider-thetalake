@@ -11,7 +11,7 @@ type userGroupPlanModel struct {
 	Description types.String `tfsdk:"description"`
 	ExternalId  types.String `tfsdk:"external_id"`
 	Name        types.String `tfsdk:"name"`
-	UserIds     types.List   `tfsdk:"user_ids"`
+	UserIds     types.Set    `tfsdk:"user_ids"`
 }
 
 type userGroupStateModel struct {
@@ -21,13 +21,17 @@ type userGroupStateModel struct {
 	Id          types.Int64       `tfsdk:"id"`
 	Name        types.String      `tfsdk:"name"`
 	UpdatedAt   timetypes.RFC3339 `tfsdk:"updated_at"`
-	UserIds     types.List        `tfsdk:"user_ids"`
+	UserIds     types.Set         `tfsdk:"user_ids"`
 }
 
 func toApiModel(plan *userGroupPlanModel) thetalake.UserGroup {
 	userGroup := thetalake.UserGroup{
-		Description: plan.Description.ValueString(),
-		Name:        plan.Name.ValueString(),
+		Name: plan.Name.ValueString(),
+	}
+
+	if !plan.Description.IsNull() && !plan.Description.IsUnknown() {
+		desc := plan.Description.ValueString()
+		userGroup.Description = &desc
 	}
 
 	if !plan.ExternalId.IsNull() && !plan.ExternalId.IsUnknown() {
@@ -35,22 +39,29 @@ func toApiModel(plan *userGroupPlanModel) thetalake.UserGroup {
 		userGroup.ExternalId = &externalId
 	}
 
-	var userIds []int64
-	for _, v := range plan.UserIds.Elements() {
-		if id, ok := v.(types.Int64); ok {
-			userIds = append(userIds, id.ValueInt64())
+	if !plan.UserIds.IsNull() && !plan.UserIds.IsUnknown() {
+		var userIds []int64
+		for _, v := range plan.UserIds.Elements() {
+			if id, ok := v.(types.Int64); ok {
+				userIds = append(userIds, id.ValueInt64())
+			}
 		}
+		userGroup.UserIds = userIds
 	}
-	userGroup.UserIds = userIds
 
 	return userGroup
 }
 
 func fromApiModel(userGroup thetalake.UserGroup) userGroupStateModel {
 	state := userGroupStateModel{
-		Description: types.StringValue(userGroup.Description),
-		Id:          types.Int64Value(userGroup.Id),
-		Name:        types.StringValue(userGroup.Name),
+		Id:   types.Int64Value(userGroup.Id),
+		Name: types.StringValue(userGroup.Name),
+	}
+
+	if userGroup.Description != nil {
+		state.Description = types.StringValue(*userGroup.Description)
+	} else {
+		state.Description = types.StringNull()
 	}
 
 	if userGroup.ExternalId != nil {
@@ -75,7 +86,7 @@ func fromApiModel(userGroup thetalake.UserGroup) userGroupStateModel {
 	for _, id := range userGroup.UserIds {
 		userIdValues = append(userIdValues, types.Int64Value(id))
 	}
-	state.UserIds = types.ListValueMust(types.Int64Type, userIdValues)
+	state.UserIds = types.SetValueMust(types.Int64Type, userIdValues)
 
 	return state
 }

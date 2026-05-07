@@ -29,13 +29,13 @@ resource "thetalake_user_group" "example" {
 
 ### Required
 
-- `name` (String) **Required on resource creation.** The name of the user group
+- `name` (String) The name of the user group
 
 ### Optional
 
 - `description` (String) The description of the user group
 - `external_id` (String) An external ID for the user group
-- `user_ids` (List of Number) An array of user IDs to include in this user group
+- `user_ids` (Set of Number) An array of user IDs to include in this user group
 
 ### Read-Only
 

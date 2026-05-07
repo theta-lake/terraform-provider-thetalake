@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"net/http"
@@ -11,6 +12,9 @@ import (
 	"reflect"
 	"strings"
 )
+
+// ErrNotFound is returned when the API responds with a 404 status code.
+var ErrNotFound = errors.New("not found")
 
 type Client struct {
 	apiServerUrl string
@@ -140,6 +144,10 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return "", fmt.Errorf("failed to read response body: %w", err)
+	}
+
+	if resp.StatusCode == http.StatusNotFound {
+		return "", ErrNotFound
 	}
 
 	if resp.StatusCode >= 400 {

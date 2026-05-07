@@ -18,9 +18,9 @@ data "thetalake_identity" "example" {
 }
 
 resource "thetalake_directory_group" "example" {
-  name        = "Example Directory Group"
-  description = "An example directory group managed by Terraform"
-  external_id = "dg-ext-001"
+  name         = "Example Directory Group"
+  description  = "An example directory group managed by Terraform"
+  external_id  = "dg-ext-001"
   identity_ids = [data.thetalake_identity.example.id]
 }
 ```
@@ -30,13 +30,13 @@ resource "thetalake_directory_group" "example" {
 
 ### Required
 
-- `external_id` (String) An external identifier for the directory group
 - `name` (String) The name of the directory group
 
 ### Optional
 
 - `description` (String) A description for the directory group
-- `identity_ids` (List of Number) An array of identity IDs to include in this directory group
+- `external_id` (String) An external identifier for the directory group
+- `identity_ids` (Set of Number) An array of identity IDs to include in this directory group
 
 ### Read-Only
 

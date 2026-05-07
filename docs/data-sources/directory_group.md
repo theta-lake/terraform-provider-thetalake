@@ -23,7 +23,7 @@ data "thetalake_directory_group" "example" {
 
 ### Required
 
-- `name` (String) The name of the directory group
+- `name` (String) The name of the directory group to look up
 
 ### Read-Only
 

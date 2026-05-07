@@ -99,7 +99,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	}
 
 	// Add identities that are in desired state but not in current state
-	idsToAdd := findIdsToRemove(dg.IdentityIds, currentDg.IdentityIds)
+	idsToAdd := diffIdSets(dg.IdentityIds, currentDg.IdentityIds)
 	if len(idsToAdd) > 0 {
 		addEndpoint := fmt.Sprintf("/directory_groups/%d/identities", responseDg.Id)
 		err = s.doRequest(http.MethodPost, addEndpoint, idsToAdd, "identities", nil)
@@ -109,7 +109,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	}
 
 	// Remove identities that are in current state but not in desired state
-	idsToRemove := findIdsToRemove(currentDg.IdentityIds, dg.IdentityIds)
+	idsToRemove := diffIdSets(currentDg.IdentityIds, dg.IdentityIds)
 	for _, identityId := range idsToRemove {
 		removeEndpoint := fmt.Sprintf("/directory_groups/%d/identity/%d", responseDg.Id, identityId)
 		err = s.doRequest(http.MethodDelete, removeEndpoint, nil, "", nil)

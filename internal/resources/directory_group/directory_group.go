@@ -2,6 +2,7 @@ package directorygroup
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"strconv"
 
@@ -11,7 +12,7 @@ import (
 )
 
 type directoryGroupResource struct {
-	client thetalake.Client
+	client *thetalake.Client
 }
 
 func NewDirectoryGroupResource() resource.Resource {
@@ -27,7 +28,7 @@ func (r *directoryGroupResource) Configure(_ context.Context, req resource.Confi
 		return
 	}
 
-	r.client = *req.ProviderData.(*thetalake.Client)
+	r.client = req.ProviderData.(*thetalake.Client)
 }
 
 func (r *directoryGroupResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
@@ -64,6 +65,10 @@ func (r *directoryGroupResource) Read(ctx context.Context, req resource.ReadRequ
 
 	dg, err := r.client.GetDirectoryGroupById(ctx, state.Id.ValueInt64())
 	if err != nil {
+		if errors.Is(err, thetalake.ErrNotFound) {
+			resp.State.RemoveResource(ctx)
+			return
+		}
 		resp.Diagnostics.AddError("Failed to read Directory Group", fmt.Sprintf("Read failed with error: %s", err.Error()))
 		return
 	}

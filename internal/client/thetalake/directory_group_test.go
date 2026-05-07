@@ -125,6 +125,68 @@ func TestUpdateDirectoryGroup(t *testing.T) {
 	assert.Equal(t, []int64{49944}, dg.IdentityIds)
 }
 
+func TestUpdateDirectoryGroupMembershipDiff(t *testing.T) {
+	// Current membership: identities 49944 and 49945.
+	// Desired membership: identities 49945 and 50000.
+	// Expected: POST add [50000], DELETE remove identity 49944.
+	desc := "Updated description"
+	extId := "dg-ext-002"
+
+	var addedIds []int64
+	removeWasCalled := false
+
+	updateHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("update_directory_group_response.json"))
+	}
+
+	// GET returns current membership: identities 49944 and 49945
+	getByIdHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{
+			"status_code": 200,
+			"directory_group": {
+				"id": 1996,
+				"name": "Updated Directory Group",
+				"identities": [{"id": 49944, "name": "Identity A"}, {"id": 49945, "name": "Identity B"}]
+			}
+		}`))
+	}
+
+	addIdentitiesHandler := func(w http.ResponseWriter, r *http.Request) {
+		body, _ := io.ReadAll(r.Body)
+		defer r.Body.Close()
+		json.Unmarshal(body, &addedIds)
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("add_directory_group_identities_response.json"))
+	}
+
+	removeIdentityHandler := func(w http.ResponseWriter, r *http.Request) {
+		removeWasCalled = true
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"status_code": 200}`))
+	}
+
+	client := newTestClientWithRoutes(t,
+		testRoute{http.MethodPut, "/directory_groups/1996", updateHandler},
+		testRoute{http.MethodGet, "/directory_groups/1996", getByIdHandler},
+		testRoute{http.MethodPost, "/directory_groups/1996/identities", addIdentitiesHandler},
+		testRoute{http.MethodDelete, "/directory_groups/1996/identity/49944", removeIdentityHandler},
+	)
+
+	dg, err := client.UpdateDirectoryGroup(context.Background(), DirectoryGroup{
+		Id:          1996,
+		Name:        "Updated Directory Group",
+		Description: &desc,
+		ExternalId:  &extId,
+		IdentityIds: []int64{49945, 50000},
+	})
+	assert.NoError(t, err)
+	assert.Equal(t, []int64{49945, 50000}, dg.IdentityIds)
+	assert.Equal(t, []int64{50000}, addedIds)
+	assert.True(t, removeWasCalled)
+}
+
 func TestDeleteDirectoryGroup(t *testing.T) {
 	handler := func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)

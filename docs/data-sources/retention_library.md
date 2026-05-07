@@ -23,7 +23,7 @@ data "thetalake_retention_library" "example" {
 
 ### Required
 
-- `name` (String) The name of the retention library
+- `name` (String) The name of the retention library to look up
 
 ### Read-Only
 

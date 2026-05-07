@@ -23,7 +23,7 @@ data "thetalake_integration" "example" {
 
 ### Required
 
-- `name` (String) The name of the integration
+- `name` (String) The name of the integration to look up
 
 ### Read-Only
 
