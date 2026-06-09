@@ -9,7 +9,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64default"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringdefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
@@ -32,13 +31,15 @@ func (r *retentionLibraryResource) Schema(ctx context.Context, req resource.Sche
 			},
 			"delete_on_expiration": schema.BoolAttribute{
 				Computed:            true,
-				MarkdownDescription: "Denotes if this retention library should delete records associated with this space when they expire",
+				MarkdownDescription: "Denotes if this retention library should delete records associated with it when they expire",
 			},
 			"description": schema.StringAttribute{
 				Optional:            true,
 				Computed:            true,
-				Default:             stringdefault.StaticString(""),
 				MarkdownDescription: "A description of the retention library",
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
 			},
 			"display_name": schema.StringAttribute{
 				Computed:            true,

@@ -49,7 +49,7 @@ resource "thetalake_retention_library" "example" {
 - `created_at` (String) The created timestamp using the RFC3339 date-time format
 - `datum_count` (Number) The number of datums stored in the retention library
 - `datum_size` (Number) The total size of all the datums in the retention library
-- `delete_on_expiration` (Boolean) Denotes if this retention library should delete records associated with this space when they expire
+- `delete_on_expiration` (Boolean) Denotes if this retention library should delete records associated with it when they expire
 - `display_name` (String) The retention library display name including the region
 - `id` (Number) The retention library ID
 - `legal_hold_count` (Number) The number of datums in legal hold in this retention library
