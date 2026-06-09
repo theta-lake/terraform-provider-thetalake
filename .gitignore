@@ -36,3 +36,4 @@ local.env
 .local/
 test
 terraform-provider-thetalake
+theta_lake_api_v1.yml
