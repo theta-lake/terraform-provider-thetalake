@@ -3,18 +3,20 @@ package thetalake
 import (
 	"context"
 	"errors"
+	"fmt"
 	"net/http"
 	"time"
 )
 
 type Role struct {
-	CreatedAt     time.Time  `json:"created_at"`
+	CreatedAt     *time.Time `json:"created_at"`
 	Default       bool       `json:"default"`
 	Description   string     `json:"description"`
 	Id            int64      `json:"id"`
 	IsBuiltIn     bool       `json:"is_built_in"`
 	Name          string     `json:"name"`
 	NumberOfUsers int64      `json:"number_of_users"`
+	Permissions   []string   `json:"permissions"`
 	UpdatedAt     *time.Time `json:"updated_at"`
 }
 
@@ -33,4 +35,60 @@ func (s *Client) GetRoleByName(ctx context.Context, name string) (Role, error) {
 	}
 
 	return Role{}, errors.New("role not found")
+}
+
+type createRoleRequest struct {
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Permissions []string `json:"permissions"`
+}
+
+type updateRoleRequest struct {
+	Name        string   `json:"name"`
+	Description string   `json:"description"`
+	Permissions []string `json:"permissions"`
+}
+
+func (s *Client) CreateRole(ctx context.Context, role Role) (Role, error) {
+	var responseRole Role
+	req := createRoleRequest{
+		Name:        role.Name,
+		Description: role.Description,
+		Permissions: role.Permissions,
+	}
+	err := s.doRequest(http.MethodPost, "/roles", req, "role", &responseRole)
+	if err != nil {
+		return Role{}, err
+	}
+	return responseRole, nil
+}
+
+func (s *Client) GetRoleById(ctx context.Context, roleId int64) (Role, error) {
+	var responseRole Role
+	endpoint := fmt.Sprintf("/roles/%d", roleId)
+	err := s.doRequest(http.MethodGet, endpoint, nil, "role", &responseRole)
+	if err != nil {
+		return Role{}, err
+	}
+	return responseRole, nil
+}
+
+func (s *Client) UpdateRole(ctx context.Context, role Role) (Role, error) {
+	var responseRole Role
+	endpoint := fmt.Sprintf("/roles/%d", role.Id)
+	req := updateRoleRequest{
+		Name:        role.Name,
+		Description: role.Description,
+		Permissions: role.Permissions,
+	}
+	err := s.doRequest(http.MethodPut, endpoint, req, "role", &responseRole)
+	if err != nil {
+		return Role{}, err
+	}
+	return responseRole, nil
+}
+
+func (s *Client) DeleteRole(ctx context.Context, roleId int64) error {
+	endpoint := fmt.Sprintf("/roles/%d", roleId)
+	return s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
 }

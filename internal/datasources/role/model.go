@@ -19,13 +19,18 @@ type RoleDataSourceModel struct {
 
 func FromApiModel(role thetalake.Role) RoleDataSourceModel {
 	roleModel := RoleDataSourceModel{
-		CreatedAt:     timetypes.NewRFC3339TimeValue(role.CreatedAt),
 		Default:       types.BoolValue(role.Default),
 		Description:   types.StringValue(role.Description),
 		Id:            types.Int64Value(role.Id),
 		IsBuiltIn:     types.BoolValue(role.IsBuiltIn),
 		Name:          types.StringValue(role.Name),
 		NumberOfUsers: types.Int64Value(role.NumberOfUsers),
+	}
+
+	if role.CreatedAt != nil {
+		roleModel.CreatedAt = timetypes.NewRFC3339TimeValue(*role.CreatedAt)
+	} else {
+		roleModel.CreatedAt = timetypes.NewRFC3339Null()
 	}
 
 	if role.UpdatedAt != nil {

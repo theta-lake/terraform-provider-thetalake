@@ -38,7 +38,7 @@ func TestFromApiModel(t *testing.T) {
 	apiUser.Name = "Test User"
 	apiUser.OtpEnabled = false
 	apiUser.QueuePaused = true
-	apiUser.Role = thetalake.Role{
+	apiUser.Role = thetalake.EmbeddedRole{
 		Name: "Admin",
 		Id:   5,
 	}
