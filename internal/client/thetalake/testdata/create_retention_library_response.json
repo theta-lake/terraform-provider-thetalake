@@ -1,0 +1,26 @@
+{
+  "status_code": 201,
+  "status_string": "Created",
+  "request_id": "ca116f96-bbd5-11ef-9468-53af98260bba",
+  "retention_library": {
+    "created_at": "2021-06-16T01:37:04.262Z",
+    "datum_count": 0,
+    "datum_size": 0,
+    "delete_on_expiration": false,
+    "description": "Test retention library description",
+    "display_name": "Test Retention Library - US West (Oregon)",
+    "external_id": "123456-ABC",
+    "id": 477,
+    "legal_hold_count": 0,
+    "name": "Test Retention Library",
+    "retain_in_review": false,
+    "retention_period_days": 90,
+    "retention_period_enabled": false,
+    "retention_summary_text": "Keep for 90 days",
+    "sec_compliant_storage_confirmed": false,
+    "sec_compliant_storage_enabled": false,
+    "storage_account_id": 1,
+    "swrv_rule_count": 0,
+    "updated_at": "2021-06-16T01:37:04.262Z"
+  }
+}
