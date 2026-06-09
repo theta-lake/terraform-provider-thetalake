@@ -1,8 +1,8 @@
 resource "thetalake_retention_library" "example" {
-  name              = "Example Retention Library"
+  name               = "Example Retention Library"
   storage_account_id = 1
-  description       = "Used to store data for the compliance environment"
-  external_id       = "ext-001"
+  description        = "Used to store data for the compliance environment"
+  external_id        = "ext-001"
 
   retention_period_enabled = true
   retention_period_days    = 365
