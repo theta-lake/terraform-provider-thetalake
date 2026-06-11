@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+	"strings"
 	"testing"
 
 	"github.com/go-openapi/testify/v2/assert"
@@ -199,4 +200,22 @@ func TestDeleteSwrvRule(t *testing.T) {
 
 	err := client.DeleteSwrvRule(context.Background(), 2337)
 	assert.NoError(t, err)
+}
+
+func TestSwrvRuleRequestOmitsNilSupervisionSpaceId(t *testing.T) {
+	ruleRequest := swrvRuleRequest{
+		Description:        nil,
+		InputSources:       []SwrvRuleInputSource{{Type: "all_uploads"}},
+		Name:               "swrv-example",
+		PolicyId:           147,
+		Priority:           nil,
+		RetentionLibraryId: 1,
+		SupervisionSpaceId: nil,
+		WorkflowId:         14536,
+	}
+
+	body, err := json.Marshal(ruleRequest)
+	assert.NoError(t, err)
+	assert.False(t, strings.Contains(string(body), "supervision_space_id"))
+	assert.False(t, strings.Contains(string(body), `"supervision_space_id":null`))
 }

@@ -7,8 +7,10 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-framework/attr"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	providerschema "github.com/hashicorp/terraform-plugin-framework/resource/schema"
+	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/tfsdk"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
@@ -132,6 +134,12 @@ func TestSwrvRuleSchema(t *testing.T) {
 	if !inputSourcesAttr.Required {
 		t.Fatal("expected input_sources to be required")
 	}
+	if len(inputSourcesAttr.Validators) != 1 {
+		t.Fatalf("expected input_sources to have 1 validator, got %d", len(inputSourcesAttr.Validators))
+	}
+	if _, ok := inputSourcesAttr.Validators[0].(inputSourcesValidator); !ok {
+		t.Fatalf("expected input_sources validator to be %T, got %T", inputSourcesValidator{}, inputSourcesAttr.Validators[0])
+	}
 
 	priorityAttr, ok := resp.Schema.Attributes["priority"].(providerschema.Int64Attribute)
 	if !ok {
@@ -147,6 +155,51 @@ func TestSwrvRuleSchema(t *testing.T) {
 	}
 	if !workflowAttr.Required {
 		t.Fatal("expected workflow_id to be required")
+	}
+}
+
+func TestInputSourcesValidatorRequiresIDForIntegration(t *testing.T) {
+	listValue := types.ListValueMust(swrvRuleInputSourceObjectType, []attr.Value{
+		types.ObjectValueMust(swrvRuleInputSourceAttrTypes, map[string]attr.Value{
+			"id":   types.Int64Null(),
+			"type": types.StringValue("integration"),
+		}),
+	})
+
+	request := validator.ListRequest{
+		Path:        path.Root("input_sources"),
+		ConfigValue: listValue,
+	}
+	response := &validator.ListResponse{}
+
+	inputSourcesValidator{}.ValidateList(context.Background(), request, response)
+
+	if !response.Diagnostics.HasError() {
+		t.Fatal("expected validator to reject integration input source without id")
+	}
+	if got := len(response.Diagnostics); got != 1 {
+		t.Fatalf("expected 1 diagnostic, got %d", got)
+	}
+}
+
+func TestInputSourcesValidatorAllowsNonIntegrationWithoutID(t *testing.T) {
+	listValue := types.ListValueMust(swrvRuleInputSourceObjectType, []attr.Value{
+		types.ObjectValueMust(swrvRuleInputSourceAttrTypes, map[string]attr.Value{
+			"id":   types.Int64Null(),
+			"type": types.StringValue("all_uploads"),
+		}),
+	})
+
+	request := validator.ListRequest{
+		Path:        path.Root("input_sources"),
+		ConfigValue: listValue,
+	}
+	response := &validator.ListResponse{}
+
+	inputSourcesValidator{}.ValidateList(context.Background(), request, response)
+
+	if response.Diagnostics.HasError() {
+		t.Fatalf("expected validator to allow non-integration input source without id, got diagnostics: %v", response.Diagnostics)
 	}
 }
 

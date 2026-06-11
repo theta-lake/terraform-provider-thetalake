@@ -74,7 +74,7 @@ type swrvRuleRequest struct {
 	PolicyId           int64                 `json:"policy_id"`
 	Priority           *int64                `json:"priority,omitempty"`
 	RetentionLibraryId int64                 `json:"retention_library_id"`
-	SupervisionSpaceId *int64                `json:"supervision_space_id"`
+	SupervisionSpaceId *int64                `json:"supervision_space_id,omitempty"`
 	WorkflowId         int64                 `json:"workflow_id"`
 }
 

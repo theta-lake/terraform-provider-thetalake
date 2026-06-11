@@ -30,6 +30,9 @@ func (r *swrvRuleResource) Schema(ctx context.Context, req resource.SchemaReques
 			"input_sources": schema.ListNestedAttribute{
 				Required:            true,
 				MarkdownDescription: "The input sources for the SWRV rule",
+				Validators: []validator.List{
+					validateInputSources(),
+				},
 				NestedObject: schema.NestedAttributeObject{
 					Attributes: map[string]schema.Attribute{
 						"id": schema.Int64Attribute{
