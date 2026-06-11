@@ -12,14 +12,15 @@ import (
 )
 
 var (
-	clientId           = os.Getenv("TF_ACC_TEST_CLIENT_ID")
-	clientSecret       = os.Getenv("TF_ACC_TEST_CLIENT_SECRET")
-	apiServer          = os.Getenv("TF_ACC_TEST_API_SERVER")
-	IntegrationName    = os.Getenv("TF_ACC_TEST_INTEGRATION_NAME")
-	RetentionLibName   = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_NAME")
-	IdentityEmail      = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
-	UserEmail          = os.Getenv("TF_ACC_TEST_USER_EMAIL")
-	TestProviderConfig = fmt.Sprintf(`
+	clientId                     = os.Getenv("TF_ACC_TEST_CLIENT_ID")
+	clientSecret                 = os.Getenv("TF_ACC_TEST_CLIENT_SECRET")
+	apiServer                    = os.Getenv("TF_ACC_TEST_API_SERVER")
+	IntegrationName              = os.Getenv("TF_ACC_TEST_INTEGRATION_NAME")
+	RetentionLibName             = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_NAME")
+	RetentionLibStorageAccountID = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_STORAGE_ACCOUNT_ID")
+	IdentityEmail                = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
+	UserEmail                    = os.Getenv("TF_ACC_TEST_USER_EMAIL")
+	TestProviderConfig           = fmt.Sprintf(`
 provider "thetalake" {
   api_server    = "%s"
   client_id     = "%s"

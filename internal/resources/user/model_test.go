@@ -28,6 +28,20 @@ func TestToApiModel(t *testing.T) {
 	assert.Equal(t, plan.SecurityFilterId.ValueInt64(), apiModel.SearchId)
 }
 
+func TestToApiModelWithoutSecurityFilter(t *testing.T) {
+	plan := &userPlanModel{
+		Email:            types.StringValue("test@email.com"),
+		Name:             types.StringValue("Test User"),
+		Password:         types.StringValue("SecurePassword123"),
+		RoleId:           types.Int64Value(5),
+		SecurityFilterId: types.Int64Value(0),
+	}
+
+	apiModel := toApiModel(plan)
+
+	assert.Equal(t, int64(0), apiModel.SearchId)
+}
+
 func TestFromApiModel(t *testing.T) {
 	ts, _ := time.Parse(time.RFC3339, "2024-01-01T12:00:00Z")
 	apiUser := thetalake.User{}
@@ -56,4 +70,27 @@ func TestFromApiModel(t *testing.T) {
 	assert.Equal(t, apiUser.Role.Name, stateModel.Role.ValueString())
 	assert.Equal(t, apiUser.Role.Id, stateModel.RoleId.ValueInt64())
 	assert.Equal(t, apiUser.UpdatedAt.Format(time.RFC3339), stateModel.UpdatedAt.ValueString())
+}
+
+func TestFromApiModelWithoutSecurityFilterOrUpdatedAt(t *testing.T) {
+	ts, _ := time.Parse(time.RFC3339, "2024-01-01T12:00:00Z")
+	apiUser := thetalake.User{}
+	apiUser.CreatedAt = ts
+	apiUser.Email = "test@email.com"
+	apiUser.Id = 10
+	apiUser.Name = "Test User"
+	apiUser.Role = thetalake.Role{
+		Name: "Admin",
+		Id:   5,
+	}
+	apiUser.SecurityFilter = nil
+	apiUser.UpdatedAt = nil
+
+	stateModel := fromApiModel(apiUser)
+
+	assert.True(t, stateModel.SecurityFilterId.IsNull())
+	assert.True(t, stateModel.SecurityFilterName.IsNull())
+	assert.True(t, stateModel.UpdatedAt.IsNull())
+	assert.Equal(t, apiUser.Role.Name, stateModel.Role.ValueString())
+	assert.Equal(t, apiUser.Role.Id, stateModel.RoleId.ValueInt64())
 }

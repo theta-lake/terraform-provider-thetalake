@@ -17,6 +17,7 @@ import (
 	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
 	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/resources/directory_group"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
+	retentionlibraryresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/retention_library"
 	roleresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/role"
 	supervisionspace "github.com/theta-lake/terraform-provider-thetalake/internal/resources/supervision_space"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/user"
@@ -101,12 +102,13 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 
 func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		user.NewUserResource,
-		supervisionspace.NewSupervisionSpaceResource,
-		label.NewLabelResource,
 		directorygroup.NewDirectoryGroupResource,
-		usergroupresource.NewUserGroupResource,
+		label.NewLabelResource,
+		retentionlibraryresource.NewRetentionLibraryResource,
 		roleresource.NewRoleResource,
+		supervisionspace.NewSupervisionSpaceResource,
+		user.NewUserResource,
+		usergroupresource.NewUserGroupResource,
 	}
 }
 
