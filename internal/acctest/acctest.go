@@ -30,6 +30,9 @@ provider "thetalake" {
   client_secret = "%s"
 }
 `, apiServer, clientId, clientSecret)
+	ApiServer    = apiServer
+	ClientId     = clientId
+	ClientSecret = clientSecret
 )
 
 // sharedClient is a singleton authenticated client shared across all acceptance

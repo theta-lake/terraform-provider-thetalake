@@ -13,7 +13,7 @@ func TestFromApiModel(t *testing.T) {
 	updated := ts.Add(time.Hour * 24)
 
 	role := thetalake.Role{
-		CreatedAt:     ts,
+		CreatedAt:     &ts,
 		Default:       true,
 		Description:   "Administrator role",
 		Id:            3,
@@ -39,7 +39,7 @@ func TestFromApiModel_NilUpdatedAt(t *testing.T) {
 	ts, _ := time.Parse(time.RFC3339, "2024-01-01T00:00:00Z")
 
 	role := thetalake.Role{
-		CreatedAt: ts,
+		CreatedAt: &ts,
 		Id:        1,
 		Name:      "Reviewer",
 		UpdatedAt: nil,

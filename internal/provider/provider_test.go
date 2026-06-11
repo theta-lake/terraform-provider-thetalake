@@ -114,12 +114,13 @@ func TestResources(t *testing.T) {
 	resourceFactories := p.Resources(context.Background())
 
 	expectedTypes := []string{
-		"thetalake_user",
-		"thetalake_supervision_space",
-		"thetalake_label",
 		"thetalake_directory_group",
-		"thetalake_user_group",
+		"thetalake_label",
 		"thetalake_retention_library",
+		"thetalake_role",
+		"thetalake_supervision_space",
+		"thetalake_user",
+		"thetalake_user_group",
 		"thetalake_swrv_rule",
 	}
 

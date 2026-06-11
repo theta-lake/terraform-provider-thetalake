@@ -1,0 +1,11 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "13fc3dec-b271-4a9b-bd4f-ae22f072e130",
+  "permissions": [
+    "cases:add_records",
+    "cases:create",
+    "cases:read",
+    "cases:update"
+  ]
+}

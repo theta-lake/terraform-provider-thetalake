@@ -42,9 +42,16 @@ type user struct {
 	RoleId                int64            `json:"role_id,omitempty"`
 }
 
+// EmbeddedRole is a lightweight role representation used in user API responses.
+// It matches the role-2 schema which only contains id and name.
+type EmbeddedRole struct {
+	Id   int64  `json:"id"`
+	Name string `json:"name"`
+}
+
 type User struct {
 	user
-	Role Role `json:"role"`
+	Role EmbeddedRole `json:"role"`
 }
 
 type SupervisionSpaceUser struct {
