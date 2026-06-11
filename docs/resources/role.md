@@ -32,7 +32,7 @@ resource "thetalake_role" "example" {
 
 - `description` (String) A description of the role.
 - `name` (String) The role's name. Must be unique.
-- `permissions` (Set of String) An array of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.
+- `permissions` (Set of String) A set of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.
 
 ### Read-Only
 

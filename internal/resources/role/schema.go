@@ -45,7 +45,7 @@ func (r *roleResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			"permissions": schema.SetAttribute{
 				ElementType:         types.StringType,
 				Required:            true,
-				MarkdownDescription: "An array of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.",
+				MarkdownDescription: "A set of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.",
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:            true,
