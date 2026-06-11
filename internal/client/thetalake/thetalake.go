@@ -105,57 +105,9 @@ func (c *Client) doRequest(method, endpoint string, body any, responseObjectName
 
 // Returns the page token if present, nil otherwise.
 func (c *Client) doRequestInner(method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
-	var bodyBytes []byte
-
-	if body != nil {
-		var err error
-		bodyBytes, err = json.Marshal(body)
-		if err != nil {
-			return "", fmt.Errorf("failed to marshal request body: %w", err)
-		}
-	}
-
-	// Build the full request URL without escaping query delimiters in endpoint.
-	path := c.apiServerUrl + "/api/v1" + endpoint
-
-	var bodyReader io.Reader
-	if bodyBytes != nil {
-		bodyReader = bytes.NewReader(bodyBytes)
-	}
-
-	req, err := http.NewRequest(method, path, bodyReader)
+	respBody, err := c.doRequestBytes(method, endpoint, body)
 	if err != nil {
-		return "", fmt.Errorf("failed to create request: %w", err)
-	}
-
-	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
-	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
-
-	if bodyBytes != nil {
-		req.Header.Set("Content-Type", "application/json")
-	}
-
-	resp, err := c.httpClient.Do(req)
-	if err != nil {
-		return "", fmt.Errorf("request failed: %w", err)
-	}
-
-	respBody, err := io.ReadAll(resp.Body)
-	resp.Body.Close()
-	if err != nil {
-		return "", fmt.Errorf("failed to read response body: %w", err)
-	}
-
-	if resp.StatusCode == http.StatusNotFound {
-		return "", ErrNotFound
-	}
-
-	if resp.StatusCode >= 400 {
-		var apiErr apiErrorResponse
-		if err := json.Unmarshal(respBody, &apiErr); err != nil {
-			return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, string(respBody))
-		}
-		return "", fmt.Errorf("request failed with status %d: %s", resp.StatusCode, apiErr.ErrorMessage)
+		return "", err
 	}
 
 	var responseMap map[string]json.RawMessage
@@ -182,6 +134,63 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	}
 
 	return "", nil
+}
+
+func (c *Client) doRequestBytes(method, endpoint string, body any) ([]byte, error) {
+	var bodyBytes []byte
+
+	if body != nil {
+		var err error
+		bodyBytes, err = json.Marshal(body)
+		if err != nil {
+			return nil, fmt.Errorf("failed to marshal request body: %w", err)
+		}
+	}
+
+	// Build the full request URL without escaping query delimiters in endpoint.
+	path := c.apiServerUrl + "/api/v1" + endpoint
+
+	var bodyReader io.Reader
+	if bodyBytes != nil {
+		bodyReader = bytes.NewReader(bodyBytes)
+	}
+
+	req, err := http.NewRequest(method, path, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("failed to create request: %w", err)
+	}
+
+	req.Header.Set("Authorization", "Bearer "+c.bearerToken)
+	req.Header.Set("User-Agent", fmt.Sprintf("ThetaLake-Terraform-Provider/%s", c.version))
+
+	if bodyBytes != nil {
+		req.Header.Set("Content-Type", "application/json")
+	}
+
+	resp, err := c.httpClient.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("request failed: %w", err)
+	}
+
+	respBody, err := io.ReadAll(resp.Body)
+	resp.Body.Close()
+	if err != nil {
+		return nil, fmt.Errorf("failed to read response body: %w", err)
+	}
+
+	if resp.StatusCode == http.StatusNotFound {
+		return nil, ErrNotFound
+	}
+
+	if resp.StatusCode >= 400 {
+		var apiErr apiErrorResponse
+		if err := json.Unmarshal(respBody, &apiErr); err != nil {
+			return nil, fmt.Errorf("request failed with status %d: %s", resp.StatusCode, string(respBody))
+		}
+		return nil, fmt.Errorf("request failed with status %d: %s", resp.StatusCode, apiErr.ErrorMessage)
+	}
+
+	return respBody, nil
 }
 
 // getToken retrieves an OAuth2 access token using the client_credentials grant

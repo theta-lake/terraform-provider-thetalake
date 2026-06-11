@@ -121,6 +121,7 @@ func TestResources(t *testing.T) {
 		"thetalake_supervision_space",
 		"thetalake_user",
 		"thetalake_user_group",
+		"thetalake_swrv_rule",
 	}
 
 	if len(resourceFactories) != len(expectedTypes) {
