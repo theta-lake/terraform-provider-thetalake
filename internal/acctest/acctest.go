@@ -18,6 +18,9 @@ var (
 	IntegrationName              = os.Getenv("TF_ACC_TEST_INTEGRATION_NAME")
 	RetentionLibName             = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_NAME")
 	RetentionLibStorageAccountID = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_STORAGE_ACCOUNT_ID")
+	SwrvRulePolicyID             = os.Getenv("TF_ACC_TEST_SWRV_RULE_POLICY_ID")
+	SwrvRuleRetentionLibraryID   = os.Getenv("TF_ACC_TEST_SWRV_RULE_RETENTION_LIBRARY_ID")
+	SwrvRuleWorkflowID           = os.Getenv("TF_ACC_TEST_SWRV_RULE_WORKFLOW_ID")
 	IdentityEmail                = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
 	UserEmail                    = os.Getenv("TF_ACC_TEST_USER_EMAIL")
 	TestProviderConfig           = fmt.Sprintf(`

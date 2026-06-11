@@ -1,0 +1,40 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "test-request-id",
+  "swrv_rule": {
+    "default_rule": false,
+    "description": "My SWRV rule",
+    "id": 2337,
+    "input_source": [
+      {
+        "name": "Zoom Chat",
+        "integration": {
+          "id": 2345,
+          "name": "Zoom Chat",
+          "type": "integration"
+        }
+      }
+    ],
+    "is_built_in": false,
+    "name": "swrv-example",
+    "policy": {
+      "id": 147,
+      "name": "All Detections Active"
+    },
+    "priority": 4,
+    "retention_library": {
+      "id": 1,
+      "name": "Test Bucket - US West (Oregon)"
+    },
+    "search": null,
+    "supervision_space": {
+      "id": 10420,
+      "name": "Executive Team"
+    },
+    "workflow": {
+      "id": 14536,
+      "name": "My workflow"
+    }
+  }
+}
