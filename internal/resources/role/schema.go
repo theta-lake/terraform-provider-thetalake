@@ -6,8 +6,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
@@ -27,9 +25,6 @@ func (r *roleResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 			"description": schema.StringAttribute{
 				Required:            true,
 				MarkdownDescription: "A description of the role.",
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
-				},
 			},
 			"id": schema.Int64Attribute{
 				Computed:            true,
@@ -47,10 +42,10 @@ func (r *roleResource) Schema(ctx context.Context, req resource.SchemaRequest, r
 				Computed:            true,
 				MarkdownDescription: "The number of users currently assigned to this role.",
 			},
-			"permissions": schema.ListAttribute{
+			"permissions": schema.SetAttribute{
 				ElementType:         types.StringType,
 				Required:            true,
-				MarkdownDescription: "An array of permissions enabled for this role. Must be a subset of the permissions returned by the GET /roles/permissions endpoint.",
+				MarkdownDescription: "An array of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.",
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:            true,

@@ -6,8 +6,10 @@ import (
 	"fmt"
 	"strconv"
 
+	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
+	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
 )
 
@@ -40,6 +42,10 @@ func (r *roleResource) Create(ctx context.Context, req resource.CreateRequest, r
 	resp.Diagnostics.Append(req.Plan.GetAttribute(ctx, path.Root("permissions"), &plan.Permissions)...)
 	if resp.Diagnostics.HasError() {
 		resp.Diagnostics.AddError("Failed to create Role", "Create failed to read Role resource plan data")
+		return
+	}
+
+	if !r.validatePermissions(ctx, plan.Permissions, &resp.Diagnostics) {
 		return
 	}
 
@@ -100,6 +106,10 @@ func (r *roleResource) Update(ctx context.Context, req resource.UpdateRequest, r
 		return
 	}
 
+	if !r.validatePermissions(ctx, plan.Permissions, &resp.Diagnostics) {
+		return
+	}
+
 	// Read Terraform state data
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 	if resp.Diagnostics.HasError() {
@@ -155,4 +165,44 @@ func (r *roleResource) ImportState(ctx context.Context, req resource.ImportState
 	}
 
 	resp.Diagnostics.Append(resp.State.SetAttribute(ctx, path.Root("id"), id)...)
+}
+
+func (r *roleResource) validatePermissions(ctx context.Context, permissionsSet types.Set, diagnostics *diag.Diagnostics) bool {
+	if permissionsSet.IsNull() || permissionsSet.IsUnknown() {
+		return true
+	}
+
+	var requestedPermissions []string
+	diagnostics.Append(permissionsSet.ElementsAs(ctx, &requestedPermissions, false)...)
+	if diagnostics.HasError() {
+		return false
+	}
+
+	availablePermissions, err := r.client.GetRolePermissions(ctx)
+	if err != nil {
+		diagnostics.AddError("Failed to validate role permissions", fmt.Sprintf("Could not fetch available role permissions from /roles/permissions: %s", err.Error()))
+		return false
+	}
+
+	allowed := make(map[string]struct{}, len(availablePermissions))
+	for _, permission := range availablePermissions {
+		allowed[permission] = struct{}{}
+	}
+
+	var invalid []string
+	for _, permission := range requestedPermissions {
+		if _, ok := allowed[permission]; !ok {
+			invalid = append(invalid, permission)
+		}
+	}
+
+	if len(invalid) > 0 {
+		diagnostics.AddError(
+			"Invalid role permissions",
+			fmt.Sprintf("The following permissions are not returned by /roles/permissions: %v", invalid),
+		)
+		return false
+	}
+
+	return true
 }

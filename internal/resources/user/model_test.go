@@ -79,7 +79,7 @@ func TestFromApiModelWithoutSecurityFilterOrUpdatedAt(t *testing.T) {
 	apiUser.Email = "test@email.com"
 	apiUser.Id = 10
 	apiUser.Name = "Test User"
-	apiUser.Role = thetalake.Role{
+	apiUser.Role = thetalake.EmbeddedRole{
 		Name: "Admin",
 		Id:   5,
 	}

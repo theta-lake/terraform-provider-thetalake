@@ -32,7 +32,7 @@ resource "thetalake_role" "example" {
 
 - `description` (String) A description of the role.
 - `name` (String) The role's name. Must be unique.
-- `permissions` (List of String) An array of permissions enabled for this role. Must be a subset of the permissions returned by the GET /roles/permissions endpoint.
+- `permissions` (Set of String) An array of permissions enabled for this role. See the [Role Permissions Reference](../guides/role_permissions.md) for the current catalog. The provider validates requested permissions against the live `/roles/permissions` endpoint.
 
 ### Read-Only
 
@@ -42,11 +42,3 @@ resource "thetalake_role" "example" {
 - `is_built_in` (Boolean) Indicates if the role is built-in or custom.
 - `number_of_users` (Number) The number of users currently assigned to this role.
 - `updated_at` (String) Role updated timestamp using the RFC3339 date-time format. Null for built-in roles.
-
-## Import
-
-Import is supported using the following syntax:
-
-```shell
-terraform import thetalake_role.example 123
-```

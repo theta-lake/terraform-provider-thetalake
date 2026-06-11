@@ -10,7 +10,7 @@ import (
 type rolePlanModel struct {
 	Description types.String `tfsdk:"description"`
 	Name        types.String `tfsdk:"name"`
-	Permissions types.List   `tfsdk:"permissions"`
+	Permissions types.Set    `tfsdk:"permissions"`
 }
 
 type roleStateModel struct {
@@ -21,7 +21,7 @@ type roleStateModel struct {
 	IsBuiltIn     types.Bool        `tfsdk:"is_built_in"`
 	Name          types.String      `tfsdk:"name"`
 	NumberOfUsers types.Int64       `tfsdk:"number_of_users"`
-	Permissions   types.List        `tfsdk:"permissions"`
+	Permissions   types.Set         `tfsdk:"permissions"`
 	UpdatedAt     timetypes.RFC3339 `tfsdk:"updated_at"`
 }
 
@@ -70,7 +70,7 @@ func fromApiModel(r thetalake.Role) roleStateModel {
 	for i, p := range r.Permissions {
 		permValues[i] = types.StringValue(p)
 	}
-	state.Permissions = types.ListValueMust(types.StringType, permValues)
+	state.Permissions = types.SetValueMust(types.StringType, permValues)
 
 	return state
 }

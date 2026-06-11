@@ -37,6 +37,17 @@ func (s *Client) GetRoleByName(ctx context.Context, name string) (Role, error) {
 	return Role{}, errors.New("role not found")
 }
 
+func (s *Client) GetRolePermissions(ctx context.Context) ([]string, error) {
+	var permissions []string
+
+	err := s.doRequest(http.MethodGet, "/roles/permissions", nil, "permissions", &permissions)
+	if err != nil {
+		return nil, err
+	}
+
+	return permissions, nil
+}
+
 type createRoleRequest struct {
 	Name        string   `json:"name"`
 	Description string   `json:"description"`

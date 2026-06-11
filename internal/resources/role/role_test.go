@@ -1,14 +1,22 @@
 package role_test
 
 import (
+	"fmt"
 	"testing"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/acctest"
 )
 
 func TestAccRoleResource_basic(t *testing.T) {
+	if acctest.ApiServer == "" || acctest.ClientId == "" || acctest.ClientSecret == "" {
+		t.Skip("TF_ACC_TEST_API_SERVER, TF_ACC_TEST_CLIENT_ID, and TF_ACC_TEST_CLIENT_SECRET must be set")
+	}
+
 	resourceName := "thetalake_role.test"
+	roleName := fmt.Sprintf("Terraform acceptance test role %d", time.Now().UnixNano())
+	updatedRoleName := roleName + " updated"
 
 	resource.Test(t, resource.TestCase{
 		ProtoV6ProviderFactories: acctest.ProtoV6ProviderFactories,
@@ -17,7 +25,7 @@ func TestAccRoleResource_basic(t *testing.T) {
 			{
 				Config: acctest.TestProviderConfig + `
 resource "thetalake_role" "test" {
-  name        = "Terraform acceptance test role"
+	name        = "` + roleName + `"
   description = "Role used to test Terraform provider"
   permissions = [
     "cases:read",
@@ -26,11 +34,9 @@ resource "thetalake_role" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr(resourceName, "name", "Terraform acceptance test role"),
+					resource.TestCheckResourceAttr(resourceName, "name", roleName),
 					resource.TestCheckResourceAttr(resourceName, "description", "Role used to test Terraform provider"),
 					resource.TestCheckResourceAttr(resourceName, "permissions.#", "2"),
-					resource.TestCheckResourceAttr(resourceName, "permissions.0", "cases:read"),
-					resource.TestCheckResourceAttr(resourceName, "permissions.1", "cases:create"),
 					resource.TestCheckResourceAttr(resourceName, "is_built_in", "false"),
 					resource.TestCheckResourceAttrSet(resourceName, "id"),
 					resource.TestCheckResourceAttrSet(resourceName, "created_at"),
@@ -47,7 +53,7 @@ resource "thetalake_role" "test" {
 			{
 				Config: acctest.TestProviderConfig + `
 resource "thetalake_role" "test" {
-  name        = "Terraform acceptance test role updated"
+	name        = "` + updatedRoleName + `"
   description = "Updated role description"
   permissions = [
     "cases:read",
@@ -57,7 +63,7 @@ resource "thetalake_role" "test" {
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
-					resource.TestCheckResourceAttr(resourceName, "name", "Terraform acceptance test role updated"),
+					resource.TestCheckResourceAttr(resourceName, "name", updatedRoleName),
 					resource.TestCheckResourceAttr(resourceName, "description", "Updated role description"),
 					resource.TestCheckResourceAttr(resourceName, "permissions.#", "3"),
 					resource.TestCheckResourceAttrSet(resourceName, "id"),
