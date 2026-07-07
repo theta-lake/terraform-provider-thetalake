@@ -23,6 +23,7 @@ var (
 	SwrvRuleWorkflowID           = os.Getenv("TF_ACC_TEST_SWRV_RULE_WORKFLOW_ID")
 	IdentityEmail                = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
 	UserEmail                    = os.Getenv("TF_ACC_TEST_USER_EMAIL")
+	WorkspaceId                  = os.Getenv("TF_ACC_TEST_WORKSPACE_ID")
 	TestProviderConfig           = fmt.Sprintf(`
 provider "thetalake" {
   api_server    = "%s"

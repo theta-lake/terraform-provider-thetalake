@@ -1,0 +1,37 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "ca116f96-bbd5-11ef-9468-53af98260bba",
+  "workspaces": [{
+    "allow_anonymous_via_shared_links": false,
+    "analysis_supervision_spaces": [
+      {"id": 1, "name": "Test Space"}
+    ],
+    "audit_log_retention_period": null,
+    "case_management_manager_assignment": false,
+    "created_at": "2021-06-16T01:37:04.262Z",
+    "default_transcription_language": "en",
+    "default_workspace_timezone": "Etc/UTC",
+    "delete_on_expiration": false,
+    "description": "East Asia Regional",
+    "disabled": false,
+    "disabled_at": null,
+    "hide_attachments_from_search": false,
+    "id": 108,
+    "name": "East Region Sales",
+    "preferred_language_list": [
+      {"code": "en", "label": "English"},
+      {"code": "es", "label": "Spanish"}
+    ],
+    "preferred_languages": ["en", "es"],
+    "reauthenticate_on_network_change": false,
+    "shared_links_expiration_period": 730,
+    "show_system_messages_in_chat": false,
+    "updated_at": "2022-10-12T02:29:49.146Z",
+    "use_name_matcher": true,
+    "use_owner_only_space_matcher": false,
+    "users": [
+      {"email": "jane.doe@example.com", "id": 380, "name": "Jane Doe"}
+    ]
+  }]
+}
