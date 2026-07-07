@@ -20,6 +20,9 @@ func TestAccWorkspaceResource_basic(t *testing.T) {
 		Steps: []resource.TestStep{
 			// Import an existing workspace
 			{
+				Config: acctest.TestProviderConfig + `
+resource "thetalake_workspace" "test" {}
+`,
 				ResourceName:       resourceName,
 				ImportState:        true,
 				ImportStateId:      workspaceId,
