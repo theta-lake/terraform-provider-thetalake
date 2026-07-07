@@ -59,7 +59,7 @@ resource "thetalake_workspace" "example" {
 - `default_transcription_language` (String) The default language used for transcription if a record's language is unknown or not in the preferred language list
 - `default_workspace_timezone` (String) The workspace's default timezone (e.g. `Etc/UTC`, `America/New_York`)
 - `delete_on_expiration` (Boolean) Indicates if records in this workspace should be deleted when they expire from the archive
-- `hide_attachments_from_search` (Boolean) Indicates if attachments will be shown in search results
+- `hide_attachments_from_search` (Boolean) Indicates if attachments will be hidden from search results
 - `preferred_languages` (List of String) An array of selected preferred language codes
 - `reauthenticate_on_network_change` (Boolean) Indicates whether users will be forced to re-authenticate after changing networks
 - `shared_links_expiration_period` (Number) The duration in days that shared links for this workspace will be valid
