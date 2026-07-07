@@ -69,7 +69,6 @@ type workspaceUpdateRequest struct {
 
 func (c *Client) GetWorkspaceByName(ctx context.Context, name string) (Workspace, error) {
 	var workspaces []Workspace
-
 	err := c.doRequest(http.MethodGet, "/workspaces", nil, "workspaces", &workspaces)
 	if err != nil {
 		return Workspace{}, err
@@ -80,7 +79,6 @@ func (c *Client) GetWorkspaceByName(ctx context.Context, name string) (Workspace
 			return w, nil
 		}
 	}
-
 	return Workspace{}, ErrNotFound
 }
 
@@ -91,22 +89,16 @@ func (c *Client) GetWorkspaceById(ctx context.Context, id int64) (Workspace, err
 		return Workspace{}, err
 	}
 
-	var workspace *Workspace
 	for _, w := range responseWorkspaces {
 		if w.Id == id {
-			workspace = &w
-			break
+			w.AnalysisSupervisionSpaceIds = make([]int64, 0, len(w.AnalysisSupervisionSpaces))
+			for _, ss := range w.AnalysisSupervisionSpaces {
+				w.AnalysisSupervisionSpaceIds = append(w.AnalysisSupervisionSpaceIds, ss.Id)
+			}
+			return w, nil
 		}
 	}
-	if workspace == nil {
-		return Workspace{}, ErrNotFound
-	}
-
-	workspace.AnalysisSupervisionSpaceIds = make([]int64, 0, len(workspace.AnalysisSupervisionSpaces))
-	for _, ss := range workspace.AnalysisSupervisionSpaces {
-		workspace.AnalysisSupervisionSpaceIds = append(workspace.AnalysisSupervisionSpaceIds, ss.Id)
-	}
-	return *workspace, nil
+	return Workspace{}, ErrNotFound
 }
 
 type addUserToWorkspaceRequest struct {

@@ -10,6 +10,23 @@ import (
 	"github.com/go-openapi/testify/v2/assert"
 )
 
+func TestGetWorkspaceByName(t *testing.T) {
+	testHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusOK)
+		w.Write(readTestData("get_workspaces_response.json"))
+	}
+
+	client := newTestClient(t, http.MethodGet, "/workspaces", testHandler)
+
+	workspace, err := client.GetWorkspaceByName(context.Background(), "East Region Sales")
+	assert.NoError(t, err)
+
+	// Only used by the data source so these are the only attributes it has
+	assert.Equal(t, int64(108), workspace.Id)
+	assert.Equal(t, "East Region Sales", workspace.Name)
+	assert.Equal(t, "East Asia Regional", workspace.Description)
+}
+
 func TestGetWorkspaceById(t *testing.T) {
 	testHandler := func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
@@ -23,6 +40,7 @@ func TestGetWorkspaceById(t *testing.T) {
 
 	assert.Equal(t, int64(108), workspace.Id)
 	assert.Equal(t, "East Region Sales", workspace.Name)
+	assert.Equal(t, "East Asia Regional", workspace.Description)
 	assert.Equal(t, "Etc/UTC", workspace.DefaultWorkspaceTimezone)
 	assert.Equal(t, false, workspace.AllowAnonymousViaSharedLinks)
 	assert.Equal(t, "en", workspace.DefaultTranscriptionLanguage)

@@ -121,7 +121,7 @@ func (r *workspaceResource) Schema(ctx context.Context, req resource.SchemaReque
 			"hide_attachments_from_search": schema.BoolAttribute{
 				Optional:            true,
 				Computed:            true,
-				MarkdownDescription: "Indicates if attachments will be shown in search results",
+				MarkdownDescription: "Indicates if attachments will be hidden from search results",
 				PlanModifiers: []planmodifier.Bool{
 					boolplanmodifier.UseStateForUnknown(),
 				},
@@ -201,9 +201,6 @@ func (r *workspaceResource) Schema(ctx context.Context, req resource.SchemaReque
 				Optional:            true,
 				Computed:            true,
 				MarkdownDescription: "IDs of users assigned to this workspace. When set, Terraform will add or remove users to match the set. Omit this attribute to leave workspace membership unmanaged.",
-				PlanModifiers: []planmodifier.Set{
-					setplanmodifier.UseStateForUnknown(),
-				},
 			},
 			"users": schema.ListNestedAttribute{
 				Computed:            true,
