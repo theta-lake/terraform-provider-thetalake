@@ -122,6 +122,7 @@ func TestResources(t *testing.T) {
 		"thetalake_user",
 		"thetalake_user_group",
 		"thetalake_swrv_rule",
+		"thetalake_workspace",
 	}
 
 	if len(resourceFactories) != len(expectedTypes) {
@@ -150,6 +151,7 @@ func TestDataSources(t *testing.T) {
 		"thetalake_user_group",
 		"thetalake_identity",
 		"thetalake_user",
+		"thetalake_workspace",
 	}
 
 	if len(dataSourceFactories) != len(expectedTypes) {

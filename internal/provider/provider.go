@@ -15,6 +15,7 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/role"
 	userds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user"
 	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
+	workspaceds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/workspace"
 	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/resources/directory_group"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
 	retentionlibraryresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/retention_library"
@@ -23,6 +24,7 @@ import (
 	swrvrule "github.com/theta-lake/terraform-provider-thetalake/internal/resources/swrv_rule"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/user"
 	usergroupresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/user_group"
+	workspaceresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/workspace"
 )
 
 var _ provider.Provider = &ThetalakeProvider{}
@@ -111,6 +113,7 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 		user.NewUserResource,
 		usergroupresource.NewUserGroupResource,
 		swrvrule.NewSwrvRuleResource,
+		workspaceresource.NewWorkspaceResource,
 	}
 }
 
@@ -123,5 +126,6 @@ func (p *ThetalakeProvider) DataSources(ctx context.Context) []func() datasource
 		usergroup.NewUserGroupDataSource,
 		identity.NewIdentityDataSource,
 		userds.NewUserDataSource,
+		workspaceds.NewWorkspaceDataSource,
 	}
 }
