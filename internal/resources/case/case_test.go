@@ -64,7 +64,7 @@ resource "thetalake_case" "test" {
 					resource.TestCheckResourceAttr(resourceName, "description", "Updated description"),
 					resource.TestCheckResourceAttr(resourceName, "visibility", "PUBLIC"),
 					resource.TestCheckResourceAttr(resourceName, "manager_ids.#", "1"),
-					resource.TestCheckResourceAttr(resourceName, "manager_ids.0", acctest.CaseManagerUserID),
+					resource.TestCheckTypeSetElemAttr(resourceName, "manager_ids.*", acctest.CaseManagerUserID),
 				),
 			},
 			// Close the case
