@@ -114,6 +114,7 @@ func TestResources(t *testing.T) {
 	resourceFactories := p.Resources(context.Background())
 
 	expectedTypes := []string{
+		"thetalake_case",
 		"thetalake_directory_group",
 		"thetalake_label",
 		"thetalake_retention_library",
