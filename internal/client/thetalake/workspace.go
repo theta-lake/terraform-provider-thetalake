@@ -69,7 +69,7 @@ type workspaceUpdateRequest struct {
 
 func (c *Client) GetWorkspaceByName(ctx context.Context, name string) (Workspace, error) {
 	var workspaces []Workspace
-	err := c.doRequest(http.MethodGet, "/workspaces", nil, "workspaces", &workspaces)
+	err := c.doRequest(ctx, http.MethodGet, "/workspaces", nil, "workspaces", &workspaces)
 	if err != nil {
 		return Workspace{}, err
 	}
@@ -84,7 +84,7 @@ func (c *Client) GetWorkspaceByName(ctx context.Context, name string) (Workspace
 
 func (c *Client) GetWorkspaceById(ctx context.Context, id int64) (Workspace, error) {
 	var responseWorkspaces []Workspace
-	err := c.doRequest(http.MethodGet, "/workspaces", nil, "workspaces", &responseWorkspaces)
+	err := c.doRequest(ctx, http.MethodGet, "/workspaces", nil, "workspaces", &responseWorkspaces)
 	if err != nil {
 		return Workspace{}, err
 	}
@@ -106,12 +106,12 @@ type addUserToWorkspaceRequest struct {
 }
 
 func (c *Client) AddUserToWorkspace(ctx context.Context, userId int64) error {
-	return c.doRequest(http.MethodPut, "/workspaces/users", addUserToWorkspaceRequest{UserId: userId}, "", nil)
+	return c.doRequest(ctx, http.MethodPut, "/workspaces/users", addUserToWorkspaceRequest{UserId: userId}, "", nil)
 }
 
 func (c *Client) RemoveUserFromWorkspace(ctx context.Context, userId int64) error {
 	endpoint := fmt.Sprintf("/workspaces/users/%d", userId)
-	return c.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return c.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }
 
 func (c *Client) UpdateWorkspace(ctx context.Context, workspace Workspace) (Workspace, error) {
@@ -142,7 +142,7 @@ func (c *Client) UpdateWorkspace(ctx context.Context, workspace Workspace) (Work
 		updateReq.PreferredLanguages = []string{}
 	}
 
-	err := c.doRequest(http.MethodPut, "/workspaces", updateReq, "workspace", &responseWorkspace)
+	err := c.doRequest(ctx, http.MethodPut, "/workspaces", updateReq, "workspace", &responseWorkspace)
 	if err != nil {
 		return Workspace{}, err
 	}

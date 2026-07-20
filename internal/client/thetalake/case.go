@@ -45,28 +45,28 @@ type caseUpdateRequest struct {
 	Visibility  string    `json:"visibility"`
 }
 
-func addCaseManager(c *Client, caseId int64, userId int64) error {
+func addCaseManager(ctx context.Context, c *Client, caseId int64, userId int64) error {
 	endpoint := fmt.Sprintf("/cases/%d/managers", caseId)
 	body := struct {
 		UserId int64 `json:"user_id"`
 	}{UserId: userId}
-	return c.doRequest(http.MethodPut, endpoint, body, "", nil)
+	return c.doRequest(ctx, http.MethodPut, endpoint, body, "", nil)
 }
 
-func removeCaseManager(c *Client, caseId int64, userId int64) error {
+func removeCaseManager(ctx context.Context, c *Client, caseId int64, userId int64) error {
 	endpoint := fmt.Sprintf("/cases/%d/managers/%d", caseId, userId)
-	return c.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return c.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }
 
 func (c *Client) CreateCase(ctx context.Context, newCase Case) (Case, error) {
 	var responseCase Case
-	err := c.doRequest(http.MethodPost, "/cases", newCase, "case", &responseCase)
+	err := c.doRequest(ctx, http.MethodPost, "/cases", newCase, "case", &responseCase)
 	if err != nil {
 		return Case{}, err
 	}
 
 	for _, userId := range newCase.ManagerIds {
-		if err := addCaseManager(c, responseCase.Id, userId); err != nil {
+		if err := addCaseManager(ctx, c, responseCase.Id, userId); err != nil {
 			return responseCase, err
 		}
 	}
@@ -78,7 +78,7 @@ func (c *Client) CreateCase(ctx context.Context, newCase Case) (Case, error) {
 func (c *Client) GetCaseById(ctx context.Context, caseId int64) (Case, error) {
 	var responseCase Case
 	endpoint := fmt.Sprintf("/cases/%d", caseId)
-	err := c.doRequest(http.MethodGet, endpoint, nil, "case", &responseCase)
+	err := c.doRequest(ctx, http.MethodGet, endpoint, nil, "case", &responseCase)
 	if err != nil {
 		return Case{}, err
 	}
@@ -100,7 +100,7 @@ func (c *Client) UpdateCase(ctx context.Context, updatedCase Case) (Case, error)
 		OpenDate:    updatedCase.OpenDate,
 		Visibility:  updatedCase.Visibility,
 	}
-	err := c.doRequest(http.MethodPut, endpoint, requestBody, "case", &responseCase)
+	err := c.doRequest(ctx, http.MethodPut, endpoint, requestBody, "case", &responseCase)
 	if err != nil {
 		return Case{}, err
 	}
@@ -114,7 +114,7 @@ func (c *Client) UpdateCase(ctx context.Context, updatedCase Case) (Case, error)
 	// Add managers that are in desired state but not in current state
 	idsToAdd := diffIdSets(updatedCase.ManagerIds, currentCase.ManagerIds)
 	for _, userId := range idsToAdd {
-		if err := addCaseManager(c, responseCase.Id, userId); err != nil {
+		if err := addCaseManager(ctx, c, responseCase.Id, userId); err != nil {
 			return responseCase, err
 		}
 	}
@@ -122,7 +122,7 @@ func (c *Client) UpdateCase(ctx context.Context, updatedCase Case) (Case, error)
 	// Remove managers that are in current state but not in desired state
 	idsToRemove := diffIdSets(currentCase.ManagerIds, updatedCase.ManagerIds)
 	for _, userId := range idsToRemove {
-		if err := removeCaseManager(c, responseCase.Id, userId); err != nil {
+		if err := removeCaseManager(ctx, c, responseCase.Id, userId); err != nil {
 			return responseCase, err
 		}
 	}
@@ -134,13 +134,13 @@ func (c *Client) UpdateCase(ctx context.Context, updatedCase Case) (Case, error)
 
 func (c *Client) DeleteCase(ctx context.Context, caseId int64) error {
 	endpoint := fmt.Sprintf("/cases/%d", caseId)
-	return c.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return c.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }
 
 func (c *Client) ReopenCase(ctx context.Context, caseId int64) (Case, error) {
 	endpoint := fmt.Sprintf("/cases/%d/open", caseId)
 	var responseCase Case
-	err := c.doRequest(http.MethodPut, endpoint, nil, "case", &responseCase)
+	err := c.doRequest(ctx, http.MethodPut, endpoint, nil, "case", &responseCase)
 	return responseCase, err
 }
 
@@ -151,6 +151,6 @@ func (c *Client) CloseCase(ctx context.Context, caseId int64, closeDate time.Tim
 	}{CloseDate: closeDate}
 
 	var responseCase Case
-	err := c.doRequest(http.MethodPut, endpoint, body, "case", &responseCase)
+	err := c.doRequest(ctx, http.MethodPut, endpoint, body, "case", &responseCase)
 	return responseCase, err
 }

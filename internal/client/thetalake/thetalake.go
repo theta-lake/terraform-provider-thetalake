@@ -62,7 +62,7 @@ func (c *Client) SetVersion(version string) {
 	c.version = version
 }
 
-func (c *Client) doRequestWithPagination(method, endpoint string, body any, responseObjectName string, responseObject any, max int) error {
+func (c *Client) doRequestWithPagination(ctx context.Context, method, endpoint string, body any, responseObjectName string, responseObject any, max int) error {
 	// Generate a slice to hold individual page results
 	v := reflect.ValueOf(responseObject)
 	if v.Kind() != reflect.Ptr || v.Elem().Kind() != reflect.Slice {
@@ -83,7 +83,7 @@ func (c *Client) doRequestWithPagination(method, endpoint string, body any, resp
 		pagePtr := reflect.New(sliceType) // *([]T)
 		pageSlice := pagePtr.Interface()
 
-		if nextPageToken, err = c.doRequestInner(method, paginatedEndpoint, body, responseObjectName, pageSlice); err != nil {
+		if nextPageToken, err = c.doRequestInner(ctx, method, paginatedEndpoint, body, responseObjectName, pageSlice); err != nil {
 			return err
 		}
 
@@ -98,14 +98,14 @@ func (c *Client) doRequestWithPagination(method, endpoint string, body any, resp
 	return nil
 }
 
-func (c *Client) doRequest(method, endpoint string, body any, responseObjectName string, responseObject any) error {
-	_, err := c.doRequestInner(method, endpoint, body, responseObjectName, responseObject)
+func (c *Client) doRequest(ctx context.Context, method, endpoint string, body any, responseObjectName string, responseObject any) error {
+	_, err := c.doRequestInner(ctx, method, endpoint, body, responseObjectName, responseObject)
 	return err
 }
 
 // Returns the page token if present, nil otherwise.
-func (c *Client) doRequestInner(method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
-	respBody, err := c.doRequestBytes(method, endpoint, body)
+func (c *Client) doRequestInner(ctx context.Context, method, endpoint string, body any, responseObjectName string, responseObject any) (string, error) {
+	respBody, err := c.doRequestBytes(ctx, method, endpoint, body)
 	if err != nil {
 		return "", err
 	}
@@ -136,7 +136,7 @@ func (c *Client) doRequestInner(method, endpoint string, body any, responseObjec
 	return "", nil
 }
 
-func (c *Client) doRequestBytes(method, endpoint string, body any) ([]byte, error) {
+func (c *Client) doRequestBytes(ctx context.Context, method, endpoint string, body any) ([]byte, error) {
 	var bodyBytes []byte
 
 	if body != nil {
@@ -155,7 +155,7 @@ func (c *Client) doRequestBytes(method, endpoint string, body any) ([]byte, erro
 		bodyReader = bytes.NewReader(bodyBytes)
 	}
 
-	req, err := http.NewRequest(method, path, bodyReader)
+	req, err := http.NewRequestWithContext(ctx, method, path, bodyReader)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create request: %w", err)
 	}

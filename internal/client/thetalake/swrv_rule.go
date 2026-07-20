@@ -79,13 +79,13 @@ type swrvRuleRequest struct {
 }
 
 func (c *Client) CreateSwrvRule(ctx context.Context, rule SwrvRule) (SwrvRule, error) {
-	return c.doSwrvRuleWrite(http.MethodPost, "/workflows/swrv_rules", swrvRuleRequestFromRule(rule))
+	return c.doSwrvRuleWrite(ctx, http.MethodPost, "/workflows/swrv_rules", swrvRuleRequestFromRule(rule))
 }
 
 func (c *Client) GetSwrvRuleById(ctx context.Context, ruleId int64) (SwrvRule, error) {
 	var responseRule SwrvRule
 	endpoint := fmt.Sprintf("/workflows/swrv_rules/%d", ruleId)
-	err := c.doRequest(http.MethodGet, endpoint, nil, "swrv_rule", &responseRule)
+	err := c.doRequest(ctx, http.MethodGet, endpoint, nil, "swrv_rule", &responseRule)
 	if err != nil {
 		return SwrvRule{}, err
 	}
@@ -95,12 +95,12 @@ func (c *Client) GetSwrvRuleById(ctx context.Context, ruleId int64) (SwrvRule, e
 
 func (c *Client) UpdateSwrvRule(ctx context.Context, rule SwrvRule) (SwrvRule, error) {
 	endpoint := fmt.Sprintf("/workflows/swrv_rules/%d", rule.Id)
-	return c.doSwrvRuleWrite(http.MethodPut, endpoint, swrvRuleRequestFromRule(rule))
+	return c.doSwrvRuleWrite(ctx, http.MethodPut, endpoint, swrvRuleRequestFromRule(rule))
 }
 
-func (c *Client) doSwrvRuleWrite(method, endpoint string, body any) (SwrvRule, error) {
+func (c *Client) doSwrvRuleWrite(ctx context.Context, method, endpoint string, body any) (SwrvRule, error) {
 	var responseRule SwrvRule
-	err := c.doRequest(method, endpoint, body, "swrv_rule", &responseRule)
+	err := c.doRequest(ctx, method, endpoint, body, "swrv_rule", &responseRule)
 	if err != nil {
 		return SwrvRule{}, err
 	}
@@ -123,5 +123,5 @@ func swrvRuleRequestFromRule(rule SwrvRule) swrvRuleRequest {
 
 func (c *Client) DeleteSwrvRule(ctx context.Context, ruleId int64) error {
 	endpoint := fmt.Sprintf("/workflows/swrv_rules/%d", ruleId)
-	return c.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return c.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }

@@ -62,7 +62,7 @@ type SupervisionSpaceUser struct {
 
 func (s *Client) CreateUser(ctx context.Context, user User) (User, error) {
 	var responseUser User
-	err := s.doRequest(http.MethodPost, "/users", user, "user", &responseUser)
+	err := s.doRequest(ctx, http.MethodPost, "/users", user, "user", &responseUser)
 	if err != nil {
 		return User{}, err
 	}
@@ -74,7 +74,7 @@ func (s *Client) GetUserById(ctx context.Context, userId int64) (User, error) {
 	var responseUser User
 	endpoint := fmt.Sprintf("/users/%v", userId)
 
-	err := s.doRequest(http.MethodGet, endpoint, nil, "user", &responseUser)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "user", &responseUser)
 	if err != nil {
 		return User{}, err
 	}
@@ -86,7 +86,7 @@ func (s *Client) UpdateUser(ctx context.Context, user User) (User, error) {
 	var responseUser User
 	endpoint := fmt.Sprintf("/users/%v", user.Id)
 
-	err := s.doRequest(http.MethodPut, endpoint, user, "user", &responseUser)
+	err := s.doRequest(ctx, http.MethodPut, endpoint, user, "user", &responseUser)
 	if err != nil {
 		return User{}, err
 	}
@@ -96,7 +96,7 @@ func (s *Client) UpdateUser(ctx context.Context, user User) (User, error) {
 
 func (s *Client) DeleteUser(ctx context.Context, userId int64) error {
 	endpoint := fmt.Sprintf("/users/%v", userId)
-	err := s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	err := s.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 	if err != nil {
 		return err
 	}
@@ -107,7 +107,7 @@ func (s *Client) DeleteUser(ctx context.Context, userId int64) error {
 func (s *Client) GetUserByEmail(ctx context.Context, email string) (User, error) {
 	var users []User
 
-	err := s.doRequest(http.MethodGet, "/users", nil, "users", &users)
+	err := s.doRequest(ctx, http.MethodGet, "/users", nil, "users", &users)
 	if err != nil {
 		return User{}, err
 	}
