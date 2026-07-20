@@ -33,7 +33,7 @@ type RetentionLibrary struct {
 func (s *Client) GetRetentionLibraryByName(ctx context.Context, name string) (RetentionLibrary, error) {
 	var retentionLibraries []RetentionLibrary
 
-	err := s.doRequest(http.MethodGet, "/retention_libraries", nil, "retention_libraries", &retentionLibraries)
+	err := s.doRequest(ctx, http.MethodGet, "/retention_libraries", nil, "retention_libraries", &retentionLibraries)
 	if err != nil {
 		return RetentionLibrary{}, err
 	}
@@ -49,7 +49,7 @@ func (s *Client) GetRetentionLibraryByName(ctx context.Context, name string) (Re
 
 func (c *Client) CreateRetentionLibrary(ctx context.Context, library RetentionLibrary) (RetentionLibrary, error) {
 	var responseLibrary RetentionLibrary
-	err := c.doRequest(http.MethodPost, "/retention_libraries", library, "retention_library", &responseLibrary)
+	err := c.doRequest(ctx, http.MethodPost, "/retention_libraries", library, "retention_library", &responseLibrary)
 	if err != nil {
 		return RetentionLibrary{}, err
 	}
@@ -59,7 +59,7 @@ func (c *Client) CreateRetentionLibrary(ctx context.Context, library RetentionLi
 func (c *Client) GetRetentionLibraryById(ctx context.Context, libraryId int64) (RetentionLibrary, error) {
 	var responseLibrary RetentionLibrary
 	endpoint := fmt.Sprintf("/retention_libraries/%d", libraryId)
-	err := c.doRequest(http.MethodGet, endpoint, nil, "retention_library", &responseLibrary)
+	err := c.doRequest(ctx, http.MethodGet, endpoint, nil, "retention_library", &responseLibrary)
 	if err != nil {
 		return RetentionLibrary{}, err
 	}
@@ -69,7 +69,7 @@ func (c *Client) GetRetentionLibraryById(ctx context.Context, libraryId int64) (
 func (c *Client) UpdateRetentionLibrary(ctx context.Context, library RetentionLibrary) (RetentionLibrary, error) {
 	var responseLibrary RetentionLibrary
 	endpoint := fmt.Sprintf("/retention_libraries/%d", library.Id)
-	err := c.doRequest(http.MethodPut, endpoint, library, "retention_library", &responseLibrary)
+	err := c.doRequest(ctx, http.MethodPut, endpoint, library, "retention_library", &responseLibrary)
 	if err != nil {
 		return RetentionLibrary{}, err
 	}
@@ -78,5 +78,5 @@ func (c *Client) UpdateRetentionLibrary(ctx context.Context, library RetentionLi
 
 func (c *Client) DeleteRetentionLibrary(ctx context.Context, libraryId int64) error {
 	endpoint := fmt.Sprintf("/retention_libraries/%d", libraryId)
-	return c.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return c.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }

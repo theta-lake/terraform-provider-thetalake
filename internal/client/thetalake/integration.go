@@ -14,7 +14,7 @@ type Integration struct {
 func (s *Client) GetIntegrationByName(ctx context.Context, name string) (Integration, error) {
 	var integrations []Integration
 
-	err := s.doRequest(http.MethodGet, "/integrations", nil, "integrations", &integrations)
+	err := s.doRequest(ctx, http.MethodGet, "/integrations", nil, "integrations", &integrations)
 	if err != nil {
 		return Integration{}, err
 	}

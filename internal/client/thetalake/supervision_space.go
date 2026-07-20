@@ -37,14 +37,14 @@ type SupervisionSpace struct {
 
 func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSpace) (SupervisionSpace, error) {
 	var responseSpace SupervisionSpace
-	err := s.doRequest(http.MethodPost, "/supervision_spaces", space, "supervision_space", &responseSpace)
+	err := s.doRequest(ctx, http.MethodPost, "/supervision_spaces", space, "supervision_space", &responseSpace)
 	if err != nil {
 		return SupervisionSpace{}, err
 	}
 
 	// Add users to the supervision space if any are specified
 	if len(space.UserIds) > 0 {
-		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), space.UserIds, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), space.UserIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -52,7 +52,7 @@ func (s *Client) CreateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// Add user groups to the supervision space if any are specified
 	if len(space.UserGroupIds) > 0 {
-		err = s.doRequest(http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.Id), space.UserGroupIds, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodPost, fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.Id), space.UserGroupIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -70,7 +70,7 @@ func (s *Client) GetSupervisionSpaceById(ctx context.Context, spaceId int64) (Su
 	var responseSupervisionSpace SupervisionSpace
 	endpoint := fmt.Sprintf("/supervision_spaces/%v", spaceId)
 
-	err := s.doRequest(http.MethodGet, endpoint, nil, "supervision_space", &responseSupervisionSpace)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "supervision_space", &responseSupervisionSpace)
 	if err != nil {
 		return SupervisionSpace{}, err
 	}
@@ -90,7 +90,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	var responseSpace SupervisionSpace
 	endpoint := fmt.Sprintf("/supervision_spaces/%v", space.Id)
 
-	err := s.doRequest(http.MethodPut, endpoint, space, "supervision_space", &responseSpace)
+	err := s.doRequest(ctx, http.MethodPut, endpoint, space, "supervision_space", &responseSpace)
 	if err != nil {
 		return SupervisionSpace{}, err
 	}
@@ -98,7 +98,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	// Update user groups, adding and removing as necessary
 	userGroupsUrl := fmt.Sprintf("/supervision_spaces/%d/user_groups", responseSpace.Id)
 	if len(space.UserGroupIds) > 0 {
-		err = s.doRequest(http.MethodPost, userGroupsUrl, space.UserGroupIds, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodPost, userGroupsUrl, space.UserGroupIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -114,7 +114,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	ids := diffIdSets(responseSpace.UserGroupIds, space.UserGroupIds)
 	if len(ids) > 0 {
-		err = s.doRequest(http.MethodDelete, userGroupsUrl, ids, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodDelete, userGroupsUrl, ids, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -133,7 +133,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 	// Add users
 	if len(space.UserIds) > 0 {
-		err = s.doRequest(http.MethodPost, usersUrls, space.UserIds, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodPost, usersUrls, space.UserIds, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -142,7 +142,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 	// Remove users
 	ids = diffIdSets(responseSpace.UserIds, space.UserIds)
 	if len(ids) > 0 {
-		err = s.doRequest(http.MethodDelete, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), ids, "supervision_space", &responseSpace)
+		err = s.doRequest(ctx, http.MethodDelete, fmt.Sprintf("/supervision_spaces/%d/users", responseSpace.Id), ids, "supervision_space", &responseSpace)
 		if err != nil {
 			return responseSpace, err
 		}
@@ -165,7 +165,7 @@ func (s *Client) UpdateSupervisionSpace(ctx context.Context, space SupervisionSp
 
 func (s *Client) DeleteSupervisionSpace(ctx context.Context, spaceId int64) error {
 	endpoint := fmt.Sprintf("/supervision_spaces/%v", spaceId)
-	err := s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	err := s.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 	if err != nil {
 		return err
 	}

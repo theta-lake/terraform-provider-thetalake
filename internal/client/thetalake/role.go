@@ -23,7 +23,7 @@ type Role struct {
 func (s *Client) GetRoleByName(ctx context.Context, name string) (Role, error) {
 	var roles []Role
 
-	err := s.doRequest(http.MethodGet, "/roles", nil, "roles", &roles)
+	err := s.doRequest(ctx, http.MethodGet, "/roles", nil, "roles", &roles)
 	if err != nil {
 		return Role{}, err
 	}
@@ -40,7 +40,7 @@ func (s *Client) GetRoleByName(ctx context.Context, name string) (Role, error) {
 func (s *Client) GetRolePermissions(ctx context.Context) ([]string, error) {
 	var permissions []string
 
-	err := s.doRequest(http.MethodGet, "/roles/permissions", nil, "permissions", &permissions)
+	err := s.doRequest(ctx, http.MethodGet, "/roles/permissions", nil, "permissions", &permissions)
 	if err != nil {
 		return nil, err
 	}
@@ -67,7 +67,7 @@ func (s *Client) CreateRole(ctx context.Context, role Role) (Role, error) {
 		Description: role.Description,
 		Permissions: role.Permissions,
 	}
-	err := s.doRequest(http.MethodPost, "/roles", req, "role", &responseRole)
+	err := s.doRequest(ctx, http.MethodPost, "/roles", req, "role", &responseRole)
 	if err != nil {
 		return Role{}, err
 	}
@@ -77,7 +77,7 @@ func (s *Client) CreateRole(ctx context.Context, role Role) (Role, error) {
 func (s *Client) GetRoleById(ctx context.Context, roleId int64) (Role, error) {
 	var responseRole Role
 	endpoint := fmt.Sprintf("/roles/%d", roleId)
-	err := s.doRequest(http.MethodGet, endpoint, nil, "role", &responseRole)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "role", &responseRole)
 	if err != nil {
 		return Role{}, err
 	}
@@ -92,7 +92,7 @@ func (s *Client) UpdateRole(ctx context.Context, role Role) (Role, error) {
 		Description: role.Description,
 		Permissions: role.Permissions,
 	}
-	err := s.doRequest(http.MethodPut, endpoint, req, "role", &responseRole)
+	err := s.doRequest(ctx, http.MethodPut, endpoint, req, "role", &responseRole)
 	if err != nil {
 		return Role{}, err
 	}
@@ -101,5 +101,5 @@ func (s *Client) UpdateRole(ctx context.Context, role Role) (Role, error) {
 
 func (s *Client) DeleteRole(ctx context.Context, roleId int64) error {
 	endpoint := fmt.Sprintf("/roles/%d", roleId)
-	return s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return s.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }

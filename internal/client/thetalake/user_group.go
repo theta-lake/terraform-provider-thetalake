@@ -33,7 +33,7 @@ type UserGroup struct {
 func (s *Client) GetUserGroupByName(ctx context.Context, name string) (UserGroup, error) {
 	var userGroups []UserGroup
 
-	err := s.doRequest(http.MethodGet, "/user_groups", nil, "user_groups", &userGroups)
+	err := s.doRequest(ctx, http.MethodGet, "/user_groups", nil, "user_groups", &userGroups)
 	if err != nil {
 		return UserGroup{}, err
 	}
@@ -49,14 +49,14 @@ func (s *Client) GetUserGroupByName(ctx context.Context, name string) (UserGroup
 
 func (s *Client) CreateUserGroup(ctx context.Context, userGroup UserGroup) (UserGroup, error) {
 	var responseUserGroup UserGroup
-	err := s.doRequest(http.MethodPost, "/user_groups", userGroup, "user_group", &responseUserGroup)
+	err := s.doRequest(ctx, http.MethodPost, "/user_groups", userGroup, "user_group", &responseUserGroup)
 	if err != nil {
 		return UserGroup{}, err
 	}
 
 	if len(userGroup.UserIds) > 0 {
 		addUrl := fmt.Sprintf("/user_groups/%d/add_users", responseUserGroup.Id)
-		err = s.doRequest(http.MethodPut, addUrl, userGroup.UserIds, "user_group", &responseUserGroup)
+		err = s.doRequest(ctx, http.MethodPut, addUrl, userGroup.UserIds, "user_group", &responseUserGroup)
 		if err != nil {
 			return responseUserGroup, err
 		}
@@ -71,7 +71,7 @@ func (s *Client) GetUserGroupById(ctx context.Context, userGroupId int64) (UserG
 	var responseUserGroup UserGroup
 	endpoint := fmt.Sprintf("/user_groups/%d", userGroupId)
 
-	err := s.doRequest(http.MethodGet, endpoint, nil, "user_group", &responseUserGroup)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "user_group", &responseUserGroup)
 	if err != nil {
 		return UserGroup{}, err
 	}
@@ -87,7 +87,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 	var responseUserGroup UserGroup
 	endpoint := fmt.Sprintf("/user_groups/%d", userGroup.Id)
 
-	err := s.doRequest(http.MethodPut, endpoint, userGroup, "user_group", &responseUserGroup)
+	err := s.doRequest(ctx, http.MethodPut, endpoint, userGroup, "user_group", &responseUserGroup)
 	if err != nil {
 		return UserGroup{}, err
 	}
@@ -105,7 +105,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 	// Only add users that are not already in the group
 	idsToAdd := diffIdSets(userGroup.UserIds, currentUserGroup.UserIds)
 	if len(idsToAdd) > 0 {
-		err = s.doRequest(http.MethodPut, addUrl, idsToAdd, "user_group", &responseUserGroup)
+		err = s.doRequest(ctx, http.MethodPut, addUrl, idsToAdd, "user_group", &responseUserGroup)
 		if err != nil {
 			return responseUserGroup, err
 		}
@@ -114,7 +114,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 	// Remove users that are no longer desired
 	idsToRemove := diffIdSets(currentUserGroup.UserIds, userGroup.UserIds)
 	if len(idsToRemove) > 0 {
-		err = s.doRequest(http.MethodPut, removeUrl, idsToRemove, "user_group", &responseUserGroup)
+		err = s.doRequest(ctx, http.MethodPut, removeUrl, idsToRemove, "user_group", &responseUserGroup)
 		if err != nil {
 			return responseUserGroup, err
 		}
@@ -130,7 +130,7 @@ func (s *Client) UpdateUserGroup(ctx context.Context, userGroup UserGroup) (User
 
 func (s *Client) DeleteUserGroup(ctx context.Context, userGroupId int64) error {
 	endpoint := fmt.Sprintf("/user_groups/%d", userGroupId)
-	err := s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	err := s.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 	if err != nil {
 		return err
 	}

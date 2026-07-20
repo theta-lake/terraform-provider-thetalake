@@ -33,7 +33,7 @@ type DirectoryGroup struct {
 func (s *Client) GetDirectoryGroupByName(ctx context.Context, name string) (DirectoryGroup, error) {
 	var directoryGroups []DirectoryGroup
 
-	err := s.doRequestWithPagination(http.MethodGet, "/directory_groups", nil, "directory_groups", &directoryGroups, 500)
+	err := s.doRequestWithPagination(ctx, http.MethodGet, "/directory_groups", nil, "directory_groups", &directoryGroups, 500)
 	if err != nil {
 		return DirectoryGroup{}, err
 	}
@@ -50,14 +50,14 @@ func (s *Client) GetDirectoryGroupByName(ctx context.Context, name string) (Dire
 func (s *Client) CreateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (DirectoryGroup, error) {
 	var responseDg DirectoryGroup
 
-	err := s.doRequest(http.MethodPost, "/directory_groups", dg, "directory_group", &responseDg)
+	err := s.doRequest(ctx, http.MethodPost, "/directory_groups", dg, "directory_group", &responseDg)
 	if err != nil {
 		return DirectoryGroup{}, err
 	}
 
 	if len(dg.IdentityIds) > 0 {
 		addEndpoint := fmt.Sprintf("/directory_groups/%d/identities", responseDg.Id)
-		err = s.doRequest(http.MethodPost, addEndpoint, dg.IdentityIds, "identities", nil)
+		err = s.doRequest(ctx, http.MethodPost, addEndpoint, dg.IdentityIds, "identities", nil)
 		if err != nil {
 			return responseDg, err
 		}
@@ -71,7 +71,7 @@ func (s *Client) GetDirectoryGroupById(ctx context.Context, id int64) (Directory
 	var responseDg DirectoryGroup
 
 	endpoint := fmt.Sprintf("/directory_groups/%d", id)
-	err := s.doRequest(http.MethodGet, endpoint, nil, "directory_group", &responseDg)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "directory_group", &responseDg)
 	if err != nil {
 		return DirectoryGroup{}, err
 	}
@@ -87,7 +87,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	var responseDg DirectoryGroup
 
 	endpoint := fmt.Sprintf("/directory_groups/%d", dg.Id)
-	err := s.doRequest(http.MethodPut, endpoint, dg, "directory_group", &responseDg)
+	err := s.doRequest(ctx, http.MethodPut, endpoint, dg, "directory_group", &responseDg)
 	if err != nil {
 		return DirectoryGroup{}, err
 	}
@@ -102,7 +102,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	idsToAdd := diffIdSets(dg.IdentityIds, currentDg.IdentityIds)
 	if len(idsToAdd) > 0 {
 		addEndpoint := fmt.Sprintf("/directory_groups/%d/identities", responseDg.Id)
-		err = s.doRequest(http.MethodPost, addEndpoint, idsToAdd, "identities", nil)
+		err = s.doRequest(ctx, http.MethodPost, addEndpoint, idsToAdd, "identities", nil)
 		if err != nil {
 			return responseDg, err
 		}
@@ -112,7 +112,7 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 	idsToRemove := diffIdSets(currentDg.IdentityIds, dg.IdentityIds)
 	for _, identityId := range idsToRemove {
 		removeEndpoint := fmt.Sprintf("/directory_groups/%d/identity/%d", responseDg.Id, identityId)
-		err = s.doRequest(http.MethodDelete, removeEndpoint, nil, "", nil)
+		err = s.doRequest(ctx, http.MethodDelete, removeEndpoint, nil, "", nil)
 		if err != nil {
 			return responseDg, err
 		}
@@ -127,5 +127,5 @@ func (s *Client) UpdateDirectoryGroup(ctx context.Context, dg DirectoryGroup) (D
 
 func (s *Client) DeleteDirectoryGroup(ctx context.Context, id int64) error {
 	endpoint := fmt.Sprintf("/directory_groups/%d", id)
-	return s.doRequest(http.MethodDelete, endpoint, nil, "", nil)
+	return s.doRequest(ctx, http.MethodDelete, endpoint, nil, "", nil)
 }

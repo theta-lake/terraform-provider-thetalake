@@ -19,7 +19,7 @@ func (s *Client) GetIdentityByEmail(ctx context.Context, email string) (Identity
 	var identities []Identity
 
 	endpoint := fmt.Sprintf("/identities?query=%s&field_name=email&max=25", url.QueryEscape(email))
-	err := s.doRequest(http.MethodGet, endpoint, nil, "identities", &identities)
+	err := s.doRequest(ctx, http.MethodGet, endpoint, nil, "identities", &identities)
 	if err != nil {
 		return Identity{}, err
 	}
