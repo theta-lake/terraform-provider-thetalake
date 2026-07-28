@@ -126,7 +126,11 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"end_date": schema.StringAttribute{
 				Optional:            true,
+				Computed:            true,
 				MarkdownDescription: "The end date of the lexicon in 'YYYY-MM-DD' format",
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
 			},
 			"filename_analyzed": schema.BoolAttribute{
 				Optional:            true,
@@ -208,8 +212,12 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"start_date": schema.StringAttribute{
+				Computed:            true,
 				Optional:            true,
 				MarkdownDescription: "The start date of the lexicon in 'YYYY-MM-DD' format",
+				PlanModifiers: []planmodifier.String{
+					stringplanmodifier.UseStateForUnknown(),
+				},
 			},
 			"updated_at": schema.StringAttribute{
 				Computed:            true,

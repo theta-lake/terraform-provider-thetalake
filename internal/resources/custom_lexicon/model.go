@@ -183,13 +183,16 @@ func toUpdateRequest(plan *customLexiconModel, state *customLexiconModel) thetal
 		Description: &description,
 	}
 
-	if !plan.StartDate.IsNull() && !plan.StartDate.IsUnknown() {
-		v := plan.StartDate.ValueString()
-		request.StartDate = &v
+	if plan.StartDate.IsUnknown() {
+		request.StartDate = state.StartDate.ValueStringPointer()
+	} else {
+		request.StartDate = plan.StartDate.ValueStringPointer()
 	}
-	if !plan.EndDate.IsNull() && !plan.EndDate.IsUnknown() {
-		v := plan.EndDate.ValueString()
-		request.EndDate = &v
+
+	if plan.EndDate.IsUnknown() {
+		request.EndDate = state.EndDate.ValueStringPointer()
+	} else {
+		request.EndDate = plan.EndDate.ValueStringPointer()
 	}
 
 	if !plan.PolicyIds.IsNull() && !plan.PolicyIds.IsUnknown() {

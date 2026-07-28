@@ -127,6 +127,46 @@ func TestToUpdateRequest_EmptyPolicyIdsClears(t *testing.T) {
 	}
 }
 
+func TestToUpdateRequest_PreservesDatesWhenUnknown(t *testing.T) {
+	plan := &customLexiconModel{
+		Description: types.StringValue("d"),
+		Disabled:    types.BoolValue(false),
+		Name:        types.StringValue("n"),
+		StartDate:   types.StringUnknown(),
+		EndDate:     types.StringUnknown(),
+	}
+	state := &customLexiconModel{
+		Disabled:  types.BoolValue(false),
+		StartDate: types.StringValue("2024-01-01"),
+		EndDate:   types.StringValue("2024-12-31"),
+	}
+	request := toUpdateRequest(plan, state)
+	if assert.NotNil(t, request.StartDate) {
+		assert.Equal(t, "2024-01-01", *request.StartDate)
+	}
+	if assert.NotNil(t, request.EndDate) {
+		assert.Equal(t, "2024-12-31", *request.EndDate)
+	}
+}
+
+func TestToUpdateRequest_NullDatesClears(t *testing.T) {
+	plan := &customLexiconModel{
+		Description: types.StringValue("d"),
+		Disabled:    types.BoolValue(false),
+		Name:        types.StringValue("n"),
+		StartDate:   types.StringNull(),
+		EndDate:     types.StringNull(),
+	}
+	state := &customLexiconModel{
+		Disabled:  types.BoolValue(false),
+		StartDate: types.StringValue("2024-01-01"),
+		EndDate:   types.StringValue("2024-12-31"),
+	}
+	request := toUpdateRequest(plan, state)
+	assert.Nil(t, request.StartDate)
+	assert.Nil(t, request.EndDate)
+}
+
 func TestFromApiModel(t *testing.T) {
 	createdAt, _ := time.Parse(time.RFC3339, "2021-06-16T01:37:04.262Z")
 	updatedAt, _ := time.Parse(time.RFC3339, "2022-10-12T02:29:49.146Z")

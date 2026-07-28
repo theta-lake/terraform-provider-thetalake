@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"slices"
 	"strconv"
 
 	"github.com/hashicorp/terraform-plugin-framework/path"
@@ -51,6 +52,22 @@ func (r *customLexiconResource) ValidateConfig(ctx context.Context, req resource
 			"Invalid Custom Lexicon Configuration",
 			"policy_ids must be empty when disabled = true: disabling a custom lexicon removes all policies associated with it.",
 		)
+	}
+
+	// If rule_scope is explicitly set, it must include "email" when enabling email analysis.
+	if !config.RuleScope.IsNull() && !config.RuleScope.IsUnknown() {
+		emailSmart := !config.EmailSmartBody.IsNull() && !config.EmailSmartBody.IsUnknown() && config.EmailSmartBody.ValueBool()
+		emailSubject := !config.EmailSubjectAnalyzed.IsNull() && !config.EmailSubjectAnalyzed.IsUnknown() && config.EmailSubjectAnalyzed.ValueBool()
+		if emailSmart || emailSubject {
+			hasEmail := slices.Contains(stringSetToSlice(config.RuleScope), "email")
+			if !hasEmail {
+				resp.Diagnostics.AddAttributeError(
+					path.Root("rule_scope"),
+					"Invalid Custom Lexicon Configuration",
+					"rule_scope must include \"email\" when email_smart_body or email_subject_analyzed is true.",
+				)
+			}
+		}
 	}
 }
 
