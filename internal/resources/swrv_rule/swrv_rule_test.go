@@ -31,8 +31,7 @@ resource "thetalake_swrv_rule" "test" {
   policy_id            = ` + acctest.SwrvRulePolicyID + `
   retention_library_id = ` + acctest.SwrvRuleRetentionLibraryID + `
   workflow_id          = ` + acctest.SwrvRuleWorkflowID + `
-  priority             = 7
-
+  priority             = 1
   input_sources = [{
 	type = "all_uploads"
   }]
@@ -44,7 +43,7 @@ resource "thetalake_swrv_rule" "test" {
 					resource.TestCheckResourceAttr(resourceName, "policy_id", acctest.SwrvRulePolicyID),
 					resource.TestCheckResourceAttr(resourceName, "retention_library_id", acctest.SwrvRuleRetentionLibraryID),
 					resource.TestCheckResourceAttr(resourceName, "workflow_id", acctest.SwrvRuleWorkflowID),
-					resource.TestCheckResourceAttr(resourceName, "priority", "7"),
+					resource.TestCheckResourceAttr(resourceName, "priority", "1"),
 					resource.TestCheckResourceAttr(resourceName, "input_sources.#", "1"),
 					resource.TestCheckResourceAttr(resourceName, "input_sources.0.type", "all_uploads"),
 					resource.TestCheckResourceAttrSet(resourceName, "id"),
@@ -67,7 +66,6 @@ resource "thetalake_swrv_rule" "test" {
   retention_library_id = ` + acctest.SwrvRuleRetentionLibraryID + `
   workflow_id          = ` + acctest.SwrvRuleWorkflowID + `
   priority             = 0
-
   input_sources = [{
 	type = "all_uploads"
   }]
