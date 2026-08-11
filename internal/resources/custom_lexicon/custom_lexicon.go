@@ -6,10 +6,19 @@ import (
 	"fmt"
 	"slices"
 	"strconv"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
+)
+
+// The create endpoint can return 201 slightly before the new lexicon is
+// visible to the get-by-id / list endpoints. These bound how long Create
+// waits for that eventual consistency to resolve before giving up.
+const (
+	createConsistencyMaxAttempts = 12
+	createConsistencyDelay       = 5 * time.Second
 )
 
 type customLexiconResource struct {
@@ -85,6 +94,15 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	lexicon, err := r.client.CreateCustomLexicon(ctx, createRequest)
 	if err != nil {
 		resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create failed with error: %s", err.Error()))
+		return
+	}
+
+	// The create response can reflect stale/default field values from before
+	// the write has fully settled, so use the polled, eventually-consistent
+	// lexicon (not the create response) as the source of truth going forward.
+	lexicon, err = r.waitForCustomLexiconConsistency(ctx, lexicon.Id)
+	if err != nil {
+		resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create succeeded but the new lexicon did not become available for retrieval: %s", err.Error()))
 		return
 	}
 
@@ -191,6 +209,32 @@ func (r *customLexiconResource) Delete(ctx context.Context, req resource.DeleteR
 		resp.Diagnostics.AddError("Failed to delete Custom Lexicon", fmt.Sprintf("Delete (disable) failed with error: %s", err.Error()))
 		return
 	}
+}
+
+// waitForCustomLexiconConsistency polls GetCustomLexiconById until the
+// newly created lexicon becomes visible, working around a brief window of
+// eventual consistency between the create endpoint (which returns 201 as
+// soon as the write is accepted) and the get-by-id / list endpoints.
+func (r *customLexiconResource) waitForCustomLexiconConsistency(ctx context.Context, id int64) (thetalake.CustomLexicon, error) {
+	var lastErr error
+
+	for attempt := range createConsistencyMaxAttempts {
+		if attempt > 0 {
+			select {
+			case <-ctx.Done():
+				return thetalake.CustomLexicon{}, ctx.Err()
+			case <-time.After(createConsistencyDelay):
+			}
+		}
+
+		lexicon, err := r.client.GetCustomLexiconById(ctx, id)
+		if err == nil {
+			return lexicon, nil
+		}
+		lastErr = err
+	}
+
+	return thetalake.CustomLexicon{}, lastErr
 }
 
 // ImportState allows existing custom lexicons to be brought under Terraform
