@@ -100,8 +100,11 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	// The create response can reflect stale/default field values from before
 	// the write has fully settled, so use the polled, eventually-consistent
 	// lexicon (not the create response) as the source of truth going forward.
+	createdLexicon := lexicon
 	lexicon, err = r.waitForCustomLexiconConsistency(ctx, lexicon.Id)
 	if err != nil {
+		state := fromApiModel(createdLexicon)
+		resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 		resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create succeeded but the new lexicon did not become available for retrieval: %s", err.Error()))
 		return
 	}
@@ -110,6 +113,7 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	// disabled lexicon, follow up with an explicit disable call. StartDate and
 	// EndDate must be carried forward explicitly.
 	if plan.Disabled.ValueBool() {
+		existingLexicon := lexicon
 		disabled := true
 		lexicon, err = r.client.UpdateCustomLexicon(ctx, lexicon.Id, thetalake.UpdateCustomLexiconRequest{
 			Disabled:  &disabled,
@@ -117,6 +121,8 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 			EndDate:   formatDatePtr(lexicon.EndDate),
 		})
 		if err != nil {
+			state := fromApiModel(existingLexicon)
+			resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 			resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create succeeded but failed to disable the new lexicon: %s", err.Error()))
 			return
 		}
