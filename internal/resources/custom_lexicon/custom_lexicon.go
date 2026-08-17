@@ -115,7 +115,7 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	if plan.Disabled.ValueBool() {
 		existingLexicon := lexicon
 		disabled := true
-		lexicon, err = r.client.UpdateCustomLexicon(ctx, lexicon.Id, thetalake.UpdateCustomLexiconRequest{
+		lexicon, err = r.updateCustomLexiconWithRetry(ctx, lexicon.Id, thetalake.UpdateCustomLexiconRequest{
 			Disabled:  &disabled,
 			StartDate: formatDatePtr(lexicon.StartDate),
 			EndDate:   formatDatePtr(lexicon.EndDate),
@@ -175,7 +175,7 @@ func (r *customLexiconResource) Update(ctx context.Context, req resource.UpdateR
 
 	updateRequest := toUpdateRequest(&plan, &state)
 
-	lexicon, err := r.client.UpdateCustomLexicon(ctx, state.Id.ValueInt64(), updateRequest)
+	lexicon, err := r.updateCustomLexiconWithRetry(ctx, state.Id.ValueInt64(), updateRequest)
 	if err != nil {
 		resp.Diagnostics.AddError("Failed to update Custom Lexicon", fmt.Sprintf("Update failed with error: %s", err.Error()))
 		return
@@ -206,7 +206,7 @@ func (r *customLexiconResource) Delete(ctx context.Context, req resource.DeleteR
 	// have no `omitempty`, so leaving them unset would send JSON null and
 	// clear the lexicon's existing dates.
 	disabled := true
-	_, err := r.client.UpdateCustomLexicon(ctx, state.Id.ValueInt64(), thetalake.UpdateCustomLexiconRequest{
+	_, err := r.updateCustomLexiconWithRetry(ctx, state.Id.ValueInt64(), thetalake.UpdateCustomLexiconRequest{
 		Disabled:  &disabled,
 		StartDate: state.StartDate.ValueStringPointer(),
 		EndDate:   state.EndDate.ValueStringPointer(),
@@ -236,6 +236,43 @@ func (r *customLexiconResource) waitForCustomLexiconConsistency(ctx context.Cont
 		lexicon, err := r.client.GetCustomLexiconById(ctx, id)
 		if err == nil {
 			return lexicon, nil
+		}
+		lastErr = err
+	}
+
+	return thetalake.CustomLexicon{}, lastErr
+}
+
+// updateCustomLexiconWithRetry calls UpdateCustomLexicon, retrying if the API
+// returns a thetalake.RetryableError (a 503 with a Retry-After header). This
+// happens when a lexicon is updated shortly after creation, before the
+// earlier write has fully settled, and uses the same bounded-attempts
+// approach as waitForCustomLexiconConsistency, sleeping for the duration the
+// API specifies instead of a fixed delay.
+func (r *customLexiconResource) updateCustomLexiconWithRetry(ctx context.Context, id int64, request thetalake.UpdateCustomLexiconRequest) (thetalake.CustomLexicon, error) {
+	var lastErr error
+
+	for attempt := range createConsistencyMaxAttempts {
+		if attempt > 0 {
+			retryAfter := createConsistencyDelay
+			if retryableErr, ok := errors.AsType[*thetalake.RetryableError](lastErr); ok {
+				retryAfter = retryableErr.RetryAfter
+			}
+
+			select {
+			case <-ctx.Done():
+				return thetalake.CustomLexicon{}, ctx.Err()
+			case <-time.After(retryAfter):
+			}
+		}
+
+		lexicon, err := r.client.UpdateCustomLexicon(ctx, id, request)
+		if err == nil {
+			return lexicon, nil
+		}
+
+		if _, ok := errors.AsType[*thetalake.RetryableError](err); !ok {
+			return thetalake.CustomLexicon{}, err
 		}
 		lastErr = err
 	}

@@ -3,6 +3,7 @@ package thetalake
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 	"testing"
@@ -137,6 +138,47 @@ func TestUpdateCustomLexicon(t *testing.T) {
 	assert.Equal(t, int64(1235), updated.Id)
 	assert.Equal(t, "Updated Lexicon", updated.Name)
 	assert.Equal(t, []int64{1, 2}, updated.PolicyIds)
+}
+
+func TestUpdateCustomLexicon_ServiceUnavailable(t *testing.T) {
+	name := "Updated Lexicon"
+	request := UpdateCustomLexiconRequest{
+		Name: &name,
+	}
+
+	testHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Retry-After", "5")
+		w.WriteHeader(http.StatusServiceUnavailable)
+	}
+
+	client := newTestClient(t, http.MethodPut, "/analysis/lexicons/1235", testHandler)
+
+	_, err := client.UpdateCustomLexicon(context.Background(), 1235, request)
+	if assert.Error(t, err) {
+		var retryableErr *RetryableError
+		if assert.True(t, errors.As(err, &retryableErr)) {
+			assert.Equal(t, 5*time.Second, retryableErr.RetryAfter)
+		}
+	}
+}
+
+func TestUpdateCustomLexicon_ServiceUnavailable_NoRetryAfter(t *testing.T) {
+	name := "Updated Lexicon"
+	request := UpdateCustomLexiconRequest{
+		Name: &name,
+	}
+
+	testHandler := func(w http.ResponseWriter, r *http.Request) {
+		w.WriteHeader(http.StatusServiceUnavailable)
+	}
+
+	client := newTestClient(t, http.MethodPut, "/analysis/lexicons/1235", testHandler)
+
+	_, err := client.UpdateCustomLexicon(context.Background(), 1235, request)
+	if assert.Error(t, err) {
+		var retryableErr *RetryableError
+		assert.False(t, errors.As(err, &retryableErr))
+	}
 }
 
 func TestUpdateCustomLexicon_Disable(t *testing.T) {
