@@ -33,6 +33,18 @@ resource "thetalake_custom_lexicon" "test" {
   description = "Custom lexicon used to test Terraform provider"
   risk_type   = "risk"
   rules       = ["accept-test-word-1", "accept-test-word-2"]
+
+  rule_scope              = ["chat", "email", "doc"]
+  communication_direction = ["inbound", "outbound", "internal"]
+
+  attachments_enabled           = false
+  boilerplate_enabled           = false
+  chatroom_name_analyzed        = false
+  count_proximity_by_characters = false
+  disabled                      = false
+  email_smart_body              = false
+  email_subject_analyzed        = false
+  filename_analyzed             = false
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
@@ -64,7 +76,19 @@ resource "thetalake_custom_lexicon" "test" {
   risk_type   = "risk"
   rules       = ["accept-test-word-1", "accept-test-word-2"]
   start_date  = "2024-01-01"
-  end_date    = "2024-12-31"` + policyConfig + `
+  end_date    = "2024-12-31"
+
+  rule_scope              = ["chat", "email", "doc"]
+  communication_direction = ["inbound", "outbound", "internal"]
+
+  attachments_enabled           = false
+  boilerplate_enabled           = false
+  chatroom_name_analyzed        = false
+  count_proximity_by_characters = false
+  disabled                      = false
+  email_smart_body              = false
+  email_subject_analyzed        = false
+  filename_analyzed             = false` + policyConfig + `
 }
 `,
 				Check: resource.ComposeAggregateTestCheckFunc(
@@ -90,6 +114,17 @@ resource "thetalake_custom_lexicon" "test" {
   end_date    = "2024-12-31"
   disabled    = true
   policy_ids  = []
+
+  rule_scope              = ["chat", "email", "doc"]
+  communication_direction = ["inbound", "outbound", "internal"]
+
+  attachments_enabled           = false
+  boilerplate_enabled           = false
+  chatroom_name_analyzed        = false
+  count_proximity_by_characters = false
+  email_smart_body              = false
+  email_subject_analyzed        = false
+  filename_analyzed             = false
 }
 `,
 				ConfigPlanChecks: resource.ConfigPlanChecks{

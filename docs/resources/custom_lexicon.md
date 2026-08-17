@@ -25,8 +25,15 @@ resource "thetalake_custom_lexicon" "example" {
 
   rule_scope              = ["chat", "email", "doc"]
   communication_direction = ["inbound", "outbound"]
-  attachments_enabled     = true
-  filename_analyzed       = true
+
+  attachments_enabled           = true
+  boilerplate_enabled           = false
+  chatroom_name_analyzed        = false
+  count_proximity_by_characters = false
+  disabled                      = false
+  email_smart_body              = false
+  email_subject_analyzed        = false
+  filename_analyzed             = true
 
   policy_ids = [1, 2]
 
@@ -39,27 +46,27 @@ resource "thetalake_custom_lexicon" "example" {
 
 ### Required
 
+- `attachments_enabled` (Boolean) Indicates if the custom lexicon applies to attachments. Changing this value forces replacement.
+- `boilerplate_enabled` (Boolean) Indicates if the boilerplate classifier is enabled. Changing this value forces replacement.
+- `chatroom_name_analyzed` (Boolean) Indicates if the custom lexicon applies to the chatroom name. Changing this value forces replacement.
+- `communication_direction` (Set of String) Which directions to apply the custom lexicon to. Changing this value forces replacement.
+- `count_proximity_by_characters` (Boolean) Indicates if the proximity is counted by characters (`true`) or words (`false`). Changing this value forces replacement.
 - `description` (String) The description of the lexicon
+- `disabled` (Boolean) Indicates if the lexicon should be disabled. Disabling a lexicon removes all policies associated with it.
+- `email_smart_body` (Boolean) Indicates if the custom lexicon uses smart body analysis for emails. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.
+- `email_subject_analyzed` (Boolean) Indicates if the custom lexicon applies to the email subject. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.
+- `filename_analyzed` (Boolean) Indicates if the custom lexicon applies to the document title. Changing this value forces replacement.
 - `name` (String) The name of the lexicon
 - `risk_type` (String) The risk type of the lexicon. Changing this value forces replacement.
+- `rule_scope` (Set of String) The scope of the custom lexicon. Changing this value forces replacement.
 - `rules` (Set of String) The custom lexicon rules (keywords/terms) for the lexicon. Up to 1000 rules, each up to 1500 characters. Changing this value forces replacement.
 
 ### Optional
 
-- `attachments_enabled` (Boolean) Indicates if the custom lexicon applies to attachments. Changing this value forces replacement.
-- `boilerplate_enabled` (Boolean) Indicates if the boilerplate classifier is enabled. Changing this value forces replacement.
-- `chatroom_name_analyzed` (Boolean) Indicates if the custom lexicon applies to the chatroom name. Changing this value forces replacement.
-- `communication_direction` (Set of String) Which directions to apply the custom lexicon to. Defaults to `[inbound, outbound, internal]`. Changing this value forces replacement.
-- `count_proximity_by_characters` (Boolean) Indicates if the proximity is counted by characters (`true`) or words (`false`). Changing this value forces replacement.
-- `disabled` (Boolean) Indicates if the lexicon should be disabled. Disabling a lexicon removes all policies associated with it.
-- `email_smart_body` (Boolean) Indicates if the custom lexicon uses smart body analysis for emails. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.
-- `email_subject_analyzed` (Boolean) Indicates if the custom lexicon applies to the email subject. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.
 - `end_date` (String) The end date of the lexicon in 'YYYY-MM-DD' format
-- `filename_analyzed` (Boolean) Indicates if the custom lexicon applies to the document title. Changing this value forces replacement.
 - `max_participants` (Number) The max number of participants the custom lexicon applies to. If there are more than `max_participants`, the custom lexicon will not apply to those participants. Omit for no limit. Changing this value forces replacement.
 - `min_num_rules_with_hits` (Number) Minimum number of rule hits required to create a policy hit. Omit for no minimum. Changing this value forces replacement.
 - `policy_ids` (Set of Number) The IDs of the policies to associate with the lexicon
-- `rule_scope` (Set of String) The scope of the custom lexicon. Defaults to `[ai_interaction, transcript, chat, doc, email, image, ocr]`. Changing this value forces replacement.
 - `start_date` (String) The start date of the lexicon in 'YYYY-MM-DD' format
 
 ### Read-Only

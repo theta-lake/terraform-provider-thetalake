@@ -13,6 +13,7 @@ import (
 func TestToCreateRequest(t *testing.T) {
 	plan := &customLexiconModel{
 		AttachmentsEnabled: types.BoolValue(true),
+		BoilerplateEnabled: types.BoolValue(false),
 		Description:        types.StringValue("My Lexicon description"),
 		Disabled:           types.BoolValue(false),
 		EndDate:            types.StringValue("2025-06-17"),
@@ -32,15 +33,17 @@ func TestToCreateRequest(t *testing.T) {
 			types.StringValue("word2"),
 		}),
 		StartDate: types.StringValue("2021-06-16"),
-		// Unset create-only fields left as zero-value (null).
-		BoilerplateEnabled:         types.BoolNull(),
-		ChatroomNameAnalyzed:       types.BoolNull(),
-		CommunicationDirection:     types.SetNull(types.StringType),
-		CountProximityByCharacters: types.BoolNull(),
-		EmailSmartBody:             types.BoolNull(),
-		EmailSubjectAnalyzed:       types.BoolNull(),
-		FilenameAnalyzed:           types.BoolNull(),
-		MinNumRulesWithHits:        types.Int64Null(),
+		// Required fields.
+		ChatroomNameAnalyzed: types.BoolValue(false),
+		CommunicationDirection: types.SetValueMust(types.StringType, []attr.Value{
+			types.StringValue("inbound"),
+		}),
+		CountProximityByCharacters: types.BoolValue(false),
+		EmailSmartBody:             types.BoolValue(false),
+		EmailSubjectAnalyzed:       types.BoolValue(false),
+		FilenameAnalyzed:           types.BoolValue(false),
+		// Unset optional/nullable fields left as zero-value (null).
+		MinNumRulesWithHits: types.Int64Null(),
 	}
 
 	request := toCreateRequest(plan)
@@ -51,10 +54,13 @@ func TestToCreateRequest(t *testing.T) {
 	assert.ElementsMatch(t, []string{"word1", "word2"}, request.Rules)
 	assert.ElementsMatch(t, []int64{1, 2}, request.Policies)
 	assert.ElementsMatch(t, []string{"chat", "email"}, request.RuleScope)
+	assert.ElementsMatch(t, []string{"inbound"}, request.CommunicationDirection)
 	if assert.NotNil(t, request.AttachmentsEnabled) {
 		assert.True(t, *request.AttachmentsEnabled)
 	}
-	assert.Nil(t, request.BoilerplateEnabled)
+	if assert.NotNil(t, request.BoilerplateEnabled) {
+		assert.False(t, *request.BoilerplateEnabled)
+	}
 	if assert.NotNil(t, request.MaxParticipants) {
 		assert.Equal(t, int64(10), *request.MaxParticipants)
 	}

@@ -10,8 +10,15 @@ resource "thetalake_custom_lexicon" "example" {
 
   rule_scope              = ["chat", "email", "doc"]
   communication_direction = ["inbound", "outbound"]
-  attachments_enabled     = true
-  filename_analyzed       = true
+
+  attachments_enabled           = true
+  boilerplate_enabled           = false
+  chatroom_name_analyzed        = false
+  count_proximity_by_characters = false
+  disabled                      = false
+  email_smart_body              = false
+  email_subject_analyzed        = false
+  filename_analyzed             = true
 
   policy_ids = [1, 2]
 

@@ -8,7 +8,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework-validators/stringvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/booldefault"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/boolplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
@@ -35,52 +34,42 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"attachments_enabled": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the custom lexicon applies to attachments. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"boilerplate_enabled": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the boilerplate classifier is enabled. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"chatroom_name_analyzed": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the custom lexicon applies to the chatroom name. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"communication_direction": schema.SetAttribute{
 				ElementType:         types.StringType,
-				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "Which directions to apply the custom lexicon to. Defaults to `[inbound, outbound, internal]`. Changing this value forces replacement.",
+				Required:            true,
+				MarkdownDescription: "Which directions to apply the custom lexicon to. Changing this value forces replacement.",
 				Validators: []validator.Set{
 					setvalidator.ValueStringsAre(stringvalidator.OneOf("inbound", "outbound", "internal")),
 				},
 				PlanModifiers: []planmodifier.Set{
-					setplanmodifier.UseStateForUnknown(),
-					setplanmodifier.RequiresReplaceIfConfigured(),
+					setplanmodifier.RequiresReplace(),
 				},
 			},
 			"count_proximity_by_characters": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the proximity is counted by characters (`true`) or words (`false`). Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"created_at": schema.StringAttribute{
@@ -96,9 +85,7 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				MarkdownDescription: "The description of the lexicon",
 			},
 			"disabled": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
-				Default:             booldefault.StaticBool(false),
+				Required:            true,
 				MarkdownDescription: "Indicates if the lexicon should be disabled. Disabling a lexicon removes all policies associated with it.",
 			},
 			"disabled_at": schema.StringAttribute{
@@ -107,21 +94,17 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				MarkdownDescription: "The disabled timestamp using the RFC3339 date-time format, if the lexicon has been disabled",
 			},
 			"email_smart_body": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the custom lexicon uses smart body analysis for emails. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"email_subject_analyzed": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the custom lexicon applies to the email subject. If `true`, `rule_scope` must include `email`. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"end_date": schema.StringAttribute{
@@ -133,12 +116,10 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"filename_analyzed": schema.BoolAttribute{
-				Optional:            true,
-				Computed:            true,
+				Required:            true,
 				MarkdownDescription: "Indicates if the custom lexicon applies to the document title. Changing this value forces replacement.",
 				PlanModifiers: []planmodifier.Bool{
-					boolplanmodifier.UseStateForUnknown(),
-					boolplanmodifier.RequiresReplaceIfConfigured(),
+					boolplanmodifier.RequiresReplace(),
 				},
 			},
 			"id": schema.Int64Attribute{
@@ -188,15 +169,13 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"rule_scope": schema.SetAttribute{
 				ElementType:         types.StringType,
-				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "The scope of the custom lexicon. Defaults to `[ai_interaction, transcript, chat, doc, email, image, ocr]`. Changing this value forces replacement.",
+				Required:            true,
+				MarkdownDescription: "The scope of the custom lexicon. Changing this value forces replacement.",
 				Validators: []validator.Set{
 					setvalidator.ValueStringsAre(stringvalidator.OneOf("ai_interaction", "transcript", "chat", "doc", "email", "image", "ocr")),
 				},
 				PlanModifiers: []planmodifier.Set{
-					setplanmodifier.UseStateForUnknown(),
-					setplanmodifier.RequiresReplaceIfConfigured(),
+					setplanmodifier.RequiresReplace(),
 				},
 			},
 			"rules": schema.SetAttribute{

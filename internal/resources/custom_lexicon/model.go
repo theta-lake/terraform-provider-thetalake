@@ -102,51 +102,39 @@ func int64SliceToSet(values []int64) types.Set {
 	return types.SetValueMust(types.Int64Type, elements)
 }
 
-// toCreateRequest maps the plan to the create request body. Create-only
-// fields are only sent when explicitly configured (non-null, non-unknown);
-// omitted optional fields let the API apply its own defaults.
+// toCreateRequest maps the plan to the create request body. Required fields
+// are always populated from the plan; the remaining nullable fields
+// (end_date, max_participants, min_num_rules_with_hits, policy_ids,
+// start_date) are only sent when explicitly configured (non-null,
+// non-unknown), letting the API apply its own defaults when omitted.
 func toCreateRequest(plan *customLexiconModel) thetalake.CreateCustomLexiconRequest {
+	attachmentsEnabled := plan.AttachmentsEnabled.ValueBool()
+	boilerplateEnabled := plan.BoilerplateEnabled.ValueBool()
+	chatroomNameAnalyzed := plan.ChatroomNameAnalyzed.ValueBool()
+	countProximityByCharacters := plan.CountProximityByCharacters.ValueBool()
+	emailSmartBody := plan.EmailSmartBody.ValueBool()
+	emailSubjectAnalyzed := plan.EmailSubjectAnalyzed.ValueBool()
+	filenameAnalyzed := plan.FilenameAnalyzed.ValueBool()
+
 	request := thetalake.CreateCustomLexiconRequest{
-		Description: plan.Description.ValueString(),
-		Name:        plan.Name.ValueString(),
-		RiskType:    plan.RiskType.ValueString(),
-		Rules:       stringSetToSlice(plan.Rules),
+		AttachmentsEnabled:         &attachmentsEnabled,
+		BoilerplateEnabled:         &boilerplateEnabled,
+		ChatroomNameAnalyzed:       &chatroomNameAnalyzed,
+		CommunicationDirection:     stringSetToSlice(plan.CommunicationDirection),
+		CountProximityByCharacters: &countProximityByCharacters,
+		Description:                plan.Description.ValueString(),
+		EmailSmartBody:             &emailSmartBody,
+		EmailSubjectAnalyzed:       &emailSubjectAnalyzed,
+		FilenameAnalyzed:           &filenameAnalyzed,
+		Name:                       plan.Name.ValueString(),
+		RiskType:                   plan.RiskType.ValueString(),
+		RuleScope:                  stringSetToSlice(plan.RuleScope),
+		Rules:                      stringSetToSlice(plan.Rules),
 	}
 
-	if !plan.AttachmentsEnabled.IsNull() && !plan.AttachmentsEnabled.IsUnknown() {
-		v := plan.AttachmentsEnabled.ValueBool()
-		request.AttachmentsEnabled = &v
-	}
-	if !plan.BoilerplateEnabled.IsNull() && !plan.BoilerplateEnabled.IsUnknown() {
-		v := plan.BoilerplateEnabled.ValueBool()
-		request.BoilerplateEnabled = &v
-	}
-	if !plan.ChatroomNameAnalyzed.IsNull() && !plan.ChatroomNameAnalyzed.IsUnknown() {
-		v := plan.ChatroomNameAnalyzed.ValueBool()
-		request.ChatroomNameAnalyzed = &v
-	}
-	if !plan.CommunicationDirection.IsNull() && !plan.CommunicationDirection.IsUnknown() {
-		request.CommunicationDirection = stringSetToSlice(plan.CommunicationDirection)
-	}
-	if !plan.CountProximityByCharacters.IsNull() && !plan.CountProximityByCharacters.IsUnknown() {
-		v := plan.CountProximityByCharacters.ValueBool()
-		request.CountProximityByCharacters = &v
-	}
-	if !plan.EmailSmartBody.IsNull() && !plan.EmailSmartBody.IsUnknown() {
-		v := plan.EmailSmartBody.ValueBool()
-		request.EmailSmartBody = &v
-	}
-	if !plan.EmailSubjectAnalyzed.IsNull() && !plan.EmailSubjectAnalyzed.IsUnknown() {
-		v := plan.EmailSubjectAnalyzed.ValueBool()
-		request.EmailSubjectAnalyzed = &v
-	}
 	if !plan.EndDate.IsNull() && !plan.EndDate.IsUnknown() {
 		v := plan.EndDate.ValueString()
 		request.EndDate = &v
-	}
-	if !plan.FilenameAnalyzed.IsNull() && !plan.FilenameAnalyzed.IsUnknown() {
-		v := plan.FilenameAnalyzed.ValueBool()
-		request.FilenameAnalyzed = &v
 	}
 	if !plan.MaxParticipants.IsNull() && !plan.MaxParticipants.IsUnknown() {
 		v := plan.MaxParticipants.ValueInt64()
@@ -158,9 +146,6 @@ func toCreateRequest(plan *customLexiconModel) thetalake.CreateCustomLexiconRequ
 	}
 	if !plan.PolicyIds.IsNull() && !plan.PolicyIds.IsUnknown() {
 		request.Policies = int64SetToSlice(plan.PolicyIds)
-	}
-	if !plan.RuleScope.IsNull() && !plan.RuleScope.IsUnknown() {
-		request.RuleScope = stringSetToSlice(plan.RuleScope)
 	}
 	if !plan.StartDate.IsNull() && !plan.StartDate.IsUnknown() {
 		v := plan.StartDate.ValueString()
