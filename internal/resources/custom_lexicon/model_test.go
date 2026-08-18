@@ -112,7 +112,73 @@ func TestToUpdateRequest_DisabledChanged(t *testing.T) {
 	if assert.NotNil(t, request.Disabled) {
 		assert.True(t, *request.Disabled)
 	}
+	// A null policy_ids means "not configured", which clears any existing
+	// associations rather than leaving them in place.
+	if assert.NotNil(t, request.PolicyIds) {
+		assert.Equal(t, []int64{}, *request.PolicyIds)
+	}
+}
+
+// TestToUpdateRequest_NullPolicyIdsClears covers removing a previously
+// configured policy_ids from the configuration: the planned value is null and
+// must be sent as an explicit empty array, not omitted (which the API treats as
+// "leave unchanged").
+func TestToUpdateRequest_NullPolicyIdsClears(t *testing.T) {
+	plan := &customLexiconModel{
+		Description: types.StringValue("d"),
+		Disabled:    types.BoolValue(false),
+		Name:        types.StringValue("n"),
+		PolicyIds:   types.SetNull(types.Int64Type),
+	}
+	state := &customLexiconModel{
+		Disabled: types.BoolValue(false),
+		PolicyIds: types.SetValueMust(types.Int64Type, []attr.Value{
+			types.Int64Value(7),
+		}),
+	}
+
+	request := toUpdateRequest(plan, state)
+
+	if assert.NotNil(t, request.PolicyIds) {
+		assert.Equal(t, []int64{}, *request.PolicyIds)
+	}
+}
+
+// TestToUpdateRequest_UnknownPolicyIdsOmitted verifies an unresolved planned
+// value leaves policy_ids out of the request entirely, so the existing
+// associations survive.
+func TestToUpdateRequest_UnknownPolicyIdsOmitted(t *testing.T) {
+	plan := &customLexiconModel{
+		Description: types.StringValue("d"),
+		Disabled:    types.BoolValue(false),
+		Name:        types.StringValue("n"),
+		PolicyIds:   types.SetUnknown(types.Int64Type),
+	}
+	state := &customLexiconModel{
+		Disabled: types.BoolValue(false),
+	}
+
+	request := toUpdateRequest(plan, state)
+
 	assert.Nil(t, request.PolicyIds)
+}
+
+func TestReconcilePolicyIds(t *testing.T) {
+	empty := types.SetValueMust(types.Int64Type, []attr.Value{})
+	populated := types.SetValueMust(types.Int64Type, []attr.Value{types.Int64Value(1)})
+
+	// Unconfigured + no policies from the API stays null, so the applied value
+	// matches the planned (null) value.
+	assert.True(t, reconcilePolicyIds(empty, types.SetNull(types.Int64Type)).IsNull())
+
+	// Explicitly configured as empty stays an empty set.
+	assert.False(t, reconcilePolicyIds(empty, empty).IsNull())
+	assert.Equal(t, 0, len(reconcilePolicyIds(empty, empty).Elements()))
+
+	// Whatever the API reports wins whenever it is non-empty, including for an
+	// unconfigured value (e.g. after import).
+	assert.Equal(t, 1, len(reconcilePolicyIds(populated, types.SetNull(types.Int64Type)).Elements()))
+	assert.Equal(t, 1, len(reconcilePolicyIds(populated, empty).Elements()))
 }
 
 func TestToUpdateRequest_EmptyPolicyIdsClears(t *testing.T) {

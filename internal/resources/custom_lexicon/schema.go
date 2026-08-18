@@ -109,10 +109,9 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"end_date": schema.StringAttribute{
 				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "The end date of the lexicon in 'YYYY-MM-DD' format",
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
+				MarkdownDescription: "The end date of the lexicon in 'YYYY-MM-DD' format. Removing this attribute clears the lexicon's end date.",
+				Validators: []validator.String{
+					stringvalidator.RegexMatches(dateOnlyPattern, "must be a date in 'YYYY-MM-DD' format"),
 				},
 			},
 			"filename_analyzed": schema.BoolAttribute{
@@ -128,20 +127,16 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 			},
 			"max_participants": schema.Int64Attribute{
 				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "The max number of participants the custom lexicon applies to. If there are more than `max_participants`, the custom lexicon will not apply to those participants. Omit for no limit. Changing this value forces replacement.",
+				MarkdownDescription: "The max number of participants the custom lexicon applies to. If there are more than `max_participants`, the custom lexicon will not apply to those participants. Omit for no limit. Changing this value — including removing the attribute to go back to no limit — forces replacement.",
 				PlanModifiers: []planmodifier.Int64{
-					int64planmodifier.UseStateForUnknown(),
-					int64planmodifier.RequiresReplaceIfConfigured(),
+					int64planmodifier.RequiresReplace(),
 				},
 			},
 			"min_num_rules_with_hits": schema.Int64Attribute{
 				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "Minimum number of rule hits required to create a policy hit. Omit for no minimum. Changing this value forces replacement.",
+				MarkdownDescription: "Minimum number of rule hits required to create a policy hit. Omit for no minimum. Changing this value — including removing the attribute to go back to no minimum — forces replacement.",
 				PlanModifiers: []planmodifier.Int64{
-					int64planmodifier.UseStateForUnknown(),
-					int64planmodifier.RequiresReplaceIfConfigured(),
+					int64planmodifier.RequiresReplace(),
 				},
 			},
 			"name": schema.StringAttribute{
@@ -151,11 +146,7 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 			"policy_ids": schema.SetAttribute{
 				ElementType:         types.Int64Type,
 				Optional:            true,
-				Computed:            true,
-				MarkdownDescription: "The IDs of the policies to associate with the lexicon",
-				PlanModifiers: []planmodifier.Set{
-					setplanmodifier.UseStateForUnknown(),
-				},
+				MarkdownDescription: "The IDs of the policies to associate with the lexicon. Omitting this attribute (or setting it to `[]`) leaves the lexicon with no policy associations; removing a previously configured value disassociates the policies.",
 			},
 			"risk_type": schema.StringAttribute{
 				Required:            true,
@@ -191,11 +182,10 @@ func (r *customLexiconResource) Schema(ctx context.Context, req resource.SchemaR
 				},
 			},
 			"start_date": schema.StringAttribute{
-				Computed:            true,
 				Optional:            true,
-				MarkdownDescription: "The start date of the lexicon in 'YYYY-MM-DD' format",
-				PlanModifiers: []planmodifier.String{
-					stringplanmodifier.UseStateForUnknown(),
+				MarkdownDescription: "The start date of the lexicon in 'YYYY-MM-DD' format. Removing this attribute clears the lexicon's start date.",
+				Validators: []validator.String{
+					stringvalidator.RegexMatches(dateOnlyPattern, "must be a date in 'YYYY-MM-DD' format"),
 				},
 			},
 			"updated_at": schema.StringAttribute{

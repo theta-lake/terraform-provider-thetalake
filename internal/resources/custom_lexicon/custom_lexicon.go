@@ -51,16 +51,16 @@ func (r *customLexiconResource) ValidateConfig(ctx context.Context, req resource
 		return
 	}
 
-	if config.Disabled.IsUnknown() || config.PolicyIds.IsUnknown() {
-		return
-	}
-
-	if config.Disabled.ValueBool() && !config.PolicyIds.IsNull() && len(config.PolicyIds.Elements()) > 0 {
-		resp.Diagnostics.AddAttributeError(
-			path.Root("policy_ids"),
-			"Invalid Custom Lexicon Configuration",
-			"policy_ids must be empty when disabled = true: disabling a custom lexicon removes all policies associated with it.",
-		)
+	// Only skip the disabled/policy_ids check when either of those attributes is
+	// unknown; the rule_scope/email checks below are independent and still apply.
+	if !config.Disabled.IsUnknown() && !config.PolicyIds.IsUnknown() {
+		if config.Disabled.ValueBool() && !config.PolicyIds.IsNull() && len(config.PolicyIds.Elements()) > 0 {
+			resp.Diagnostics.AddAttributeError(
+				path.Root("policy_ids"),
+				"Invalid Custom Lexicon Configuration",
+				"policy_ids must be empty when disabled = true: disabling a custom lexicon removes all policies associated with it.",
+			)
+		}
 	}
 
 	// If rule_scope is explicitly set, it must include "email" when enabling email analysis.
@@ -104,6 +104,7 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	lexicon, err = r.waitForCustomLexiconConsistency(ctx, lexicon.Id)
 	if err != nil {
 		state := fromApiModel(createdLexicon)
+		state.PolicyIds = reconcilePolicyIds(state.PolicyIds, plan.PolicyIds)
 		resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 		resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create succeeded but the new lexicon did not become available for retrieval: %s", err.Error()))
 		return
@@ -122,6 +123,7 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 		})
 		if err != nil {
 			state := fromApiModel(existingLexicon)
+			state.PolicyIds = reconcilePolicyIds(state.PolicyIds, plan.PolicyIds)
 			resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 			resp.Diagnostics.AddError("Failed to create Custom Lexicon", fmt.Sprintf("Create succeeded but failed to disable the new lexicon: %s", err.Error()))
 			return
@@ -129,6 +131,7 @@ func (r *customLexiconResource) Create(ctx context.Context, req resource.CreateR
 	}
 
 	state := fromApiModel(lexicon)
+	state.PolicyIds = reconcilePolicyIds(state.PolicyIds, plan.PolicyIds)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &state)...)
 }
@@ -153,6 +156,7 @@ func (r *customLexiconResource) Read(ctx context.Context, req resource.ReadReque
 	}
 
 	updatedState := fromApiModel(lexicon)
+	updatedState.PolicyIds = reconcilePolicyIds(updatedState.PolicyIds, state.PolicyIds)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }
@@ -182,6 +186,7 @@ func (r *customLexiconResource) Update(ctx context.Context, req resource.UpdateR
 	}
 
 	updatedState := fromApiModel(lexicon)
+	updatedState.PolicyIds = reconcilePolicyIds(updatedState.PolicyIds, plan.PolicyIds)
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &updatedState)...)
 }

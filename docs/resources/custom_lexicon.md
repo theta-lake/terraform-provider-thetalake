@@ -63,11 +63,11 @@ resource "thetalake_custom_lexicon" "example" {
 
 ### Optional
 
-- `end_date` (String) The end date of the lexicon in 'YYYY-MM-DD' format
-- `max_participants` (Number) The max number of participants the custom lexicon applies to. If there are more than `max_participants`, the custom lexicon will not apply to those participants. Omit for no limit. Changing this value forces replacement.
-- `min_num_rules_with_hits` (Number) Minimum number of rule hits required to create a policy hit. Omit for no minimum. Changing this value forces replacement.
-- `policy_ids` (Set of Number) The IDs of the policies to associate with the lexicon
-- `start_date` (String) The start date of the lexicon in 'YYYY-MM-DD' format
+- `end_date` (String) The end date of the lexicon in 'YYYY-MM-DD' format. Removing this attribute clears the lexicon's end date.
+- `max_participants` (Number) The max number of participants the custom lexicon applies to. If there are more than `max_participants`, the custom lexicon will not apply to those participants. Omit for no limit. Changing this value — including removing the attribute to go back to no limit — forces replacement.
+- `min_num_rules_with_hits` (Number) Minimum number of rule hits required to create a policy hit. Omit for no minimum. Changing this value — including removing the attribute to go back to no minimum — forces replacement.
+- `policy_ids` (Set of Number) The IDs of the policies to associate with the lexicon. Omitting this attribute (or setting it to `[]`) leaves the lexicon with no policy associations; removing a previously configured value disassociates the policies.
+- `start_date` (String) The start date of the lexicon in 'YYYY-MM-DD' format. Removing this attribute clears the lexicon's start date.
 
 ### Read-Only
 

@@ -1,6 +1,7 @@
 package customlexicon
 
 import (
+	"regexp"
 	"time"
 
 	"github.com/hashicorp/terraform-plugin-framework-timetypes/timetypes"
@@ -14,6 +15,12 @@ import (
 // RFC3339 read-back values to, to avoid perpetual diffs.
 const dateOnlyFormat = "2006-01-02"
 
+// dateOnlyPattern validates configured start_date/end_date values. Those
+// attributes are optional-but-not-computed, so a value the API would normalise
+// differently (e.g. "2024-1-1") would surface as an unhelpful "provider
+// produced inconsistent result" error rather than a config error.
+var dateOnlyPattern = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
+
 // formatDatePtr renders an API date pointer in dateOnlyFormat, preserving
 // nil. UpdateCustomLexiconRequest.StartDate/EndDate have no `omitempty`, so
 // every update call must carry an explicit value (or explicit nil) for them —
@@ -25,6 +32,29 @@ func formatDatePtr(t *time.Time) *string {
 	}
 	formatted := t.Format(dateOnlyFormat)
 	return &formatted
+}
+
+// datePtr resolves a planned start_date/end_date for an update: the planned
+// value normally wins (null included, which clears the date), but an unresolved
+// (unknown) plan value falls back to the current state so the existing date is
+// carried forward instead of being cleared.
+func datePtr(planned types.String, current types.String) *string {
+	if planned.IsUnknown() {
+		return current.ValueStringPointer()
+	}
+	return planned.ValueStringPointer()
+}
+
+// reconcilePolicyIds preserves the null-vs-empty distinction that the API does
+// not make: the lexicon endpoints always return a policy_ids array, so a lexicon
+// with no policies reads back as an empty set. policy_ids is
+// optional-but-not-computed, so an unconfigured (null) value must stay null,
+// otherwise Terraform reports the applied value as differing from the plan.
+func reconcilePolicyIds(apiValue types.Set, configured types.Set) types.Set {
+	if configured.IsNull() && len(apiValue.Elements()) == 0 {
+		return types.SetNull(types.Int64Type)
+	}
+	return apiValue
 }
 
 // customLexiconModel covers every attribute in the schema, so it can be used
@@ -159,6 +189,10 @@ func toCreateRequest(plan *customLexiconModel) thetalake.CreateCustomLexiconRequ
 // transition) to the update request body. Disabled is only sent when it
 // changes vs. state, since the API rejects disabling an already-disabled
 // lexicon.
+//
+// start_date, end_date and policy_ids are optional-but-not-computed, so a null
+// plan value means "not configured" rather than "unchanged" and is sent as an
+// explicit clear (JSON null for the dates, an empty array for policy_ids).
 func toUpdateRequest(plan *customLexiconModel, state *customLexiconModel) thetalake.UpdateCustomLexiconRequest {
 	name := plan.Name.ValueString()
 	description := plan.Description.ValueString()
@@ -166,22 +200,18 @@ func toUpdateRequest(plan *customLexiconModel, state *customLexiconModel) thetal
 	request := thetalake.UpdateCustomLexiconRequest{
 		Name:        &name,
 		Description: &description,
+		StartDate:   datePtr(plan.StartDate, state.StartDate),
+		EndDate:     datePtr(plan.EndDate, state.EndDate),
 	}
 
-	if plan.StartDate.IsUnknown() {
-		request.StartDate = state.StartDate.ValueStringPointer()
-	} else {
-		request.StartDate = plan.StartDate.ValueStringPointer()
-	}
-
-	if plan.EndDate.IsUnknown() {
-		request.EndDate = state.EndDate.ValueStringPointer()
-	} else {
-		request.EndDate = plan.EndDate.ValueStringPointer()
-	}
-
-	if !plan.PolicyIds.IsNull() && !plan.PolicyIds.IsUnknown() {
+	// An unknown value can only reach here if the config references a value
+	// Terraform could not resolve; leave the field unset so the API keeps the
+	// existing associations rather than clearing them.
+	if !plan.PolicyIds.IsUnknown() {
 		policyIds := int64SetToSlice(plan.PolicyIds)
+		if policyIds == nil {
+			policyIds = []int64{}
+		}
 		request.PolicyIds = &policyIds
 	}
 
