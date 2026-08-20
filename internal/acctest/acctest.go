@@ -25,6 +25,7 @@ var (
 	UserEmail                    = os.Getenv("TF_ACC_TEST_USER_EMAIL")
 	WorkspaceId                  = os.Getenv("TF_ACC_TEST_WORKSPACE_ID")
 	CaseManagerUserID            = os.Getenv("TF_ACC_TEST_CASE_MANAGER_USER_ID")
+	CustomLexiconPolicyID        = os.Getenv("TF_ACC_TEST_CUSTOM_LEXICON_POLICY_ID")
 	TestProviderConfig           = fmt.Sprintf(`
 provider "thetalake" {
   api_server    = "%s"
