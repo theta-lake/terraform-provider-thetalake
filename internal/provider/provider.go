@@ -10,7 +10,7 @@ import (
 	"github.com/theta-lake/terraform-provider-thetalake/internal/client/thetalake"
 	directorygroupds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/directory_group"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/identity"
-	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/integration"
+	integrationds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/integration"
 	retentionlibrary "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/retention_library"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/datasources/role"
 	userds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user"
@@ -19,6 +19,7 @@ import (
 	legalcase "github.com/theta-lake/terraform-provider-thetalake/internal/resources/case"
 	customlexicon "github.com/theta-lake/terraform-provider-thetalake/internal/resources/custom_lexicon"
 	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/resources/directory_group"
+	integrationresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/integration"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
 	retentionlibraryresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/retention_library"
 	roleresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/role"
@@ -110,6 +111,7 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 		legalcase.NewCaseResource,
 		customlexicon.NewCustomLexiconResource,
 		directorygroup.NewDirectoryGroupResource,
+		integrationresource.NewIntegrationResource,
 		label.NewLabelResource,
 		retentionlibraryresource.NewRetentionLibraryResource,
 		roleresource.NewRoleResource,
@@ -124,7 +126,7 @@ func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Res
 func (p *ThetalakeProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		role.NewRoleDataSource,
-		integration.NewIntegrationDataSource,
+		integrationds.NewIntegrationDataSource,
 		retentionlibrary.NewRetentionLibraryDataSource,
 		directorygroupds.NewDirectoryGroupDataSource,
 		usergroup.NewUserGroupDataSource,

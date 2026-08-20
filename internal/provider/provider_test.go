@@ -117,6 +117,7 @@ func TestResources(t *testing.T) {
 		"thetalake_case",
 		"thetalake_custom_lexicon",
 		"thetalake_directory_group",
+		"thetalake_integration",
 		"thetalake_label",
 		"thetalake_retention_library",
 		"thetalake_role",
