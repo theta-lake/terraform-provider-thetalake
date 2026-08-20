@@ -1,0 +1,28 @@
+{
+  "status_code": 201,
+  "status_string": "Created",
+  "request_id": "2e277c0a-5f2d-4f8d-8f76-7b7f98f9f101",
+  "integration": {
+    "id": 302,
+    "integration_group": "Collaboration Platform",
+    "integration_type": "Generic Journaling",
+    "integration_type_id": 41,
+    "name": "Custom Generic Journaling Integration",
+    "created_at": "2026-07-31T12:00:00.000Z",
+    "updated_at": "2026-07-31T12:00:00.000Z",
+    "service_paused": false,
+    "status": "Queued",
+    "service_params": {
+      "download_o365_onedrive_links": true,
+      "download_salesforce_doclinks": false,
+      "index_headers": "X-Header-Score,X-Routed-Via",
+      "sender_spf_override": "v=spf1 ip4:127.0.0.1/32 -all",
+      "undeliverable_disabled": true,
+      "undeliverable_email_address": "undeliverable@example.com",
+      "undeliverable_email_password": "SecretPassword",
+      "undeliverable_email_port": 993,
+      "undeliverable_email_server": "email.realbank.com",
+      "undeliverable_email_user": "Undeliverable User"
+    }
+  }
+}

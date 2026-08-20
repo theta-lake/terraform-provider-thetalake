@@ -12,20 +12,21 @@ import (
 )
 
 var (
-	clientId                     = os.Getenv("TF_ACC_TEST_CLIENT_ID")
-	clientSecret                 = os.Getenv("TF_ACC_TEST_CLIENT_SECRET")
-	apiServer                    = os.Getenv("TF_ACC_TEST_API_SERVER")
-	IntegrationName              = os.Getenv("TF_ACC_TEST_INTEGRATION_NAME")
-	RetentionLibName             = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_NAME")
-	RetentionLibStorageAccountID = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_STORAGE_ACCOUNT_ID")
-	SwrvRulePolicyID             = os.Getenv("TF_ACC_TEST_SWRV_RULE_POLICY_ID")
-	SwrvRuleRetentionLibraryID   = os.Getenv("TF_ACC_TEST_SWRV_RULE_RETENTION_LIBRARY_ID")
-	SwrvRuleWorkflowID           = os.Getenv("TF_ACC_TEST_SWRV_RULE_WORKFLOW_ID")
-	IdentityEmail                = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
-	UserEmail                    = os.Getenv("TF_ACC_TEST_USER_EMAIL")
-	WorkspaceId                  = os.Getenv("TF_ACC_TEST_WORKSPACE_ID")
-	CaseManagerUserID            = os.Getenv("TF_ACC_TEST_CASE_MANAGER_USER_ID")
-	TestProviderConfig           = fmt.Sprintf(`
+	clientId                              = os.Getenv("TF_ACC_TEST_CLIENT_ID")
+	clientSecret                          = os.Getenv("TF_ACC_TEST_CLIENT_SECRET")
+	apiServer                             = os.Getenv("TF_ACC_TEST_API_SERVER")
+	IntegrationName                       = os.Getenv("TF_ACC_TEST_INTEGRATION_NAME")
+	IntegrationUndeliverableEmailPassword = os.Getenv("TF_ACC_TEST_INTEGRATION_UNDELIVERABLE_PASSWORD")
+	RetentionLibName                      = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_NAME")
+	RetentionLibStorageAccountID          = os.Getenv("TF_ACC_TEST_RETENTION_LIBRARY_STORAGE_ACCOUNT_ID")
+	SwrvRulePolicyID                      = os.Getenv("TF_ACC_TEST_SWRV_RULE_POLICY_ID")
+	SwrvRuleRetentionLibraryID            = os.Getenv("TF_ACC_TEST_SWRV_RULE_RETENTION_LIBRARY_ID")
+	SwrvRuleWorkflowID                    = os.Getenv("TF_ACC_TEST_SWRV_RULE_WORKFLOW_ID")
+	IdentityEmail                         = os.Getenv("TF_ACC_TEST_IDENTITY_EMAIL")
+	UserEmail                             = os.Getenv("TF_ACC_TEST_USER_EMAIL")
+	WorkspaceId                           = os.Getenv("TF_ACC_TEST_WORKSPACE_ID")
+	CaseManagerUserID                     = os.Getenv("TF_ACC_TEST_CASE_MANAGER_USER_ID")
+	TestProviderConfig                    = fmt.Sprintf(`
 provider "thetalake" {
   api_server    = "%s"
   client_id     = "%s"

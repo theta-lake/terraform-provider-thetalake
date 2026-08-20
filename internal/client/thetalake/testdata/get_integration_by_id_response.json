@@ -1,0 +1,16 @@
+{
+  "status_code": 200,
+  "status_string": "OK",
+  "request_id": "2e277c0a-5f2d-4f8d-8f76-7b7f98f9f301",
+  "integration": {
+    "id": 302,
+    "integration_group": "Collaboration Platform",
+    "integration_type": "Generic Journaling",
+    "integration_type_id": 41,
+    "name": "Custom Generic Journaling Integration",
+    "created_at": "2026-07-31T12:00:00.000Z",
+    "updated_at": "2026-07-31T12:00:00.000Z",
+    "service_paused": false,
+    "status": "Queued"
+  }
+}

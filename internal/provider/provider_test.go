@@ -116,6 +116,7 @@ func TestResources(t *testing.T) {
 	expectedTypes := []string{
 		"thetalake_case",
 		"thetalake_directory_group",
+		"thetalake_integration",
 		"thetalake_label",
 		"thetalake_retention_library",
 		"thetalake_role",
