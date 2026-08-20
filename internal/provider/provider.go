@@ -17,6 +17,7 @@ import (
 	usergroup "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/user_group"
 	workspaceds "github.com/theta-lake/terraform-provider-thetalake/internal/datasources/workspace"
 	legalcase "github.com/theta-lake/terraform-provider-thetalake/internal/resources/case"
+	customlexicon "github.com/theta-lake/terraform-provider-thetalake/internal/resources/custom_lexicon"
 	directorygroup "github.com/theta-lake/terraform-provider-thetalake/internal/resources/directory_group"
 	integrationresource "github.com/theta-lake/terraform-provider-thetalake/internal/resources/integration"
 	"github.com/theta-lake/terraform-provider-thetalake/internal/resources/label"
@@ -108,6 +109,7 @@ func (p *ThetalakeProvider) Configure(ctx context.Context, req provider.Configur
 func (p *ThetalakeProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		legalcase.NewCaseResource,
+		customlexicon.NewCustomLexiconResource,
 		directorygroup.NewDirectoryGroupResource,
 		integrationresource.NewIntegrationResource,
 		label.NewLabelResource,

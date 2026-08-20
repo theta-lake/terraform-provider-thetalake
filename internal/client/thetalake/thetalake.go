@@ -10,11 +10,39 @@ import (
 	"net/http"
 	"net/url"
 	"reflect"
+	"strconv"
 	"strings"
+	"time"
 )
 
 // ErrNotFound is returned when the API responds with a 404 status code.
 var ErrNotFound = errors.New("not found")
+
+// RetryableError is returned when the API responds with a 503 status code and
+// a Retry-After header, indicating the request can be retried after the given
+// duration (e.g. a write arriving before an earlier write has fully settled).
+type RetryableError struct {
+	RetryAfter time.Duration
+}
+
+func (e *RetryableError) Error() string {
+	return fmt.Sprintf("request failed with status 503, retry after %s", e.RetryAfter)
+}
+
+// parseRetryAfter parses the value of a Retry-After header, which per RFC
+// 9110 is either a number of seconds or an HTTP date.
+func parseRetryAfter(value string) (time.Duration, bool) {
+	if value == "" {
+		return 0, false
+	}
+	if seconds, err := strconv.Atoi(value); err == nil {
+		return time.Duration(seconds) * time.Second, true
+	}
+	if t, err := http.ParseTime(value); err == nil {
+		return time.Until(t), true
+	}
+	return 0, false
+}
 
 type Client struct {
 	apiServerUrl string
@@ -180,6 +208,12 @@ func (c *Client) doRequestBytes(ctx context.Context, method, endpoint string, bo
 
 	if resp.StatusCode == http.StatusNotFound {
 		return nil, ErrNotFound
+	}
+
+	if resp.StatusCode == http.StatusServiceUnavailable {
+		if retryAfter, ok := parseRetryAfter(resp.Header.Get("Retry-After")); ok {
+			return nil, &RetryableError{RetryAfter: retryAfter}
+		}
 	}
 
 	if resp.StatusCode >= 400 {
